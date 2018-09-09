@@ -10,7 +10,7 @@ namespace PROJET_FINAL.Controllers
     {
         public ActionResult Index()
         {
-            return View();//YO MON TABARNAK
+            return View();
         }
 
         public ActionResult About()
