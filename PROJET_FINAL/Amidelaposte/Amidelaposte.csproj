@@ -217,6 +217,7 @@
     <Compile Include="Client.cs">
       <DependentUpon>ADLPDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ClientManager.cs" />
     <Compile Include="Commande.cs">
       <DependentUpon>ADLPDbModel.tt</DependentUpon>
     </Compile>
@@ -251,10 +252,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ADLPDbModel.edmx</DependentUpon>
       <LastGenOutput>ADLPDbModel.cs</LastGenOutput>
-    </Content>
-    <Content Include="App_Data\aspnet-Amidelaposte-20180912115615.mdf" />
-    <Content Include="App_Data\aspnet-Amidelaposte-20180912115615_log.ldf">
-      <DependentUpon>aspnet-Amidelaposte-20180912115615.mdf</DependentUpon>
     </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -322,7 +319,9 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

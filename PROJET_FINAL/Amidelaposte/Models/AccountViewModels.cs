@@ -65,6 +65,18 @@ namespace Amidelaposte.Models
     public class RegisterViewModel
     {
         [Required]
+        public string Prenom { get; set; }
+        [Required]
+        public string Nom { get; set; }
+        [Required]
+        public string Username { get; set; }
+        [Required]
+        public string Adresse { get; set; }
+        [Required]
+        public string CodePostal { get; set; }
+        [Required]
+        public string Telephone { get; set; }
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
