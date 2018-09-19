@@ -7,11 +7,11 @@ namespace Amidelaposte
 {
     public class ClientManager
     {
-        public void InsertClient(string idclient, string prenomclient,string nomclient,string username, string adresse,string codepostal,string telephone)
+        public void InsertClient(string prenomclient,string nomclient,string username, string adresse,string codepostal,string telephone)
         {
             using (var context = new ProjetDBEntities())
             {
-                var clientEntity = context.Clients.FirstOrDefault(p => p.IdClient == idclient);
+                var clientEntity = context.Clients.FirstOrDefault(p => p.Username == username);
                 if(clientEntity == null)
                 {
                     var p = new Client();
