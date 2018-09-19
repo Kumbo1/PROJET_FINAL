@@ -151,7 +151,7 @@ namespace Amidelaposte.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Username, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -163,7 +163,7 @@ namespace Amidelaposte.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
                     var newclient = new ClientManager();
-                    newclient.InsertClient(model.Prenom, model.Nom, model.Username, model.Adresse, model.CodePostal, model.Telephone);
+                    newclient.InsertClient(user.Id, model.Prenom, model.Nom, model.Username, model.Adresse, model.CodePostal, model.Telephone);
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
