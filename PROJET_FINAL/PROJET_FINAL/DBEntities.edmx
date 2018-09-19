@@ -1,0 +1,494 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProjetDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="IdCategorie" />
+          </Key>
+          <Property Name="IdCategorie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomCategorie" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="IdClient" />
+          </Key>
+          <Property Name="PrenomClient" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NomClient" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Adresse" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodePostal" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="IdVille" Type="int" Nullable="false" />
+          <Property Name="Telephone" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="EstMajeur" Type="bit" Nullable="false" />
+          <Property Name="EstAdmin" Type="bit" Nullable="false" />
+          <Property Name="MotDePasse" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Courriel" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Commandes">
+          <Key>
+            <PropertyRef Name="IdCommande" />
+          </Key>
+          <Property Name="IdCommande" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="idLivreur" Type="int" />
+          <Property Name="InfosSup" Type="text" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="EstMajeur" Type="bit" Nullable="false" />
+          <Property Name="Adresse" Type="varchar" MaxLength="50" />
+          <Property Name="IdVille" Type="int" />
+          <Property Name="CodePostal" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Commandes_Objets">
+          <Key>
+            <PropertyRef Name="IdObjet" />
+            <PropertyRef Name="IdCommande" />
+          </Key>
+          <Property Name="IdObjet" Type="int" Nullable="false" />
+          <Property Name="IdCommande" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Livreurs">
+          <Key>
+            <PropertyRef Name="IdLivreur" />
+          </Key>
+          <Property Name="PrenomClient" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NomClient" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdLivreur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telephone" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="EstMajeur" Type="bit" Nullable="false" />
+          <Property Name="Courriel" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MotDePasse" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Objets">
+          <Key>
+            <PropertyRef Name="IdObjet" />
+          </Key>
+          <Property Name="IdObjet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomObjet" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdCategorie" Type="int" Nullable="false" />
+          <Property Name="PrixApprox" Type="smallmoney" />
+        </EntityType>
+        <EntityType Name="Villes">
+          <Key>
+            <PropertyRef Name="IdVille" />
+          </Key>
+          <Property Name="IdVille" Type="int" Nullable="false" />
+          <Property Name="NomVille" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Clients_Villes">
+          <End Role="Villes" Type="Self.Villes" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Villes">
+              <PropertyRef Name="IdVille" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="IdVille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Commandes_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="Commandes" Type="Self.Commandes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Commandes">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Commandes_Livreurs">
+          <End Role="Livreurs" Type="Self.Livreurs" Multiplicity="0..1" />
+          <End Role="Commandes" Type="Self.Commandes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Livreurs">
+              <PropertyRef Name="IdLivreur" />
+            </Principal>
+            <Dependent Role="Commandes">
+              <PropertyRef Name="idLivreur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Commandes_Objets_Commandes">
+          <End Role="Commandes" Type="Self.Commandes" Multiplicity="1" />
+          <End Role="Commandes_Objets" Type="Self.Commandes_Objets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Commandes">
+              <PropertyRef Name="IdCommande" />
+            </Principal>
+            <Dependent Role="Commandes_Objets">
+              <PropertyRef Name="IdCommande" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Commandes_Objets_Objets">
+          <End Role="Objets" Type="Self.Objets" Multiplicity="1" />
+          <End Role="Commandes_Objets" Type="Self.Commandes_Objets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Objets">
+              <PropertyRef Name="IdObjet" />
+            </Principal>
+            <Dependent Role="Commandes_Objets">
+              <PropertyRef Name="IdObjet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Commandes_Villes">
+          <End Role="Villes" Type="Self.Villes" Multiplicity="0..1" />
+          <End Role="Commandes" Type="Self.Commandes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Villes">
+              <PropertyRef Name="IdVille" />
+            </Principal>
+            <Dependent Role="Commandes">
+              <PropertyRef Name="IdVille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Objets_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Objets" Type="Self.Objets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="IdCategorie" />
+            </Principal>
+            <Dependent Role="Objets">
+              <PropertyRef Name="IdCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjetDBModelStoreContainer">
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Commandes" EntityType="Self.Commandes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Commandes_Objets" EntityType="Self.Commandes_Objets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Livreurs" EntityType="Self.Livreurs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Objets" EntityType="Self.Objets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Villes" EntityType="Self.Villes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Clients_Villes" Association="Self.FK_Clients_Villes">
+            <End Role="Villes" EntitySet="Villes" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commandes_Clients" Association="Self.FK_Commandes_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Commandes" EntitySet="Commandes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commandes_Livreurs" Association="Self.FK_Commandes_Livreurs">
+            <End Role="Livreurs" EntitySet="Livreurs" />
+            <End Role="Commandes" EntitySet="Commandes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commandes_Objets_Commandes" Association="Self.FK_Commandes_Objets_Commandes">
+            <End Role="Commandes" EntitySet="Commandes" />
+            <End Role="Commandes_Objets" EntitySet="Commandes_Objets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commandes_Objets_Objets" Association="Self.FK_Commandes_Objets_Objets">
+            <End Role="Objets" EntitySet="Objets" />
+            <End Role="Commandes_Objets" EntitySet="Commandes_Objets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commandes_Villes" Association="Self.FK_Commandes_Villes">
+            <End Role="Villes" EntitySet="Villes" />
+            <End Role="Commandes" EntitySet="Commandes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Objets_Categories" Association="Self.FK_Objets_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Objets" EntitySet="Objets" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjetDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="IdCategorie" />
+          </Key>
+          <Property Name="IdCategorie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomCategorie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Objets" Relationship="Self.FK_Objets_Categories" FromRole="Categories" ToRole="Objets" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="IdClient" />
+          </Key>
+          <Property Name="PrenomClient" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NomClient" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Adresse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodePostal" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdVille" Type="Int32" Nullable="false" />
+          <Property Name="Telephone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EstMajeur" Type="Boolean" Nullable="false" />
+          <Property Name="EstAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="MotDePasse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Courriel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Ville" Relationship="Self.FK_Clients_Villes" FromRole="Clients" ToRole="Villes" />
+          <NavigationProperty Name="Commandes" Relationship="Self.FK_Commandes_Clients" FromRole="Clients" ToRole="Commandes" />
+        </EntityType>
+        <EntityType Name="Commande">
+          <Key>
+            <PropertyRef Name="IdCommande" />
+          </Key>
+          <Property Name="IdCommande" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="idLivreur" Type="Int32" />
+          <Property Name="InfosSup" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EstMajeur" Type="Boolean" Nullable="false" />
+          <Property Name="Adresse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdVille" Type="Int32" />
+          <Property Name="CodePostal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Commandes_Clients" FromRole="Commandes" ToRole="Clients" />
+          <NavigationProperty Name="Livreur" Relationship="Self.FK_Commandes_Livreurs" FromRole="Commandes" ToRole="Livreurs" />
+          <NavigationProperty Name="Ville" Relationship="Self.FK_Commandes_Villes" FromRole="Commandes" ToRole="Villes" />
+          <NavigationProperty Name="Objets" Relationship="Self.Commandes_Objets" FromRole="Commandes" ToRole="Objets" />
+        </EntityType>
+        <EntityType Name="Livreur">
+          <Key>
+            <PropertyRef Name="IdLivreur" />
+          </Key>
+          <Property Name="PrenomClient" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NomClient" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdLivreur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telephone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EstMajeur" Type="Boolean" Nullable="false" />
+          <Property Name="Courriel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MotDePasse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Commandes" Relationship="Self.FK_Commandes_Livreurs" FromRole="Livreurs" ToRole="Commandes" />
+        </EntityType>
+        <EntityType Name="Objet">
+          <Key>
+            <PropertyRef Name="IdObjet" />
+          </Key>
+          <Property Name="IdObjet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomObjet" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdCategorie" Type="Int32" Nullable="false" />
+          <Property Name="PrixApprox" Type="Decimal" Precision="10" Scale="4" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Objets_Categories" FromRole="Objets" ToRole="Categories" />
+          <NavigationProperty Name="Commandes" Relationship="Self.Commandes_Objets" FromRole="Objets" ToRole="Commandes" />
+        </EntityType>
+        <EntityType Name="Ville">
+          <Key>
+            <PropertyRef Name="IdVille" />
+          </Key>
+          <Property Name="IdVille" Type="Int32" Nullable="false" />
+          <Property Name="NomVille" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_Clients_Villes" FromRole="Villes" ToRole="Clients" />
+          <NavigationProperty Name="Commandes" Relationship="Self.FK_Commandes_Villes" FromRole="Villes" ToRole="Commandes" />
+        </EntityType>
+        <Association Name="FK_Objets_Categories">
+          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="Objets" Type="Self.Objet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="IdCategorie" />
+            </Principal>
+            <Dependent Role="Objets">
+              <PropertyRef Name="IdCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clients_Villes">
+          <End Role="Villes" Type="Self.Ville" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Villes">
+              <PropertyRef Name="IdVille" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="IdVille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Commandes_Clients">
+          <End Role="Clients" Type="Self.Client" Multiplicity="1" />
+          <End Role="Commandes" Type="Self.Commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Commandes">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Commandes_Livreurs">
+          <End Role="Livreurs" Type="Self.Livreur" Multiplicity="0..1" />
+          <End Role="Commandes" Type="Self.Commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Livreurs">
+              <PropertyRef Name="IdLivreur" />
+            </Principal>
+            <Dependent Role="Commandes">
+              <PropertyRef Name="idLivreur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Commandes_Villes">
+          <End Role="Villes" Type="Self.Ville" Multiplicity="0..1" />
+          <End Role="Commandes" Type="Self.Commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Villes">
+              <PropertyRef Name="IdVille" />
+            </Principal>
+            <Dependent Role="Commandes">
+              <PropertyRef Name="IdVille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Commandes_Objets">
+          <End Role="Commandes" Type="Self.Commande" Multiplicity="*" />
+          <End Role="Objets" Type="Self.Objet" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ProjetDBEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="Commandes" EntityType="Self.Commande" />
+          <EntitySet Name="Livreurs" EntityType="Self.Livreur" />
+          <EntitySet Name="Objets" EntityType="Self.Objet" />
+          <EntitySet Name="Villes" EntityType="Self.Ville" />
+          <AssociationSet Name="FK_Objets_Categories" Association="Self.FK_Objets_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Objets" EntitySet="Objets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clients_Villes" Association="Self.FK_Clients_Villes">
+            <End Role="Villes" EntitySet="Villes" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commandes_Clients" Association="Self.FK_Commandes_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Commandes" EntitySet="Commandes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commandes_Livreurs" Association="Self.FK_Commandes_Livreurs">
+            <End Role="Livreurs" EntitySet="Livreurs" />
+            <End Role="Commandes" EntitySet="Commandes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Commandes_Villes" Association="Self.FK_Commandes_Villes">
+            <End Role="Villes" EntitySet="Villes" />
+            <End Role="Commandes" EntitySet="Commandes" />
+          </AssociationSet>
+          <AssociationSet Name="Commandes_Objets" Association="Self.Commandes_Objets">
+            <End Role="Commandes" EntitySet="Commandes" />
+            <End Role="Objets" EntitySet="Objets" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProjetDBModelStoreContainer" CdmEntityContainer="ProjetDBEntities2">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="ProjetDBModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="IdCategorie" ColumnName="IdCategorie" />
+                <ScalarProperty Name="NomCategorie" ColumnName="NomCategorie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="ProjetDBModel.Client">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="PrenomClient" ColumnName="PrenomClient" />
+                <ScalarProperty Name="NomClient" ColumnName="NomClient" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+                <ScalarProperty Name="IdVille" ColumnName="IdVille" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="EstMajeur" ColumnName="EstMajeur" />
+                <ScalarProperty Name="EstAdmin" ColumnName="EstAdmin" />
+                <ScalarProperty Name="MotDePasse" ColumnName="MotDePasse" />
+                <ScalarProperty Name="Courriel" ColumnName="Courriel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Commandes">
+            <EntityTypeMapping TypeName="ProjetDBModel.Commande">
+              <MappingFragment StoreEntitySet="Commandes">
+                <ScalarProperty Name="IdCommande" ColumnName="IdCommande" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="idLivreur" ColumnName="idLivreur" />
+                <ScalarProperty Name="InfosSup" ColumnName="InfosSup" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="EstMajeur" ColumnName="EstMajeur" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="IdVille" ColumnName="IdVille" />
+                <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Livreurs">
+            <EntityTypeMapping TypeName="ProjetDBModel.Livreur">
+              <MappingFragment StoreEntitySet="Livreurs">
+                <ScalarProperty Name="PrenomClient" ColumnName="PrenomClient" />
+                <ScalarProperty Name="NomClient" ColumnName="NomClient" />
+                <ScalarProperty Name="IdLivreur" ColumnName="IdLivreur" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="EstMajeur" ColumnName="EstMajeur" />
+                <ScalarProperty Name="Courriel" ColumnName="Courriel" />
+                <ScalarProperty Name="MotDePasse" ColumnName="MotDePasse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Objets">
+            <EntityTypeMapping TypeName="ProjetDBModel.Objet">
+              <MappingFragment StoreEntitySet="Objets">
+                <ScalarProperty Name="IdObjet" ColumnName="IdObjet" />
+                <ScalarProperty Name="NomObjet" ColumnName="NomObjet" />
+                <ScalarProperty Name="IdCategorie" ColumnName="IdCategorie" />
+                <ScalarProperty Name="PrixApprox" ColumnName="PrixApprox" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Villes">
+            <EntityTypeMapping TypeName="ProjetDBModel.Ville">
+              <MappingFragment StoreEntitySet="Villes">
+                <ScalarProperty Name="IdVille" ColumnName="IdVille" />
+                <ScalarProperty Name="NomVille" ColumnName="NomVille" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Commandes_Objets" TypeName="ProjetDBModel.Commandes_Objets" StoreEntitySet="Commandes_Objets">
+            <EndProperty Name="Commandes">
+              <ScalarProperty Name="IdCommande" ColumnName="IdCommande" />
+            </EndProperty>
+            <EndProperty Name="Objets">
+              <ScalarProperty Name="IdObjet" ColumnName="IdObjet" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

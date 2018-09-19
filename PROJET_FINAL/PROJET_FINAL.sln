@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amidelaposte", "Amidelaposte\Amidelaposte.csproj", "{612D61BF-1637-4896-8E4B-FE6D4A524531}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PROJET_FINAL", "PROJET_FINAL\PROJET_FINAL.csproj", "{B9C4D96B-E98F-401F-B51A-18BD2B033E72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{612D61BF-1637-4896-8E4B-FE6D4A524531}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{612D61BF-1637-4896-8E4B-FE6D4A524531}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{612D61BF-1637-4896-8E4B-FE6D4A524531}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{612D61BF-1637-4896-8E4B-FE6D4A524531}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9C4D96B-E98F-401F-B51A-18BD2B033E72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9C4D96B-E98F-401F-B51A-18BD2B033E72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9C4D96B-E98F-401F-B51A-18BD2B033E72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9C4D96B-E98F-401F-B51A-18BD2B033E72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

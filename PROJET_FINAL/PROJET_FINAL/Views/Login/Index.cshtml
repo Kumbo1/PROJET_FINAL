@@ -1,0 +1,105 @@
+﻿@model PROJET_FINAL.Client
+@{
+    ViewBag.Title = "Login";
+}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="~/CSS/Login.css" rel="stylesheet" id="bootstrap-css">
+<script>
+    $(function () {
+
+        $('#login-client-link').click(function (e) {
+            $("#login-client").delay(100).fadeIn(100);
+            $("#login-livreur").fadeOut(100);
+            $('#login-livreur-link').removeClass('active');
+            $(this).addClass('active');
+            e.preventDefault();
+        });
+        $('#login-livreur-link').click(function (e) {
+            $("#login-livreur").delay(100).fadeIn(100);
+            $("#login-client").fadeOut(100);
+            $('#login-client-link').removeClass('active');
+            $(this).addClass('active');
+            e.preventDefault();
+        });
+    });
+</script>
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-login">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="#" class="active" id="login-client-link">Client</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="#" id="login-livreur-link">Livreur</a>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div id="login-client" style="display: block; text-align: center;">
+                                @using (Html.BeginForm("LoginClient", "Login", FormMethod.Post))
+                                {
+                                    <table>
+                                        <tr>
+                                            <td>@Html.DisplayFor(model => model.LoginErrorMessage)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nom d'identifiant </td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.EditorFor(model => model.Username)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mot de passe </td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.EditorFor(model => model.MotDePasse)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="submit" name="name" value="Login" /></td>
+                                        </tr>
+                                    </table>
+                                }
+                            </div>
+                            <div id="login-livreur" style="display: none;">
+                                @using (Html.BeginForm("LoginLivreur", "Login", FormMethod.Post))
+                                {
+                                    <table>
+                                        <tr>
+                                            <td>@Html.DisplayFor(model => model.LoginErrorMessage)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.LabelFor(model => model.Username)</td>
+                                            <td>@Html.EditorFor(model => model.Username)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.LabelFor(model => model.MotDePasse)</td>
+                                            <td>@Html.EditorFor(model => model.MotDePasse)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="submit" name="name" value="Login" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
