@@ -161,6 +161,7 @@
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\WelcomeController.cs" />
     <Compile Include="DBEntities.Context.cs">
       <AutoGen>True</AutoGen>
@@ -183,6 +184,7 @@
     <Compile Include="Livreur.cs">
       <DependentUpon>DBEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Objet.cs">
       <DependentUpon>DBEntities.tt</DependentUpon>
     </Compile>
@@ -257,10 +259,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Welcome\Index.cshtml" />
+    <Content Include="Views\Register\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
