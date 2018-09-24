@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ProjetDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ProjetDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="IdCategorie" />
@@ -164,6 +164,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="InsertClients" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pprenom" Type="varchar" Mode="In" />
+          <Parameter Name="pnom" Type="varchar" Mode="In" />
+          <Parameter Name="pville" Type="varchar" Mode="In" />
+          <Parameter Name="pusername" Type="varchar" Mode="In" />
+          <Parameter Name="padresse" Type="varchar" Mode="In" />
+          <Parameter Name="pcodepostal" Type="varchar" Mode="In" />
+          <Parameter Name="ptelephone" Type="varchar" Mode="In" />
+          <Parameter Name="pestmajeur" Type="bit" Mode="In" />
+          <Parameter Name="pestadmin" Type="bit" Mode="In" />
+          <Parameter Name="pmotdepasse" Type="varchar" Mode="In" />
+          <Parameter Name="pcourriel" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertLivreurs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pprenom" Type="varchar" Mode="In" />
+          <Parameter Name="pnom" Type="varchar" Mode="In" />
+          <Parameter Name="pusername" Type="varchar" Mode="In" />
+          <Parameter Name="ptelephone" Type="varchar" Mode="In" />
+          <Parameter Name="pestmajeur" Type="bit" Mode="In" />
+          <Parameter Name="pmotdepasse" Type="varchar" Mode="In" />
+          <Parameter Name="pcourriel" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="VerifyLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pusername" Type="varchar" Mode="In" />
+          <Parameter Name="ppassword" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="ProjetDBModelStoreContainer">
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
@@ -201,8 +227,7 @@
             <End Role="Objets" EntitySet="Objets" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProjetDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -380,7 +405,47 @@
             <End Role="Commandes" EntitySet="Commandes" />
             <End Role="Objets" EntitySet="Objets" />
           </AssociationSet>
+          <FunctionImport Name="InsertClients">
+            <Parameter Name="pprenom" Mode="In" Type="String" />
+            <Parameter Name="pnom" Mode="In" Type="String" />
+            <Parameter Name="pville" Mode="In" Type="String" />
+            <Parameter Name="pusername" Mode="In" Type="String" />
+            <Parameter Name="padresse" Mode="In" Type="String" />
+            <Parameter Name="pcodepostal" Mode="In" Type="String" />
+            <Parameter Name="ptelephone" Mode="In" Type="String" />
+            <Parameter Name="pestmajeur" Mode="In" Type="Boolean" />
+            <Parameter Name="pestadmin" Mode="In" Type="Boolean" />
+            <Parameter Name="pmotdepasse" Mode="In" Type="String" />
+            <Parameter Name="pcourriel" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertLivreurs">
+            <Parameter Name="pprenom" Mode="In" Type="String" />
+            <Parameter Name="pnom" Mode="In" Type="String" />
+            <Parameter Name="pusername" Mode="In" Type="String" />
+            <Parameter Name="ptelephone" Mode="In" Type="String" />
+            <Parameter Name="pestmajeur" Mode="In" Type="Boolean" />
+            <Parameter Name="pmotdepasse" Mode="In" Type="String" />
+            <Parameter Name="pcourriel" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="VerifyLogin" ReturnType="Collection(ProjetDBModel.VerifyLogin_Result)">
+            <Parameter Name="pusername" Mode="In" Type="String" />
+            <Parameter Name="ppassword" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="VerifyLogin_Result">
+          <Property Type="String" Name="PrenomClient" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="NomClient" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IdClient" Nullable="false" />
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Adresse" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CodePostal" Nullable="false" MaxLength="6" />
+          <Property Type="Int32" Name="IdVille" Nullable="false" />
+          <Property Type="String" Name="Telephone" Nullable="false" MaxLength="10" />
+          <Property Type="Boolean" Name="EstMajeur" Nullable="false" />
+          <Property Type="Boolean" Name="EstAdmin" Nullable="false" />
+          <Property Type="String" Name="MotDePasse" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Courriel" Nullable="false" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -468,6 +533,26 @@
               <ScalarProperty Name="IdObjet" ColumnName="IdObjet" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="InsertClients" FunctionName="ProjetDBModel.Store.InsertClients" />
+          <FunctionImportMapping FunctionImportName="InsertLivreurs" FunctionName="ProjetDBModel.Store.InsertLivreurs" />
+          <FunctionImportMapping FunctionImportName="VerifyLogin" FunctionName="ProjetDBModel.Store.VerifyLogin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProjetDBModel.VerifyLogin_Result">
+                <ScalarProperty Name="PrenomClient" ColumnName="PrenomClient" />
+                <ScalarProperty Name="NomClient" ColumnName="NomClient" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+                <ScalarProperty Name="IdVille" ColumnName="IdVille" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="EstMajeur" ColumnName="EstMajeur" />
+                <ScalarProperty Name="EstAdmin" ColumnName="EstAdmin" />
+                <ScalarProperty Name="MotDePasse" ColumnName="MotDePasse" />
+                <ScalarProperty Name="Courriel" ColumnName="Courriel" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

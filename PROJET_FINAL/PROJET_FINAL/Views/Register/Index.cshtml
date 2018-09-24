@@ -97,6 +97,12 @@
                                         <td>Code Postal </td>
                                     </tr>
                                     <tr>
+                                        <td>Telephone</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.EditorFor(model => model.Telephone)</td>
+                                    </tr>
+                                    <tr>
                                         <td>@Html.EditorFor(model => model.CodePostal)</td>
                                     </tr>
                                     <tr>
@@ -114,50 +120,56 @@
                             <div id="login-livreur" style="display: none; text-align: center;">
                                 @using (Html.BeginForm("RegisterClient", "Register", FormMethod.Post))
     {
-                            <table>
-                                <tr>
-                                    <td>Nom d'identifiant </td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.EditorFor(model => model.Username)</td>
-                                </tr>
-                                <tr>
-                                    <td>Mot de passe </td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.EditorFor(model => model.MotDePasse)</td>
-                                </tr>
-                                <tr>
-                                    <td>Confirmez le mot de passe </td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.EditorFor(model => model.ConfirmMotDePasse)</td>
-                                </tr>
-                                <tr>
-                                    <td>Prénom </td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.EditorFor(model => model.Prenom)</td>
-                                </tr>
-                                <tr>
-                                    <td>Nom de famille </td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.EditorFor(model => model.Nom)</td>
-                                </tr>
-                                <tr>
-                                    <td>Courriel </td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.EditorFor(model => model.Courriel)</td>
-                                </tr>
-                                <tr>
-                                   <td>18 ans + @Html.CheckBoxFor(model => model.EstMajeur)</td>
-                                </tr>
-                                <tr>
-                                    <td><br /><input type="submit" name="name" value="Register" /></td>
-                                </tr>
-                            </table>
+                                <table>
+                                    <tr>
+                                        <td>Nom d'identifiant </td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.EditorFor(model => model.Username)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mot de passe </td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.EditorFor(model => model.MotDePasse)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Confirmez le mot de passe </td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.EditorFor(model => model.ConfirmMotDePasse)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Prénom </td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.EditorFor(model => model.Prenom)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nom de famille </td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.EditorFor(model => model.Nom)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Courriel </td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.EditorFor(model => model.Courriel)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Telephone</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.EditorFor(model => model.Telephone)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>18 ans + @Html.CheckBoxFor(model => model.EstMajeur)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><br /><input type="submit" name="name" value="Register" /></td>
+                                    </tr>
+                                </table>
 }
                             </div>
                         </div>

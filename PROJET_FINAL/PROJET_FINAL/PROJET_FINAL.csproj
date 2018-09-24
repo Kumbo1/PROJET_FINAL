@@ -189,6 +189,9 @@
       <DependentUpon>DBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VerifyLogin_Result.cs">
+      <DependentUpon>DBEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Ville.cs">
       <DependentUpon>DBEntities.tt</DependentUpon>
     </Compile>

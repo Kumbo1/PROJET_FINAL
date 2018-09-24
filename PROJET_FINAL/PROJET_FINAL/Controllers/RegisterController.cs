@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Sql;
+using System.Data.SqlClient;
+
 
 namespace PROJET_FINAL.Controllers
 {
@@ -16,38 +19,45 @@ namespace PROJET_FINAL.Controllers
         }
 
         [HttpPost]
-        public ActionResult RegisterClient(PROJET_FINAL.Client client)
+        public ActionResult RegisterClient(Register reg)
         {
-            var reg = new Register();
-            if (ModelState.IsValid)
-            {
+            
+           // if (ModelState.IsValid)
+            //{
                 using (ProjetDBEntities2 db = new ProjetDBEntities2())
                 {
-                    var queryUser = db.Clients.FirstOrDefault(u => u.Username == client.Username);
+                    var queryUser = db.Clients.FirstOrDefault(u => u.Username == reg.Username);
                     if (queryUser == null)
                     {
-                        reg.Prenom = client.PrenomClient;
-                        reg.Nom = client.NomClient;
-                        reg.Username = client.Username;
-                        reg.Adresse = client.Adresse;
-                        reg.CodePostal = client.CodePostal;
-                        reg.Telephone = client.Telephone;
-                        reg.EstMajeur = client.EstMajeur;
-                        reg.MotDePasse = client.MotDePasse;
-                        reg.Courriel = client.Courriel;
-                        db.Clients.Add(reg);
-                        db.SaveChanges();
-                        return RedirectToAction("Login");
+                        
+                        var prenom = new SqlParameter("pprenom", reg.Prenom);
+                        var nom = new SqlParameter("pnom", reg.Nom);
+                        var ville = new SqlParameter("pville", reg.NomVille);
+                        var username = new SqlParameter("pusername", reg.Username);
+                        var adresse = new SqlParameter("padresse", reg.Adresse);
+                        var codepostal = new SqlParameter("pcodepostal", reg.CodePostal);
+                        var telephone = new SqlParameter("ptelephone", reg.Telephone);
+                        var estmajeur = new SqlParameter("pestmajeur", reg.EstMajeur);
+                        var estadmin = new SqlParameter("pestadmin", false);
+                        var motdepasse = new SqlParameter("pmotdepasse", reg.MotDePasse);
+                        var courriel = new SqlParameter("pcourriel", reg.Courriel);
+                        db.Database.ExecuteSqlCommand("execute InsertClients @pprenom, @pnom, @pville" +
+                            ", @pusername, @padresse, @pcodepostal, @ptelephone, @pestmajeur" +
+                            ", @pestadmin, @pmotdepasse, @pmotdepasse", prenom, nom, ville, username, adresse, codepostal, telephone,
+                            estmajeur, estadmin, motdepasse, courriel);
+
+
+                        return RedirectToAction("Welcome","Index");
                     }
                     else
                     {
-                        return RedirectToAction("Register");
+                        return RedirectToAction("Register","Index");
                     }
                                   
                 }
-            }
+            //}
             
-            return View();
+            
         }
     }
 }

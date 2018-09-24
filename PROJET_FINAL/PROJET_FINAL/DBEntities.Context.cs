@@ -12,6 +12,8 @@ namespace PROJET_FINAL
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class ProjetDBEntities2 : DbContext
     {
@@ -31,5 +33,100 @@ namespace PROJET_FINAL
         public virtual DbSet<Livreur> Livreurs { get; set; }
         public virtual DbSet<Objet> Objets { get; set; }
         public virtual DbSet<Ville> Villes { get; set; }
+    
+        public virtual int InsertClients(string pprenom, string pnom, string pville, string pusername, string padresse, string pcodepostal, string ptelephone, Nullable<bool> pestmajeur, Nullable<bool> pestadmin, string pmotdepasse, string pcourriel)
+        {
+            var pprenomParameter = pprenom != null ?
+                new ObjectParameter("pprenom", pprenom) :
+                new ObjectParameter("pprenom", typeof(string));
+    
+            var pnomParameter = pnom != null ?
+                new ObjectParameter("pnom", pnom) :
+                new ObjectParameter("pnom", typeof(string));
+    
+            var pvilleParameter = pville != null ?
+                new ObjectParameter("pville", pville) :
+                new ObjectParameter("pville", typeof(string));
+    
+            var pusernameParameter = pusername != null ?
+                new ObjectParameter("pusername", pusername) :
+                new ObjectParameter("pusername", typeof(string));
+    
+            var padresseParameter = padresse != null ?
+                new ObjectParameter("padresse", padresse) :
+                new ObjectParameter("padresse", typeof(string));
+    
+            var pcodepostalParameter = pcodepostal != null ?
+                new ObjectParameter("pcodepostal", pcodepostal) :
+                new ObjectParameter("pcodepostal", typeof(string));
+    
+            var ptelephoneParameter = ptelephone != null ?
+                new ObjectParameter("ptelephone", ptelephone) :
+                new ObjectParameter("ptelephone", typeof(string));
+    
+            var pestmajeurParameter = pestmajeur.HasValue ?
+                new ObjectParameter("pestmajeur", pestmajeur) :
+                new ObjectParameter("pestmajeur", typeof(bool));
+    
+            var pestadminParameter = pestadmin.HasValue ?
+                new ObjectParameter("pestadmin", pestadmin) :
+                new ObjectParameter("pestadmin", typeof(bool));
+    
+            var pmotdepasseParameter = pmotdepasse != null ?
+                new ObjectParameter("pmotdepasse", pmotdepasse) :
+                new ObjectParameter("pmotdepasse", typeof(string));
+    
+            var pcourrielParameter = pcourriel != null ?
+                new ObjectParameter("pcourriel", pcourriel) :
+                new ObjectParameter("pcourriel", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertClients", pprenomParameter, pnomParameter, pvilleParameter, pusernameParameter, padresseParameter, pcodepostalParameter, ptelephoneParameter, pestmajeurParameter, pestadminParameter, pmotdepasseParameter, pcourrielParameter);
+        }
+    
+        public virtual int InsertLivreurs(string pprenom, string pnom, string pusername, string ptelephone, Nullable<bool> pestmajeur, string pmotdepasse, string pcourriel)
+        {
+            var pprenomParameter = pprenom != null ?
+                new ObjectParameter("pprenom", pprenom) :
+                new ObjectParameter("pprenom", typeof(string));
+    
+            var pnomParameter = pnom != null ?
+                new ObjectParameter("pnom", pnom) :
+                new ObjectParameter("pnom", typeof(string));
+    
+            var pusernameParameter = pusername != null ?
+                new ObjectParameter("pusername", pusername) :
+                new ObjectParameter("pusername", typeof(string));
+    
+            var ptelephoneParameter = ptelephone != null ?
+                new ObjectParameter("ptelephone", ptelephone) :
+                new ObjectParameter("ptelephone", typeof(string));
+    
+            var pestmajeurParameter = pestmajeur.HasValue ?
+                new ObjectParameter("pestmajeur", pestmajeur) :
+                new ObjectParameter("pestmajeur", typeof(bool));
+    
+            var pmotdepasseParameter = pmotdepasse != null ?
+                new ObjectParameter("pmotdepasse", pmotdepasse) :
+                new ObjectParameter("pmotdepasse", typeof(string));
+    
+            var pcourrielParameter = pcourriel != null ?
+                new ObjectParameter("pcourriel", pcourriel) :
+                new ObjectParameter("pcourriel", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertLivreurs", pprenomParameter, pnomParameter, pusernameParameter, ptelephoneParameter, pestmajeurParameter, pmotdepasseParameter, pcourrielParameter);
+        }
+    
+        public virtual ObjectResult<VerifyLogin_Result> VerifyLogin(string pusername, string ppassword)
+        {
+            var pusernameParameter = pusername != null ?
+                new ObjectParameter("pusername", pusername) :
+                new ObjectParameter("pusername", typeof(string));
+    
+            var ppasswordParameter = ppassword != null ?
+                new ObjectParameter("ppassword", ppassword) :
+                new ObjectParameter("ppassword", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VerifyLogin_Result>("VerifyLogin", pusernameParameter, ppasswordParameter);
+        }
     }
 }

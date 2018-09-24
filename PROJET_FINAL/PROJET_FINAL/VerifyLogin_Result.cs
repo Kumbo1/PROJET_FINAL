@@ -10,16 +10,9 @@
 namespace PROJET_FINAL
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Client
+    public partial class VerifyLogin_Result
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Client()
-        {
-            this.Commandes = new HashSet<Commande>();
-        }
-    
         public string PrenomClient { get; set; }
         public string NomClient { get; set; }
         public int IdClient { get; set; }
@@ -32,9 +25,5 @@ namespace PROJET_FINAL
         public bool EstAdmin { get; set; }
         public string MotDePasse { get; set; }
         public string Courriel { get; set; }
-    
-        public virtual Ville Ville { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Commande> Commandes { get; set; }
     }
 }
