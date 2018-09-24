@@ -51,6 +51,7 @@
                                 @using (Html.BeginForm("RegisterClient", "Register", FormMethod.Post))
                                 {
                                 <table>
+                                    @Html.ValidationSummary(true)
                                     <tr>
                                         <td>Nom d'identifiant </td>
                                     </tr>
@@ -112,6 +113,9 @@
                                         <td>@Html.EditorFor(model => model.NomVille)</td>
                                     </tr>
                                     <tr>
+                                        <td>18 ans + @Html.CheckBoxFor(model => model.EstMajeur)</td>
+                                    </tr>
+                                    <tr>
                                         <td><br /><input type="submit" name="name" value="Register" /></td>
                                     </tr>
                                 </table>
@@ -121,6 +125,7 @@
                                 @using (Html.BeginForm("RegisterLivreur", "Register", FormMethod.Post))
     {
                                 <table>
+                                    @Html.ValidationSummary(true)
                                     <tr>
                                         <td>Nom d'identifiant </td>
                                     </tr>
@@ -158,10 +163,28 @@
                                         <td>@Html.EditorFor(model => model.Courriel)</td>
                                     </tr>
                                     <tr>
+                                        <td>Adresse </td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.EditorFor(model => model.Adresse)</td>
+                                    </tr>
+                                    <tr>
                                         <td>Telephone</td>
                                     </tr>
                                     <tr>
                                         <td>@Html.EditorFor(model => model.Telephone)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Code Postal </td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.EditorFor(model => model.CodePostal)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ville </td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.EditorFor(model => model.NomVille)</td>
                                     </tr>
                                     <tr>
                                         <td>18 ans + @Html.CheckBoxFor(model => model.EstMajeur)</td>
