@@ -1,0 +1,40 @@
+﻿@model PROJET_FINAL.Commande
+@{
+    ViewBag.Title = "Commande Client";
+}
+
+<h2>Commande Client</h2>
+
+@using (Html.BeginForm("AjouterCommande", "Commandes", FormMethod.Post))
+{
+<table>
+    <tr>
+        <td>Information sur la commande</td>
+    </tr>
+    <tr>
+        <td>@Html.EditorFor(model => model.InfosSup)</td>
+    </tr>
+    <tr>
+        <td>Adresse de livraison</td>
+    </tr>
+    <tr>
+        <td>@Html.EditorFor(model => model.Adresse)</td>
+    </tr>
+    <tr>
+        <td>Code Postale</td>
+    </tr>
+    <tr>
+        <td>@Html.EditorFor(model => model.CodePostal)</td>
+    </tr>
+    <tr>
+        <td>Avez-vous 18 ans ?</td>
+    </tr>
+    <tr>
+        <td>@Html.CheckBoxFor(model => model.EstMajeur)</td>
+    </tr>
+</table>
+}
+
+
+
+

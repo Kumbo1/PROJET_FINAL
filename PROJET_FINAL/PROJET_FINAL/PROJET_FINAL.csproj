@@ -159,6 +159,7 @@
     <Compile Include="Commande.cs">
       <DependentUpon>DBEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ClientCommController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
@@ -184,6 +185,7 @@
     <Compile Include="Livreur.cs">
       <DependentUpon>DBEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ClientModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Objet.cs">
       <DependentUpon>DBEntities.tt</DependentUpon>
@@ -265,6 +267,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Welcome\Index.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\ClientComm\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
