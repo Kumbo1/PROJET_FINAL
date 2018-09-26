@@ -21,8 +21,8 @@ namespace PROJET_FINAL.Controllers
                 var userDetails = db.Clients.Where(x => x.Username == client.Username && x.MotDePasse == client.MotDePasse).FirstOrDefault();
                 if (userDetails == null)
                 {
-                    //userDetails.LoginErrorMessage = "Nom d'identifiant ou Mot de passe invalide.";
-                    return View("Index", userDetails);
+                    client.LoginError = "Nom d'identifiant ou Mot de passe invalide.";
+                    return View("Index", client);
                 }
                 else
                 {
@@ -33,14 +33,15 @@ namespace PROJET_FINAL.Controllers
         }
 
         [HttpPost]
-        public ActionResult LoginLivreur(PROJET_FINAL.Livreur livreur)
+        public ActionResult LoginLivreur(PROJET_FINAL.Client livreur)
         {
             using (ProjetDBEntities2 db = new ProjetDBEntities2())
             {
                 var userDetails = db.Livreurs.Where(x => x.Username == livreur.Username && x.MotDePasse == livreur.MotDePasse).FirstOrDefault();
                 if(userDetails == null)
                 {
-                    return View("Index", userDetails);
+                    livreur.LoginError = "Nom d'identifiant ou Mot de passe invalide.";
+                    return View("Index", livreur);
                 }
                 else
                 {

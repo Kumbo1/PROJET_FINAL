@@ -11,7 +11,8 @@ namespace PROJET_FINAL
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Livreur
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,12 +24,15 @@ namespace PROJET_FINAL
         public string PrenomClient { get; set; }
         public string NomClient { get; set; }
         public int IdLivreur { get; set; }
+        [Required]
         public string Username { get; set; }
         public string Telephone { get; set; }
         public bool EstMajeur { get; set; }
         public string Courriel { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
         public string MotDePasse { get; set; }
-    
+        public string LoginError { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Commande> Commandes { get; set; }
     }

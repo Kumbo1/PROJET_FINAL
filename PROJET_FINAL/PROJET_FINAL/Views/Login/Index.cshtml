@@ -50,35 +50,32 @@
                             <div id="login-client" style="display: block; text-align: center;">
                                 @using (Html.BeginForm("LoginClient", "Login", FormMethod.Post))
                                 {
-                                    <table>
-                                        @*<tr>
-                                            <td>@Html.DisplayFor(model => model.LoginErrorMessage)</td>
-                                        </tr>*@
-                                        <tr>
-                                            <td>Nom d'identifiant </td>
-                                        </tr>
-                                        <tr>
-                                            <td>@Html.EditorFor(model => model.Username)</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Mot de passe </td>
-                                        </tr>
-                                        <tr>
-                                            <td>@Html.EditorFor(model => model.MotDePasse)</td>
-                                        </tr>
-                                        <tr>
-                                            <td><br /><input type="submit" name="name" value="Login" /></td>
-                                        </tr>
-                                    </table>
+                                <table>
+                                    <tr>
+                                        <td>Nom d'identifiant </td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.EditorFor(model => model.Username)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mot de passe </td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.EditorFor(model => model.MotDePasse)</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color:red"><br />@Html.DisplayFor(model => model.LoginError)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><br /><input type="submit" name="name" value="Login" /></td>
+                                    </tr>
+                                </table>
                                 }
                             </div>
                             <div id="login-livreur" style="display: none; text-align: center;">
                                 @using (Html.BeginForm("LoginLivreur", "Login", FormMethod.Post))
     {
-                            <table>
-                                @*<tr>
-                                    <td>@Html.DisplayFor(model => model.LoginErrorMessage)</td>
-                                </tr>*@
+                            <table>                               
                                 <tr>
                                     <td>Nom d'identifiant </td>
                                 </tr>
@@ -90,6 +87,9 @@
                                 </tr>
                                 <tr>
                                     <td>@Html.EditorFor(model => model.MotDePasse)</td>
+                                </tr>
+                                <tr>
+                                    <td style="color:red"><br />@Html.DisplayFor(model => model.LoginError)</td>
                                 </tr>
                                 <tr>
                                     <td><br /><input type="submit" name="name" value="Login" /></td>
