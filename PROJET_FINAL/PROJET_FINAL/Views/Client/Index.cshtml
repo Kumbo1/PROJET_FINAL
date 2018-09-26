@@ -1,0 +1,28 @@
+﻿@model PROJET_FINAL.Commande
+
+@{
+    ViewBag.Title = "Client";
+}
+
+<h2>Client</h2>
+
+@using (Html.BeginForm())
+{
+    <h2>Entrer votre commande</h2><br />
+    <span>Entrer informations à propos de votre commande</span>
+    <input type="text" name="infosup"><br />
+    <span>Entrer votre adresse</span>
+    <input type="text" name="adresse"/><br />
+    <span>Entrer votre code postale</span>
+    <input type="text" name="codepostale"/><br />
+    <span>Etes-vous majeur ?</span>
+    <input type="checkbox" name="majeur"/><br />
+    <input type="submit" name="confirmer"/><br />
+}
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
