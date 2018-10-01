@@ -477,7 +477,13 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Welcome\Index.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\ClientComm\Index.cshtml" />
+=======
+
+    <Content Include="Views\ClientComm\Index.cshtml" />
+
+>>>>>>> c7ed0e84f6212df9428bbeb886083a0ebb35008e
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -487,6 +493,10 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> c7ed0e84f6212df9428bbeb886083a0ebb35008e
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
