@@ -11,31 +11,29 @@
 
 </head>
 <body  style="background-image:url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/A8zzkh2/representation-of-urban-context-with-out-of-focus-and-blurred-background-traffic-and-people-in-citylife_njwdoimme__F0000.png); background-attachment:fixed; background-repeat:no-repeat;">
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 </button>
                 @Html.ActionLink("LES AMIS DE LA POSTE", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("SE CONNECTER", "Index", "Login")</li>
-                    <li>@Html.ActionLink("S'INSCRIRE", "Index", "Register")</li>
-                    <li>@Html.ActionLink("À PROPOS", "About", "Home")</li>
-                    <li>@Html.ActionLink("CONTACTEZ-NOUS", "Contact", "Home")</li>
+            <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item">@Html.ActionLink("SE CONNECTER", "Index", "Login",null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("S'INSCRIRE", "Index", "Register",null, new { @class = "nav-link" })</li>
+                    @*<li class="nav-item">@Html.ActionLink("À PROPOS", "About", "Home", new { @class = "nav-link" })</li>*@
+                    <li class="nav-item">@Html.ActionLink("CONTACTEZ-NOUS", "Contact", "Home",null, new { @class = "nav-link" })</li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
+        </br></br>
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Les Amis de la Poste</p>
+            <p style="color:#fff; text-shadow: 2px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;">&copy; @DateTime.Now.Year - Les Amis de la Poste</p>
         </footer>
     </div>
 

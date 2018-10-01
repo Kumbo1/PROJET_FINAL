@@ -2,206 +2,308 @@
 @{
     ViewBag.Title = "Register";
 }
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script 
-        
-        ="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script 
-        ="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<link href="~/CSS/Login.css" rel="stylesheet" id="bootstrap-css">
-<script>
-    $(function () {
+<style>
+    body {
+        margin: 0;
+        color: rgba(255,255,255,0.5);
+        background: rgba(255,255,255,0.5);
+        font-family: "Poppins",sans-serif;
+    }
 
-        $('#login-client-link').click(function (e) {
-            $("#login-client").delay(100).fadeIn(100);
-            $("#login-livreur").fadeOut(100);
-            $('#login-livreur-link').removeClass('active');
-            $(this).addClass('active');
-            e.preventDefault();
-        });
-        $('#login-livreur-link').click(function (e) {
-            $("#login-livreur").delay(100).fadeIn(100);
-            $("#login-client").fadeOut(100);
-            $('#login-client-link').removeClass('active');
-            $(this).addClass('active');
-            e.preventDefault();
-        });
-    });
-</script>
+    *, :after, :before {
+        box-sizing: border-box
+    }
 
+    .clearfix:after, .clearfix:before {
+        content: '';
+        display: table
+    }
 
+    .clearfix:after {
+        clear: both;
+        display: block
+    }
 
+    a {
+        color: inherit;
+        text-decoration: none
+    }
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-login">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <a href="#" class="active" id="login-client-link">Client</a>
-                        </div>
-                        <div class="col-xs-6">
-                            <a href="#" id="login-livreur-link">Livreur</a>
-                        </div>
-                    </div>
-                    <hr>
+    .login-wrap {
+        width: 100%;
+        margin: auto;
+        max-width: 525px;
+        min-height: 1300px;
+        position: relative;
+        box-shadow: 0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+    }
+
+    .login-html {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        padding: 90px 70px 50px 70px;
+        background: rgba(52,58,64,1);
+    }
+
+        .login-html .sign-in-htm,
+        .login-html .sign-up-htm {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            position: absolute;
+            transform: rotateY(180deg);
+            backface-visibility: hidden;
+            transition: all .4s linear;
+        }
+
+        .login-html .sign-in,
+        .login-html .sign-up,
+        .login-form .group .check {
+            display: none;
+        }
+
+        .login-html .tab,
+        .login-form .group .label,
+        .login-form .group .button {
+            text-transform: uppercase;
+        }
+
+        .login-html .tab {
+            font-size: 22px;
+            margin-right: 15px;
+            padding-bottom: 5px;
+            margin: 0 15px 10px 0;
+            display: inline-block;
+            border-bottom: 2px solid transparent;
+        }
+
+        .login-html .sign-in:checked + .tab,
+        .login-html .sign-up:checked + .tab {
+            color: #fff;
+            border-color: #1161ee;
+        }
+
+    .login-form {
+        min-height: 345px;
+        position: relative;
+        perspective: 1000px;
+        transform-style: preserve-3d;
+    }
+
+        .login-form .group {
+            margin-bottom: 15px;
+        }
+
+            .login-form .group .label,
+            .login-form .group .input,
+            .login-form .group .button {
+                width: 100%;
+                color: #fff;
+                display: block;
+            }
+
+            .login-form .group .input,
+            .login-form .group .button {
+                border: none;
+                padding: 15px 20px;
+                border-radius: 25px;
+                background: rgba(255,255,255,.1);
+            }
+
+            .login-form .group input[data-type="password"] {
+                text-security: circle;
+                -webkit-text-security: circle;
+            }
+
+            .login-form .group .label {
+                color: #aaa;
+                font-size: 12px;
+            }
+
+            .login-form .group .button {
+                background: #1161ee;
+            }
+
+            .login-form .group label .icon {
+                width: 15px;
+                height: 15px;
+                border-radius: 2px;
+                position: relative;
+                display: inline-block;
+                background: rgba(255,255,255,.1);
+            }
+
+                .login-form .group label .icon:before,
+                .login-form .group label .icon:after {
+                    content: '';
+                    width: 10px;
+                    height: 2px;
+                    background: #fff;
+                    position: absolute;
+                    transition: all .2s ease-in-out 0s;
+                }
+
+                .login-form .group label .icon:before {
+                    left: 3px;
+                    width: 5px;
+                    bottom: 6px;
+                    transform: scale(0) rotate(0);
+                }
+
+                .login-form .group label .icon:after {
+                    top: 6px;
+                    right: 0;
+                    transform: scale(0) rotate(0);
+                }
+
+            .login-form .group .check:checked + label {
+                color: #fff;
+            }
+
+                .login-form .group .check:checked + label .icon {
+                    background: #1161ee;
+                }
+
+                    .login-form .group .check:checked + label .icon:before {
+                        transform: scale(1) rotate(45deg);
+                    }
+
+                    .login-form .group .check:checked + label .icon:after {
+                        transform: scale(1) rotate(-45deg);
+                    }
+
+    .login-html .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-htm {
+        transform: rotate(0);
+    }
+
+    .login-html .sign-up:checked + .tab + .login-form .sign-up-htm {
+        transform: rotate(0);
+    }
+
+    .hr {
+        height: 2px;
+        margin: 60px 0 50px 0;
+        background: rgba(255,255,255,.2);
+    }
+
+    .foot-lnk {
+        text-align: center;
+    }
+</style>
+<br />
+<div class="login-wrap">
+    <div class="login-html">
+        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Client</label>
+        <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Livreur</label>
+
+        <div class="login-form">
+            @using (Html.BeginForm("RegisterClient", "Register", FormMethod.Post))
+            {
+            <div class="sign-in-htm">
+                <div class="group">
+                    <label for="user" class="label">Nom d'Utilisateur</label>
+                    @Html.TextBoxFor(model => model.Username, new { @class = "input" })
                 </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div id="login-client" style="display: block; text-align: center;">
-                                @using (Html.BeginForm("RegisterClient", "Register", FormMethod.Post))
-                                {
-                                <table>
-                                    @Html.ValidationSummary(true)
-                                    <tr>
-                                        <td>Nom d'identifiant </td>
-                                    </tr>
-                                    <tr>
-                                        <td>@Html.EditorFor(model => model.Username)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mot de passe </td>
-                                    </tr>
-                                    <tr>
-                                        <td>@Html.EditorFor(model => model.MotDePasse)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Confirmez le mot de passe </td>
-                                    </tr>
-                                    <tr>
-                                        <td>@Html.EditorFor(model => model.ConfirmMotDePasse)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Prénom </td>
-                                    </tr>
-                                    <tr>
-                                        <td>@Html.EditorFor(model => model.Prenom)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nom de famille </td>
-                                    </tr>
-                                    <tr>
-                                        <td>@Html.EditorFor(model => model.Nom)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Courriel </td>
-                                    </tr>
-                                    <tr>
-                                        <td>@Html.EditorFor(model => model.Courriel)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Adresse </td>
-                                    </tr>
-                                    <tr>
-                                        <td>@Html.EditorFor(model => model.Adresse)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Telephone</td>
-                                    </tr>
-                                    <tr>
-                                        <td>@Html.EditorFor(model => model.Telephone)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Code Postal </td>
-                                    </tr>
-                                    <tr>
-                                        <td>@Html.EditorFor(model => model.CodePostal)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ville </td>
-                                    </tr>
-                                    <tr>
-                                        <td>@Html.EditorFor(model => model.NomVille)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>18 ans + @Html.CheckBoxFor(model => model.EstMajeur)</td>
-                                    </tr>
-                                    <tr>
-                                        <td><br /><input type="submit" name="name" value="Register" /></td>
-                                    </tr>
-                                </table>
-                                }
-                            </div>
-                            <div id="login-livreur" style="display: none; text-align: center;">
-                                @using (Html.BeginForm("RegisterLivreur", "Register", FormMethod.Post))
-    {
-                                <table>
-                                    @Html.ValidationSummary(true)
-                                    <tr>
-                                        <td>Nom d'identifiant </td>
-                                    </tr>
-                                    <tr>
-                                        <td>@Html.EditorFor(model => model.Username)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mot de passe </td>
-                                    </tr>
-                                    <tr>
-                                        <td>@Html.EditorFor(model => model.MotDePasse)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Confirmez le mot de passe </td>
-                                    </tr>
-                                    <tr>
-                                        <td>@Html.EditorFor(model => model.ConfirmMotDePasse)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Prénom </td>
-                                    </tr>
-                                    <tr>
-                                        <td>@Html.EditorFor(model => model.Prenom)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nom de famille </td>
-                                    </tr>
-                                    <tr>
-                                        <td>@Html.EditorFor(model => model.Nom)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Courriel </td>
-                                    </tr>
-                                    <tr>
-                                        <td>@Html.EditorFor(model => model.Courriel)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Adresse </td>
-                                    </tr>
-                                    <tr>
-                                        <td>@Html.EditorFor(model => model.Adresse)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Telephone</td>
-                                    </tr>
-                                    <tr>
-                                        <td>@Html.EditorFor(model => model.Telephone)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Code Postal </td>
-                                    </tr>
-                                    <tr>
-                                        <td>@Html.EditorFor(model => model.CodePostal)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ville </td>
-                                    </tr>
-                                    <tr>
-                                        <td>@Html.EditorFor(model => model.NomVille)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>18 ans + @Html.CheckBoxFor(model => model.EstMajeur)</td>
-                                    </tr>
-                                    <tr>
-                                        <td><br /><input type="submit" name="name" value="Register" /></td>
-                                    </tr>
-                                </table>
-}
-                            </div>
-                        </div>
-                    </div>
+                <div class="group">
+                    <label for="pass" class="label">Mot de Passe</label>
+                    @Html.TextBoxFor(model => model.MotDePasse, new { @class = "input", @type = "password" })
                 </div>
+                <div class="group">
+                    <label for="pass" class="label">Confirmation du Mot de Passe</label>
+                    @Html.TextBoxFor(model => model.ConfirmMotDePasse, new { @class = "input", @type = "password" })
+                </div>
+                <div class="group">
+                    <label for="user" class="label">Prénom</label>
+                    @Html.TextBoxFor(model => model.Prenom, new { @class = "input" })
+                </div>
+                <div class="group">
+                    <label for="user" class="label">Nom</label>
+                    @Html.TextBoxFor(model => model.Nom, new { @class = "input" })
+                </div>
+                <div class="group">
+                    <label for="user" class="label">Courriel Électronique</label>
+                    @Html.TextBoxFor(model => model.Courriel, new { @class = "input", @type = "email" })
+                </div>
+                <div class="group">
+                    <label for="user" class="label">Adresse</label>
+                    @Html.TextBoxFor(model => model.Adresse, new { @class = "input" })
+                </div>
+                <div class="group">
+                    <label for="user" class="label">Code Postal</label>
+                    @Html.TextBoxFor(model => model.CodePostal, new { @class = "input" })
+                </div>
+                <div class="group">
+                    <label for="user" class="label">Ville</label>
+                    @Html.TextBoxFor(model => model.NomVille, new { @class = "input" })
+                </div>
+                <div class="group">
+                    <label for="user" class="label">Telephone</label>
+                    @Html.TextBoxFor(model => model.Telephone, new { @class = "input" })
+                </div>
+                18 ans + @Html.CheckBoxFor(model => model.EstMajeur)<br /><br />
+                <div class="group">
+                    <input type="submit" class="button" value="S'inscrire">
+                </div>
+                <div class="hr"></div>
             </div>
+            }
+            @using (Html.BeginForm("RegisterLivreur", "Register", FormMethod.Post))
+            {
+                <div class="sign-up-htm">
+                    <div class="group">
+                        <label for="user" class="label">Nom d'Utilisateur</label>
+                        @Html.TextBoxFor(model => model.Username, new { @class = "input" })
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Mot de Passe</label>
+                        @Html.TextBoxFor(model => model.MotDePasse, new { @class = "input", @type = "password" })
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Confirmation du Mot de Passe</label>
+                        @Html.TextBoxFor(model => model.ConfirmMotDePasse, new { @class = "input", @type = "password" })
+                    </div>
+                    <div class="group">
+                        <label for="user" class="label">Prénom</label>
+                        @Html.TextBoxFor(model => model.Prenom, new { @class = "input" })
+                    </div>
+                    <div class="group">
+                        <label for="user" class="label">Nom</label>
+                        @Html.TextBoxFor(model => model.Nom, new { @class = "input" })
+                    </div>
+                    <div class="group">
+                        <label for="user" class="label">Courriel Électronique</label>
+                        @Html.TextBoxFor(model => model.Courriel, new { @class = "input", @type = "email" })
+                    </div>
+                    <div class="group">
+                        <label for="user" class="label">Adresse</label>
+                        @Html.TextBoxFor(model => model.Adresse, new { @class = "input" })
+                    </div>
+                    <div class="group">
+                        <label for="user" class="label">Code Postal</label>
+                        @Html.TextBoxFor(model => model.CodePostal, new { @class = "input" })
+                    </div>
+                    <div class="group">
+                        <label for="user" class="label">Ville</label>
+                        @Html.TextBoxFor(model => model.NomVille, new { @class = "input" })
+                    </div>
+                    <div class="group">
+                        <label for="user" class="label">Telephone</label>
+                        @Html.TextBoxFor(model => model.Telephone, new { @class = "input" })
+                    </div>
+                    18 ans + @Html.CheckBoxFor(model => model.EstMajeur)<br /><br />
+                    <div class="group">
+                        <input type="submit" class="button" value="S'inscrire">
+                    </div>
+                    <div class="hr"></div>
+                </div>
+            }
         </div>
     </div>
 </div>
+
+
+
+        <td></td>
+    
