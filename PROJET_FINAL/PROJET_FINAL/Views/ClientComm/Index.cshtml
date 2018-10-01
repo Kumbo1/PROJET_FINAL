@@ -1,13 +1,31 @@
-﻿@model PROJET_FINAL.Commande
+﻿@model PROJET_FINAL.Models.CommandeClient
 @{
     ViewBag.Title = "Commande Client";
 }
 
 <h2>Commande Client</h2>
 
-@using (Html.BeginForm("AjouterCommande", "Commandes", FormMethod.Post))
+@using (Html.BeginForm("AjouterCommande", "ClientComm", FormMethod.Post))
 {
 <table>
+    <tr>
+        <td>Nom Objet</td>
+    </tr>
+    <tr>
+        <td>@Html.EditorFor(model => model.NomObjet)</td>
+    </tr>
+    <tr>
+        <td>Prix Approximatif</td>
+    </tr>
+    <tr>
+        <td>@Html.EditorFor(model => model.PrixApprox)</td>
+    </tr>
+    <tr>
+        <td>Categorie</td>
+    </tr>
+    <tr>
+        <td>@Html.EditorFor(model => model.Categorie)</td>
+    </tr>
     <tr>
         <td>Information sur la commande</td>
     </tr>
@@ -27,12 +45,19 @@
         <td>@Html.EditorFor(model => model.CodePostal)</td>
     </tr>
     <tr>
+        <td>Ville</td>
+    </tr>
+    <tr>
+        <td>@Html.EditorFor(model => model.NomVille)</td>
+    </tr>
+    <tr>
         <td>Avez-vous 18 ans ?</td>
     </tr>
     <tr>
         <td>@Html.CheckBoxFor(model => model.EstMajeur)</td>
     </tr>
 </table>
+<input type="submit" class="button" value="Commander">
 }
 
 

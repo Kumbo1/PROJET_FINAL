@@ -45,6 +45,7 @@ namespace PROJET_FINAL.Controllers
                 }
                 else
                 {
+                    Session["EstLivreur"] = userDetails.IdLivreur;
                     Session["userID"] = userDetails.IdLivreur;
                     return RedirectToAction("Index", "Welcome");
                 }
