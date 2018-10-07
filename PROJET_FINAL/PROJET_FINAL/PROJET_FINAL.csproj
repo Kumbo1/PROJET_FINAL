@@ -478,7 +478,10 @@
     <Content Include="Views\Welcome\Index.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\ClientComm\Index.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\ClientComm\Index.cshtml" />
+=======
+>>>>>>> 2e155979776503b7350c5aed8110837dfbcef5ec
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />

@@ -9,6 +9,8 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    
+
 </head>
 <body  style="background-image:url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/A8zzkh2/representation-of-urban-context-with-out-of-focus-and-blurred-background-traffic-and-people-in-citylife_njwdoimme__F0000.png); background-attachment:fixed; background-repeat:no-repeat;">
     <div class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
@@ -23,7 +25,9 @@
                     <li class="nav-item">@Html.ActionLink("SE CONNECTER", "Index", "Login",null, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("S'INSCRIRE", "Index", "Register",null, new { @class = "nav-link" })</li>
                     @*<li class="nav-item">@Html.ActionLink("À PROPOS", "About", "Home", new { @class = "nav-link" })</li>*@
-                    <li class="nav-item">@Html.ActionLink("CONTACTEZ-NOUS", "Contact", "Home",null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("CONTACTEZ-NOUS", "Contact", "Home",null, new { @class = "nav-link" })</li>                  
+                    <li class="nav-item">@Html.ActionLink("FAIRE UNE COMMANDE", "Index", "ClientComm", null, new { @class = "nav-link" })</li>
+                    
                 </ul>
             </div>
         </div>
