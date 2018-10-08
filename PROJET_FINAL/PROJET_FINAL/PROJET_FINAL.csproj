@@ -158,6 +158,7 @@
       <DependentUpon>DBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\ClientCommController.cs" />
+    <Compile Include="Controllers\CommCourantController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
@@ -184,6 +185,7 @@
       <DependentUpon>DBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ClientModel.cs" />
+    <Compile Include="Models\LesCommandes.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Objet.cs">
       <DependentUpon>DBEntities.tt</DependentUpon>
@@ -487,6 +489,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\CommCourant\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

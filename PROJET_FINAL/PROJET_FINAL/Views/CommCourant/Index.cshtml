@@ -1,0 +1,31 @@
+﻿@model IEnumerable<PROJET_FINAL.Commande>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    <table id="t01">
+        <thead>
+        <th>Les infos</th>
+        <th>La date</th>
+
+        </thead>
+        @foreach (Commande commande in Model)
+        {
+
+        <tr>
+            <td>
+                @commande.InfosSup
+            </td>
+            <td>
+                @commande.Date
+            </td>
+
+        </tr>
+
+        }
+
+    </table>
+</div>
