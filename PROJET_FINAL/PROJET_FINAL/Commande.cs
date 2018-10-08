@@ -24,11 +24,11 @@ namespace PROJET_FINAL
         public int IdClient { get; set; }
         public Nullable<int> idLivreur { get; set; }
         public string InfosSup { get; set; }
-        public System.DateTime Date { get; set; }
         public bool EstMajeur { get; set; }
         public string Adresse { get; set; }
         public Nullable<int> IdVille { get; set; }
         public string CodePostal { get; set; }
+        public Nullable<System.DateTime> DateComm { get; set; }
     
         public virtual Client Client { get; set; }
         public virtual Livreur Livreur { get; set; }

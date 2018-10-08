@@ -11,8 +11,7 @@ namespace PROJET_FINAL
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Client
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,11 +19,10 @@ namespace PROJET_FINAL
         {
             this.Commandes = new HashSet<Commande>();
         }
-
+    
         public string PrenomClient { get; set; }
         public string NomClient { get; set; }
         public int IdClient { get; set; }
-        [Required]
         public string Username { get; set; }
         public string Adresse { get; set; }
         public string CodePostal { get; set; }
@@ -32,8 +30,6 @@ namespace PROJET_FINAL
         public string Telephone { get; set; }
         public bool EstMajeur { get; set; }
         public bool EstAdmin { get; set; }
-        [Required]
-        [DataType(DataType.Password)]
         public string MotDePasse { get; set; }
         public string Courriel { get; set; }
         public string LoginError { get; set; }
