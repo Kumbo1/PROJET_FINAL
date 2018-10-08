@@ -181,6 +181,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ListerCommande_Result.cs">
+      <DependentUpon>DBEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Livreur.cs">
       <DependentUpon>DBEntities.tt</DependentUpon>
     </Compile>

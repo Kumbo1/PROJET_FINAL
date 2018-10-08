@@ -128,5 +128,68 @@ namespace PROJET_FINAL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VerifyLogin_Result>("VerifyLogin", pusernameParameter, ppasswordParameter);
         }
+    
+        public virtual int AjoutCommande(Nullable<int> pidclient, string pinfosup, string pnomobjet, Nullable<decimal> pprixapprox, string pnomcategorie, Nullable<bool> pestmajeur, string padresse, string pville, string pcodepostal, Nullable<System.DateTime> pdatecomm)
+        {
+            var pidclientParameter = pidclient.HasValue ?
+                new ObjectParameter("pidclient", pidclient) :
+                new ObjectParameter("pidclient", typeof(int));
+    
+            var pinfosupParameter = pinfosup != null ?
+                new ObjectParameter("pinfosup", pinfosup) :
+                new ObjectParameter("pinfosup", typeof(string));
+    
+            var pnomobjetParameter = pnomobjet != null ?
+                new ObjectParameter("pnomobjet", pnomobjet) :
+                new ObjectParameter("pnomobjet", typeof(string));
+    
+            var pprixapproxParameter = pprixapprox.HasValue ?
+                new ObjectParameter("pprixapprox", pprixapprox) :
+                new ObjectParameter("pprixapprox", typeof(decimal));
+    
+            var pnomcategorieParameter = pnomcategorie != null ?
+                new ObjectParameter("pnomcategorie", pnomcategorie) :
+                new ObjectParameter("pnomcategorie", typeof(string));
+    
+            var pestmajeurParameter = pestmajeur.HasValue ?
+                new ObjectParameter("pestmajeur", pestmajeur) :
+                new ObjectParameter("pestmajeur", typeof(bool));
+    
+            var padresseParameter = padresse != null ?
+                new ObjectParameter("padresse", padresse) :
+                new ObjectParameter("padresse", typeof(string));
+    
+            var pvilleParameter = pville != null ?
+                new ObjectParameter("pville", pville) :
+                new ObjectParameter("pville", typeof(string));
+    
+            var pcodepostalParameter = pcodepostal != null ?
+                new ObjectParameter("pcodepostal", pcodepostal) :
+                new ObjectParameter("pcodepostal", typeof(string));
+    
+            var pdatecommParameter = pdatecomm.HasValue ?
+                new ObjectParameter("pdatecomm", pdatecomm) :
+                new ObjectParameter("pdatecomm", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AjoutCommande", pidclientParameter, pinfosupParameter, pnomobjetParameter, pprixapproxParameter, pnomcategorieParameter, pestmajeurParameter, padresseParameter, pvilleParameter, pcodepostalParameter, pdatecommParameter);
+        }
+    
+        public virtual int AjoutObjets(string pnomobjet, Nullable<decimal> pprixapprox)
+        {
+            var pnomobjetParameter = pnomobjet != null ?
+                new ObjectParameter("pnomobjet", pnomobjet) :
+                new ObjectParameter("pnomobjet", typeof(string));
+    
+            var pprixapproxParameter = pprixapprox.HasValue ?
+                new ObjectParameter("pprixapprox", pprixapprox) :
+                new ObjectParameter("pprixapprox", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AjoutObjets", pnomobjetParameter, pprixapproxParameter);
+        }
+    
+        public virtual ObjectResult<ListerCommande_Result> ListerCommande()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListerCommande_Result>("ListerCommande");
+        }
     }
 }

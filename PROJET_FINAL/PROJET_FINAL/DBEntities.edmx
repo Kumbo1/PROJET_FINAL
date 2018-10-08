@@ -37,11 +37,11 @@
           <Property Name="IdClient" Type="int" Nullable="false" />
           <Property Name="idLivreur" Type="int" />
           <Property Name="InfosSup" Type="text" Nullable="false" />
-          <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="EstMajeur" Type="bit" Nullable="false" />
           <Property Name="Adresse" Type="varchar" MaxLength="50" />
           <Property Name="IdVille" Type="int" />
           <Property Name="CodePostal" Type="varchar" MaxLength="10" />
+          <Property Name="DateComm" Type="datetime" />
         </EntityType>
         <EntityType Name="Commandes_Objets">
           <Key>
@@ -164,6 +164,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="AjoutCommande" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pidclient" Type="int" Mode="In" />
+          <Parameter Name="pinfosup" Type="text" Mode="In" />
+          <Parameter Name="pnomobjet" Type="varchar" Mode="In" />
+          <Parameter Name="pprixapprox" Type="smallmoney" Mode="In" />
+          <Parameter Name="pnomcategorie" Type="varchar" Mode="In" />
+          <Parameter Name="pestmajeur" Type="bit" Mode="In" />
+          <Parameter Name="padresse" Type="varchar" Mode="In" />
+          <Parameter Name="pville" Type="varchar" Mode="In" />
+          <Parameter Name="pcodepostal" Type="varchar" Mode="In" />
+          <Parameter Name="pdatecomm" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="AjoutObjets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pnomobjet" Type="varchar" Mode="In" />
+          <Parameter Name="pprixapprox" Type="smallmoney" Mode="In" />
+        </Function>
         <Function Name="InsertClients" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="pprenom" Type="varchar" Mode="In" />
           <Parameter Name="pnom" Type="varchar" Mode="In" />
@@ -186,6 +202,7 @@
           <Parameter Name="pmotdepasse" Type="varchar" Mode="In" />
           <Parameter Name="pcourriel" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="ListerCommande" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="VerifyLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="pusername" Type="varchar" Mode="In" />
           <Parameter Name="ppassword" Type="varchar" Mode="In" />
@@ -266,7 +283,6 @@
           <Property Name="IdClient" Type="Int32" Nullable="false" />
           <Property Name="idLivreur" Type="Int32" />
           <Property Name="InfosSup" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="EstMajeur" Type="Boolean" Nullable="false" />
           <Property Name="Adresse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IdVille" Type="Int32" />
@@ -275,6 +291,7 @@
           <NavigationProperty Name="Livreur" Relationship="Self.FK_Commandes_Livreurs" FromRole="Commandes" ToRole="Livreurs" />
           <NavigationProperty Name="Ville" Relationship="Self.FK_Commandes_Villes" FromRole="Commandes" ToRole="Villes" />
           <NavigationProperty Name="Objets" Relationship="Self.Commandes_Objets" FromRole="Commandes" ToRole="Objets" />
+          <Property Name="DateComm" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Livreur">
           <Key>
@@ -431,6 +448,23 @@
             <Parameter Name="pusername" Mode="In" Type="String" />
             <Parameter Name="ppassword" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="AjoutCommande">
+            <Parameter Name="pidclient" Mode="In" Type="Int32" />
+            <Parameter Name="pinfosup" Mode="In" Type="String" />
+            <Parameter Name="pnomobjet" Mode="In" Type="String" />
+            <Parameter Name="pprixapprox" Mode="In" Type="Decimal" />
+            <Parameter Name="pnomcategorie" Mode="In" Type="String" />
+            <Parameter Name="pestmajeur" Mode="In" Type="Boolean" />
+            <Parameter Name="padresse" Mode="In" Type="String" />
+            <Parameter Name="pville" Mode="In" Type="String" />
+            <Parameter Name="pcodepostal" Mode="In" Type="String" />
+            <Parameter Name="pdatecomm" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="AjoutObjets">
+            <Parameter Name="pnomobjet" Mode="In" Type="String" />
+            <Parameter Name="pprixapprox" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="ListerCommande" ReturnType="Collection(ProjetDBModel.ListerCommande_Result)" />
         </EntityContainer>
         <ComplexType Name="VerifyLogin_Result">
           <Property Type="String" Name="PrenomClient" Nullable="false" MaxLength="50" />
@@ -445,6 +479,10 @@
           <Property Type="Boolean" Name="EstAdmin" Nullable="false" />
           <Property Type="String" Name="MotDePasse" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Courriel" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ListerCommande_Result">
+          <Property Type="String" Name="InfosSup" Nullable="false" MaxLength="Max" />
+          <Property Type="DateTime" Name="DateComm" Nullable="true" Precision="23" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -481,11 +519,11 @@
           <EntitySetMapping Name="Commandes">
             <EntityTypeMapping TypeName="ProjetDBModel.Commande">
               <MappingFragment StoreEntitySet="Commandes">
+                <ScalarProperty Name="DateComm" ColumnName="DateComm" />
                 <ScalarProperty Name="IdCommande" ColumnName="IdCommande" />
                 <ScalarProperty Name="IdClient" ColumnName="IdClient" />
                 <ScalarProperty Name="idLivreur" ColumnName="idLivreur" />
                 <ScalarProperty Name="InfosSup" ColumnName="InfosSup" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="EstMajeur" ColumnName="EstMajeur" />
                 <ScalarProperty Name="Adresse" ColumnName="Adresse" />
                 <ScalarProperty Name="IdVille" ColumnName="IdVille" />
@@ -550,6 +588,16 @@
                 <ScalarProperty Name="EstAdmin" ColumnName="EstAdmin" />
                 <ScalarProperty Name="MotDePasse" ColumnName="MotDePasse" />
                 <ScalarProperty Name="Courriel" ColumnName="Courriel" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AjoutCommande" FunctionName="ProjetDBModel.Store.AjoutCommande" />
+          <FunctionImportMapping FunctionImportName="AjoutObjets" FunctionName="ProjetDBModel.Store.AjoutObjets" />
+          <FunctionImportMapping FunctionImportName="ListerCommande" FunctionName="ProjetDBModel.Store.ListerCommande">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProjetDBModel.ListerCommande_Result">
+                <ScalarProperty Name="InfosSup" ColumnName="InfosSup" />
+                <ScalarProperty Name="DateComm" ColumnName="DateComm" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
