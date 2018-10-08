@@ -13,18 +13,16 @@ namespace PROJET_FINAL.Controllers
     {
         // GET: CommCourant
         public ActionResult Index()
+        {           
+            var user = (int)Session["clientID"];
+            ProjetDBEntities2 db = new ProjetDBEntities2();
+            return View(db.Commandes.ToList().Where(x => x.IdClient == user));            
+        }
+
+        public ActionResult Supprimer()
         {
             return View();
         }
-
-        public ActionResult VoirCommande(LesCommandes commande)
-        {           
-            using (ProjetDBEntities2 db = new ProjetDBEntities2())
-            {              
-                return View(db.Commandes.ToList());
-            }
-
-                
-        }
+       
     }
 }

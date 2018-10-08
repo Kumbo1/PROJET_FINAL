@@ -26,8 +26,10 @@ namespace PROJET_FINAL.Controllers
                 }
                 else
                 {
+                    
                     Session["EstMajeur"] = userDetails.EstMajeur;
-                    Session["userID"] = userDetails.IdClient;
+                    Session["clientID"] = userDetails.IdClient;
+                    TempData["userID"] = Session["userID"];
                     return RedirectToAction("Index", "Welcome");
                 }
             }
@@ -47,7 +49,7 @@ namespace PROJET_FINAL.Controllers
                 else
                 {
                     Session["EstMajeur"] = userDetails.EstMajeur;
-                    Session["userID"] = userDetails.IdLivreur;
+                    Session["livreurID"] = userDetails.IdLivreur;
                     return RedirectToAction("Index", "Welcome");
                 }
             }

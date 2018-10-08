@@ -24,7 +24,7 @@ namespace PROJET_FINAL.Controllers
             if (ModelState.IsValid)
             {
                 var queryEstMajeur = Session["EstMajeur"];
-                var queryidclient = Session["userID"];
+                var queryidclient = Session["clientID"];
                 var querydate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
                 using (ProjetDBEntities2 db = new ProjetDBEntities2())
                 {

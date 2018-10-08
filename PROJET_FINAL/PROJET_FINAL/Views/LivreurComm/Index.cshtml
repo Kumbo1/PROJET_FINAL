@@ -20,16 +20,19 @@
         <tr>
             <th>Information</th>
             <th>Date</th>
+            <th>Adresse</th>
+            <th>Code Postal</th>
         </tr>
         @foreach (Commande commande in Model)
         {
-            <tr>               
+            <tr>
                 <td>@commande.InfosSup</td>
                 <td>@commande.DateComm</td>
+                <td>@commande.Adresse</td>
+                <td>@commande.CodePostal</td>
             </tr>
         }
     </table>
 </body>
 </html>
-
 

@@ -160,6 +160,7 @@
     <Compile Include="Controllers\ClientCommController.cs" />
     <Compile Include="Controllers\CommCourantController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LivreurCommController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\WelcomeController.cs" />
@@ -493,6 +494,7 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\CommCourant\Index.cshtml" />
+    <Content Include="Views\LivreurComm\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
