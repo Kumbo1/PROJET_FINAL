@@ -26,5 +26,6 @@ namespace PROJET_FINAL.Controllers
 
             return View();
         }
+
     }
 }
