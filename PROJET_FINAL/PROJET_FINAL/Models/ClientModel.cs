@@ -15,6 +15,7 @@ namespace PROJET_FINAL.Models
         public CommandeClient()
         {
             this.Objets = new HashSet<Objet>();
+           
         }
 
         public int IdCommande { get; set; }
@@ -42,5 +43,8 @@ namespace PROJET_FINAL.Models
         public virtual Ville Ville { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Objet> Objets { get; set; }
+        public List<String> ListCategories { get; set; }
+ 
+
     }
 }

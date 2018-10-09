@@ -23,7 +23,7 @@ namespace PROJET_FINAL.Controllers
 
             if (ModelState.IsValid)
             {
-                var queryEstMajeur = Session["EstMajeur"];
+               
                 var queryidclient = Session["clientID"];
                 var querydate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
                 using (ProjetDBEntities2 db = new ProjetDBEntities2())
@@ -33,7 +33,7 @@ namespace PROJET_FINAL.Controllers
                     var nomobjet = new SqlParameter("pnomobjet", comm.NomObjet);                    
                     var prixapprox = new SqlParameter("pprixapprox", comm.PrixApprox);
                     var categorie = new SqlParameter("pnomcategorie", comm.Categorie);
-                    var estmajeur = new SqlParameter("pestmajeur", queryEstMajeur);                        
+                    var estmajeur = new SqlParameter("pestmajeur", comm.EstMajeur);                        
                     var adresse = new SqlParameter("padresse", comm.Adresse);
                     var ville = new SqlParameter("pville", comm.NomVille);
                     var codepostal = new SqlParameter("pcodepostal", comm.CodePostal);

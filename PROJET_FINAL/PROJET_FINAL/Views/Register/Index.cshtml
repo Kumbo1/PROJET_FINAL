@@ -2,6 +2,20 @@
 @{
     ViewBag.Title = "Register";
 }
+@{
+    List<String> ListeVilles = new List<string>();
+    using (var DB = new ProjetDBEntities2())
+    {
+        for (int i = 0; i < DB.Villes.ToList().Count; i++)
+        {
+            ListeVilles.Add(DB.Villes.ToList()[i].NomVille);
+        }
+    }
+}
+<head>
+    <script src="~/Scripts/jquery-3.3.1.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.maskedinput.js" type="text/javascript"></script>
+</head>
 <style>
     body {
         margin: 0;
@@ -192,121 +206,134 @@
         text-align: center;
     }
 </style>
-<script>
-    $("#phone").inputmask({ "mask": "(999) 999-9999" });
+<script type="text/javascript">
+    jQuery(function ($) {
+        $("#phone").mask("(999) 999-9999");
+        $("#phone1").mask("(999) 999-9999");
+        $("#ZipCode").mask("a9a 9a9");
+        $("#ZipCode1").mask("a9a 9a9");
+    });
+    function validatePassword() {
+        alert("sick haha");
+        var a = $("#Pwd").value;
+        var b = $("#CPwd").value;
+        if (!(a == b)) {
+            alert("both passwords are not matching");
+            return false;
+        }
+        return true;
+    }
 </script>
-<br />
-<div class="login-wrap">
-    <div class="login-html">
-        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Client</label>
-        <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Livreur</label>
+<body>
+    <br />
+    <div class="login-wrap">
+        <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Client</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Livreur</label>
 
-        <div class="login-form">
-            @using (Html.BeginForm("RegisterClient", "Register", FormMethod.Post))
-            {
-            <div class="sign-in-htm">
-                <div class="group">
-                    <label for="user" class="label">Nom d'Utilisateur</label>
-                    @Html.TextBoxFor(model => model.Username, new { @class = "input", @required = "required" })
-                </div>
-                <div class="group">
-                    <label for="pass" class="label">Mot de Passe</label>
-                    @Html.TextBoxFor(model => model.MotDePasse, new { @class = "input", @type = "password", @required = "required" })
-                </div>
-                <div class="group">
-                    <label for="pass" class="label">Confirmation du Mot de Passe</label>
-                    @Html.TextBoxFor(model => model.ConfirmMotDePasse, new { @class = "input", @type = "password", @required = "required" })
-                </div>
-                <div class="group">
-                    <label for="user" class="label">Prénom</label>
-                    @Html.TextBoxFor(model => model.Prenom, new { @class = "input", @required = "required" })
-                </div>
-                <div class="group">
-                    <label for="user" class="label">Nom</label>
-                    @Html.TextBoxFor(model => model.Nom, new { @class = "input", @required = "required" })
-                </div>
-                <div class="group">
-                    <label for="user" class="label">Courriel Électronique</label>
-                    @Html.TextBoxFor(model => model.Courriel, new { @class = "input", @type = "email", @required = "required" })
-                </div>
-                <div class="group">
-                    <label for="user" class="label">Adresse</label>
-                    @Html.TextBoxFor(model => model.Adresse, new { @class = "input", @required = "required" })
-                </div>
-                <div class="group">
-                    <label for="user" class="label">Code Postal</label>
-                    @Html.TextBoxFor(model => model.CodePostal, new { @class = "input", @required = "required" })
-                </div>
-                <div class="group">
-                    <label for="user" class="label">Ville</label>
-                    @Html.TextBoxFor(model => model.NomVille, new { @class = "input", @required = "required"})
-                </div>
-                <div class="group">
-                    <label for="user" class="label">Telephone</label>
-                    @Html.TextBoxFor(model => model.Telephone, new { @class = "input", @required = "required", @id = "phone" })
-                </div>
-                18 ans + @Html.CheckBoxFor(model => model.EstMajeur)<br /><br />
-                <div class="group">
-                    <input type="submit" class="button" value="S'inscrire">
-                </div>
-                <div class="hr"></div>
+            <div class="login-form">
+                @using (Html.BeginForm("RegisterClient", "Register", FormMethod.Post))
+                {
+                    <div class="sign-in-htm">
+                        <div class="group">
+                            <label for="user" class="label">Nom d'Utilisateur</label>
+                            @Html.TextBoxFor(model => model.Username, new { @class = "input", @required = "required" })
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Mot de Passe</label>
+                            @Html.TextBoxFor(model => model.MotDePasse, new { @class = "input", @type = "password", @required = "required", @id = "Pwd" })
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Confirmation du Mot de Passe</label>
+                            @Html.TextBoxFor(model => model.ConfirmMotDePasse, new { @class = "input", @type = "password", @required = "required", @id = "CPwd" })
+                        </div>
+                        <div class="group">
+                            <label for="user" class="label">Prénom</label>
+                            @Html.TextBoxFor(model => model.Prenom, new { @class = "input", @required = "required" })
+                        </div>
+                        <div class="group">
+                            <label for="user" class="label">Nom</label>
+                            @Html.TextBoxFor(model => model.Nom, new { @class = "input", @required = "required" })
+                        </div>
+                        <div class="group">
+                            <label for="user" class="label">Courriel Électronique</label>
+                            @Html.TextBoxFor(model => model.Courriel, new { @class = "input", @type = "email", @required = "required" })
+                        </div>
+                        <div class="group">
+                            <label for="user" class="label">Adresse</label>
+                            @Html.TextBoxFor(model => model.Adresse, new { @class = "input", @required = "required" })
+                        </div>
+                        <div class="group">
+                            <label for="user" class="label">Code Postal</label>
+                            @Html.TextBoxFor(model => model.CodePostal, new { @class = "input", @required = "required", @id = "ZipCode" })
+                        </div>
+                        <div class="group">
+                            <label for="user" class="label">Ville</label>
+                            @Html.DropDownListFor(model => model.NomVille, new SelectList(ListeVilles))
+                        </div>
+                        <div class="group">
+                            <label for="user" class="label">Telephone</label>
+                            @Html.TextBoxFor(model => model.Telephone, new { @class = "input", @required = "required", @id = "phone" })
+                        </div>
+                        18 ans + @Html.CheckBoxFor(model => model.EstMajeur)<br /><br />
+                        <div class="group">
+                            <input type="submit" class="button" onclick="validatePassword" value="S'inscrire">
+                        </div>
+                        <div class="hr"></div>
+                    </div>
+                }
+                @using (Html.BeginForm("RegisterLivreur", "Register", FormMethod.Post))
+                {
+                    <div class="sign-up-htm">
+                        <div class="group">
+                            <label for="user" class="label">Nom d'Utilisateur</label>
+                            @Html.TextBoxFor(model => model.Username, new { @class = "input", @required = "required" })
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Mot de Passe</label>
+                            @Html.TextBoxFor(model => model.MotDePasse, new { @class = "input", @type = "password", @required = "required" })
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Confirmation du Mot de Passe</label>
+                            @Html.TextBoxFor(model => model.ConfirmMotDePasse, new { @class = "input", @type = "password", @required = "required" })
+                        </div>
+                        <div class="group">
+                            <label for="user" class="label">Prénom</label>
+                            @Html.TextBoxFor(model => model.Prenom, new { @class = "input", @required = "required" })
+                        </div>
+                        <div class="group">
+                            <label for="user" class="label">Nom</label>
+                            @Html.TextBoxFor(model => model.Nom, new { @class = "input", @required = "required" })
+                        </div>
+                        <div class="group">
+                            <label for="user" class="label">Courriel Électronique</label>
+                            @Html.TextBoxFor(model => model.Courriel, new { @class = "input", @type = "email", @required = "required" })
+                        </div>
+                        <div class="group">
+                            <label for="user" class="label">Adresse</label>
+                            @Html.TextBoxFor(model => model.Adresse, new { @class = "input", @required = "required" })
+                        </div>
+                        <div class="group">
+                            <label for="user" class="label">Code Postal</label>
+                            @Html.TextBoxFor(model => model.CodePostal, new { @class = "input", @required = "required", @id = "ZipCode1" })
+                        </div>
+                        <div class="group">
+                            <label for="user" class="label">Ville</label>
+                            @Html.DropDownListFor(model => model.NomVille, new SelectList(ListeVilles))
+                        </div>
+                        <div class="group">
+                            <label for="user" class="label">Telephone</label>
+                            @Html.TextBoxFor(model => model.Telephone, new { @class = "input", @required = "required", @id = "phone1" })
+                        </div>
+                        18 ans + @Html.CheckBoxFor(model => model.EstMajeur)<br /><br />
+                        <div class="group">
+                            <input type="submit" class="button" value="S'inscrire">
+                        </div>
+                        <div class="hr"></div>
+                    </div>
+                }
             </div>
-            }
-            @using (Html.BeginForm("RegisterLivreur", "Register", FormMethod.Post))
-            {
-                <div class="sign-up-htm">
-                    <div class="group">
-                        <label for="user" class="label">Nom d'Utilisateur</label>
-                        @Html.TextBoxFor(model => model.Username, new { @class = "input", @required = "required" })
-                    </div>
-                    <div class="group">
-                        <label for="pass" class="label">Mot de Passe</label>
-                        @Html.TextBoxFor(model => model.MotDePasse, new { @class = "input", @type = "password", @required = "required" })
-                    </div>
-                    <div class="group">
-                        <label for="pass" class="label">Confirmation du Mot de Passe</label>
-                        @Html.TextBoxFor(model => model.ConfirmMotDePasse, new { @class = "input", @type = "password", @required = "required" })
-                    </div>
-                    <div class="group">
-                        <label for="user" class="label">Prénom</label>
-                        @Html.TextBoxFor(model => model.Prenom, new { @class = "input", @required = "required" })
-                    </div>
-                    <div class="group">
-                        <label for="user" class="label">Nom</label>
-                        @Html.TextBoxFor(model => model.Nom, new { @class = "input", @required = "required" })
-                    </div>
-                    <div class="group">
-                        <label for="user" class="label">Courriel Électronique</label>
-                        @Html.TextBoxFor(model => model.Courriel, new { @class = "input", @type = "email", @required = "required" })
-                    </div>
-                    <div class="group">
-                        <label for="user" class="label">Adresse</label>
-                        @Html.TextBoxFor(model => model.Adresse, new { @class = "input", @required = "required" })
-                    </div>
-                    <div class="group">
-                        <label for="user" class="label">Code Postal</label>
-                        @Html.TextBoxFor(model => model.CodePostal, new { @class = "input", @required = "required" })
-                    </div>
-                    <div class="group">
-                        <label for="user" class="label">Ville</label>
-                        @Html.TextBoxFor(model => model.NomVille, new { @class = "input", @required = "required" })
-                    </div>
-                    <div class="group">
-                        <label for="user" class="label">Telephone</label>
-                        @Html.TextBoxFor(model => model.Telephone, new { @class = "input", @required = "required" })
-                    </div>
-                    18 ans + @Html.CheckBoxFor(model => model.EstMajeur)<br /><br />
-                    <div class="group">
-                        <input type="submit" class="button" value="S'inscrire">
-                    </div>
-                    <div class="hr"></div>
-                </div>
-            }
         </div>
     </div>
-</div>
+</body>
 
-
-
-        <td></td>
-    

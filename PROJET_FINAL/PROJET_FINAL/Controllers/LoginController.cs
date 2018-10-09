@@ -26,7 +26,6 @@ namespace PROJET_FINAL.Controllers
                 }
                 else
                 {
-                    
                     Session["EstMajeur"] = userDetails.EstMajeur;
                     Session["clientID"] = userDetails.IdClient;
                     TempData["userID"] = Session["userID"];
