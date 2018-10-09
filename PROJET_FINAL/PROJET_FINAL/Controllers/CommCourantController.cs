@@ -18,10 +18,21 @@ namespace PROJET_FINAL.Controllers
             ProjetDBEntities2 db = new ProjetDBEntities2();
             return View(db.Commandes.ToList().Where(x => x.IdClient == user));            
         }
-
-        public ActionResult Supprimer()
+        [HttpGet]
+        public ActionResult Supprimer(int id)
         {
-            return View();
+            if(id == null)
+            {
+                return HttpNotFound();
+            }
+            using (ProjetDBEntities2 db = new ProjetDBEntities2())
+            {
+                var idcommande = new SqlParameter("@pidcommande", id);
+                db.Database.ExecuteSqlCommand("execute supprimercommande @pidcommande", idcommande);
+                return RedirectToAction("Index");
+            }
+           
+                
         }
        
     }

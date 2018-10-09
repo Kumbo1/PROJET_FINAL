@@ -20,16 +20,32 @@
         <tr>
             <th>Information</th>
             <th>Date</th>
+            <th>Supprimer</th>
         </tr>
         @foreach (Commande commande in Model)
         {
-            <tr>               
+            <tr>
                 <td>@commande.InfosSup</td>
                 <td>@commande.DateComm</td>
+                <td><a class="pointer-arrow" onclick="deleteRow(@commande.IdCommande)">Supprimer</a></td>
             </tr>
         }
     </table>
 </body>
 </html>
+
+<script>
+    function deleteRow(id) {
+        var r = confirm("Voulez vous vraiment supprimer ceci?");
+        if (r == true) {
+            window.location.assign("/CommCourant/Supprimer/" + id);
+        }
+    }
+</script>
+<style type="text/css">
+    .pointer-arrow:hover {
+        cursor: pointer;
+    }
+</style>
 
 
