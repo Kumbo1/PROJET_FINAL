@@ -22,17 +22,33 @@
             <th>Date</th>
             <th>Adresse</th>
             <th>Code Postal</th>
+            <th>Associer</th>
         </tr>
         @foreach (Commande commande in Model)
         {
-            <tr>
-                <td>@commande.InfosSup</td>
-                <td>@commande.DateComm</td>
-                <td>@commande.Adresse</td>
-                <td>@commande.CodePostal</td>
-            </tr>
+        <tr>
+            <td>@commande.InfosSup</td>
+            <td>@commande.DateComm</td>
+            <td>@commande.Adresse</td>
+            <td>@commande.CodePostal</td>
+            <td><a class="pointer-arrow" onclick="AssocierLivreur(@commande.IdCommande)">Prendre</a></td>
+        </tr>
         }
     </table>
 </body>
 </html>
+<script>
+    function AssocierLivreur(id) {
+        var r = confirm("Voulez vous vraiment prendre en charge cette commande?");
+        if (r == true) {
+            window.location.assign("/LivreurComm/Assigner/" + id);
+        }
+    }
+</script>
+
+<style type="text/css">
+    .pointer-arrow:hover {
+        cursor: pointer;
+    }
+</style>
 

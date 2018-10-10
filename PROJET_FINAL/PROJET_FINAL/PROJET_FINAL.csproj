@@ -161,7 +161,9 @@
     <Compile Include="Controllers\CommCourantController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LivreurCommController.cs" />
+    <Compile Include="Controllers\LivreurCourantController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\WelcomeController.cs" />
     <Compile Include="DBEntities.Context.cs">
@@ -497,6 +499,8 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\CommCourant\Index.cshtml" />
     <Content Include="Views\LivreurComm\Index.cshtml" />
+    <Content Include="Views\LivreurCourant\Index.cshtml" />
+    <Content Include="Views\Logout\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

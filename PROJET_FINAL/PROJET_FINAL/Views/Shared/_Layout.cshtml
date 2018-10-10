@@ -33,12 +33,15 @@
                     {
                         <li class="nav-item">@Html.ActionLink("FAIRE UNE COMMANDE", "Index", "ClientComm", null, new { @class = "nav-link" })</li>
                         <li class="nav-item">@Html.ActionLink("VOIR MES COMMANDES", "Index", "CommCourant", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("SE DÉCONNECTER", "Index", "Logout", null, new { @class = "nav-link" })</li>
                     }
                     @if (Session["livreurID"] != null)
                     {
                         <li class="nav-item">@Html.ActionLink("VOIR LES COMMANDES", "Index", "LivreurComm", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("MES LIVRAISON", "Index", "LivreurCourant", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("SE DÉCONNECTER", "Index","Logout", null, new { @class = "nav-link" })</li>
                     }
-                    @*<li class="nav-item">@Html.Action("Logout","Login", new { @class = "nav-link" })</li>*@
+
                 </ul>
             </div>
         </div>
