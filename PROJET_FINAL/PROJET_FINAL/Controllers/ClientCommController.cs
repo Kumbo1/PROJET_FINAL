@@ -14,7 +14,12 @@ namespace PROJET_FINAL.Controllers
         // GET: ClientComm
         public ActionResult Index()
         {
-            return View();
+            if(Session.Count == 0)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            else
+                return View();
         }
         
         [HttpPost]

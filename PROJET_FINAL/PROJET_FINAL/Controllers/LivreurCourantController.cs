@@ -11,9 +11,17 @@ namespace PROJET_FINAL.Controllers
         // GET: LivreurCourant
         public ActionResult Index()
         {
-            var user = (int)Session["livreurID"];
-            ProjetDBEntities2 db = new ProjetDBEntities2();
-            return View(db.Commandes.ToList().Where(x => x.idLivreur == user));
+            if (Session.Count == 0)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            else
+            {
+                var user = (int)Session["livreurID"];
+                ProjetDBEntities2 db = new ProjetDBEntities2();
+                return View(db.Commandes.ToList().Where(x => x.idLivreur == user));
+            }
+
         }
     }
 }

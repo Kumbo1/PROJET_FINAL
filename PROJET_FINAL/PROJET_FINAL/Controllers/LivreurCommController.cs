@@ -13,11 +13,20 @@ namespace PROJET_FINAL.Controllers
         // GET: LivreurComm
         public ActionResult Index()
         {
-            ProjetDBEntities2 db = new ProjetDBEntities2();
-            if (!(bool)Session["EstMajeur"])
-                return View(db.Commandes.ToList().Where(x => x.idLivreur == null && x.EstMajeur == (bool)Session["EstMajeur"]));
+            if (Session.Count == 0)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             else
-                return View(db.Commandes.ToList().Where(x => x.idLivreur == null));
+            {
+                ProjetDBEntities2 db = new ProjetDBEntities2();
+                if (!(bool)Session["EstMajeur"])
+                    return View(db.Commandes.ToList().Where(x => x.idLivreur == null && x.EstMajeur == (bool)Session["EstMajeur"]));
+                else
+                    return View(db.Commandes.ToList().Where(x => x.idLivreur == null));
+            }
+
+
         }
 
         public ActionResult Assigner(int id)
@@ -36,6 +45,6 @@ namespace PROJET_FINAL.Controllers
                 return RedirectToAction("Index");
             }
         }
-        
+
     }
 }

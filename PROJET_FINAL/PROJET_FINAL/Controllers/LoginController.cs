@@ -57,6 +57,7 @@ namespace PROJET_FINAL.Controllers
         {
             Session["livreurID"] = null;
             Session["clientID"] = null;
+            Session.Clear();
             return RedirectToAction("Index","Home");
         }
     }

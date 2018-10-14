@@ -13,15 +13,23 @@ namespace PROJET_FINAL.Controllers
     {
         // GET: CommCourant
         public ActionResult Index()
-        {           
-            var user = (int)Session["clientID"];
-            ProjetDBEntities2 db = new ProjetDBEntities2();
-            return View(db.Commandes.ToList().Where(x => x.IdClient == user));            
+        {
+            if (Session.Count == 0)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            else
+            {
+                var user = (int)Session["clientID"];
+                ProjetDBEntities2 db = new ProjetDBEntities2();
+                return View(db.Commandes.ToList().Where(x => x.IdClient == user));
+            }
+
         }
         [HttpGet]
         public ActionResult Supprimer(int id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return HttpNotFound();
             }
@@ -31,9 +39,9 @@ namespace PROJET_FINAL.Controllers
                 db.Database.ExecuteSqlCommand("execute supprimercommande @pidcommande", idcommande);
                 return RedirectToAction("Index");
             }
-           
-                
+
+
         }
-       
+
     }
 }
