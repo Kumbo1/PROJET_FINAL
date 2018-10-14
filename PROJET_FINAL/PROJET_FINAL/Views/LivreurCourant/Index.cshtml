@@ -104,7 +104,7 @@
         <h4 class="title">Mes Livraisons</h4>
         <table cellpadding="0" cellspacing="0" class="tbl-comm">
             <tr class="tbl-head">
-                <th>Id Client</th>
+                <th>Client</th>
                 <th>Information</th>
                 <th>Date</th>
 
@@ -113,9 +113,10 @@
             @foreach (Commande commande in Model)
             {
                 <tr class="obj-wrap">
-                    <td class="info-obj">@commande.IdClient</td>
+                    <td class="info-obj">@commande.Client.PrenomClient @commande.Client.NomClient</td>
                     <td class="info-obj">@commande.InfosSup</td>
                     <td class="info-obj">@commande.DateComm</td>
+                    
 
                 </tr>
                 <tr><td><br /></td></tr>

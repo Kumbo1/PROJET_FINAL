@@ -12,5 +12,6 @@ namespace PROJET_FINAL.Models
         public DateTime DateCommande { get; set; }
         public string NomObjet { get; set; }
         public float Prix { get; set; }
+        public string NomClient { get; set; }
     }
 }

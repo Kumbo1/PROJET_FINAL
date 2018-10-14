@@ -112,7 +112,8 @@
                     <td class="info-obj">@commande.DateComm</td>
                     <td class="info-obj">@commande.Adresse</td>
                     <td class="info-obj">@commande.CodePostal</td>
-                    <td class="info-obj"><input class="pointer-arrow" value="Prendre" type="button" onclick="AssocierLivreur(@commande.IdCommande)"></td>
+                    <td class="info-obj"><input class="pointer-arrow" value="Prendre" type="button" onclick="Prendre(@commande.IdCommande)"></td>
+                    @if ((DateTime.Now - commande.DateComm).Value.TotalSeconds >= 15) { <td class="info-obj">!!!</td> }
                 </tr>
                 <tr><td><br /></td></tr>
             }
@@ -121,11 +122,12 @@
 </body>
 </html>
 <script type="text/javascript">
-    function AssocierLivreur(id) {
+    function Prendre(id) {
         var r = confirm("Voulez vous vraiment prendre en charge cette commande?");
         if (r == true) {
             window.location.assign("/LivreurComm/Assigner/" + id);
         }
+    }
 </script>
 
 <style type="text/css">
