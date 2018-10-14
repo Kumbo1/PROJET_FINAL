@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Sql;
 using System.Data.SqlClient;
-
+using PROJET_FINAL.Models;
 
 namespace PROJET_FINAL.Controllers
 {
@@ -43,6 +43,7 @@ namespace PROJET_FINAL.Controllers
                             ", @pusername, @padresse, @pcodepostal, @ptelephone, @pestmajeur" +
                             ", @pestadmin, @pmotdepasse, @pcourriel", prenom, nom, ville, username, adresse, codepostal, telephone,
                             estmajeur, estadmin, motdepasse, courriel);
+                        
                         return RedirectToAction("Index", "Welcome");
                     }
                     else
