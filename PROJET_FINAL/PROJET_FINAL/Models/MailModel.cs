@@ -57,5 +57,10 @@ namespace PROJET_FINAL.Models
                 throw new HttpUnhandledException();
             }
         }
+        public void InitCourriel(string email, string message)
+        {
+            ToEmail = email;
+            EMailBody = message;
+        }
     }
 }
