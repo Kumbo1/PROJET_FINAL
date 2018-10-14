@@ -192,6 +192,7 @@
     </Compile>
     <Compile Include="Models\ClientModel.cs" />
     <Compile Include="Models\LesCommandes.cs" />
+    <Compile Include="Models\MailModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Objet.cs">
       <DependentUpon>DBEntities.tt</DependentUpon>
