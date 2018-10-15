@@ -18,10 +18,7 @@ namespace PROJET_FINAL
         public Commande()
         {
             this.Objets = new HashSet<Objet>();
-            using (var DB = new ProjetDBEntities2())
-            {
-                NomClient = Client.PrenomClient + " " + Client.NomClient;
-            }
+           
         }
     
         public int IdCommande { get; set; }
@@ -33,7 +30,7 @@ namespace PROJET_FINAL
         public Nullable<int> IdVille { get; set; }
         public string CodePostal { get; set; }
         public Nullable<System.DateTime> DateComm { get; set; }
-        public string NomClient { get; set; }
+        
         public virtual Client Client { get; set; }
         public virtual Livreur Livreur { get; set; }
         public virtual Ville Ville { get; set; }

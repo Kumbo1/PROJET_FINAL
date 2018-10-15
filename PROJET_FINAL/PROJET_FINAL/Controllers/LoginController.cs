@@ -29,7 +29,7 @@ namespace PROJET_FINAL.Controllers
                     Session["EstMajeur"] = userDetails.EstMajeur;
                     Session["clientID"] = userDetails.IdClient;
                     
-                    return RedirectToAction("Index", "Welcome");
+                    return RedirectToAction("Index", "Home");
                 }
             }
         }
@@ -49,7 +49,7 @@ namespace PROJET_FINAL.Controllers
                 {
                     Session["EstMajeur"] = userDetails.EstMajeur;
                     Session["livreurID"] = userDetails.IdLivreur;
-                    return RedirectToAction("Index", "Welcome");
+                    return RedirectToAction("Index", "Home");
                 }
             }
         }
@@ -58,6 +58,7 @@ namespace PROJET_FINAL.Controllers
             Session["livreurID"] = null;
             Session["clientID"] = null;
             Session.Clear();
+            Session.Abandon();
             return RedirectToAction("Index","Home");
         }
     }
