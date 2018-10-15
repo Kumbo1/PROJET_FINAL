@@ -18,11 +18,14 @@ namespace PROJET_FINAL
             this.Commandes = new HashSet<Commande>();
         }
         [Required]
+        [StringLength(20)]
         public string Prenom { get; set; }
         [Required]
+        [StringLength(20)]
         public string Nom { get; set; }
         public int IdRegister { get; set; }
         [Required]
+        [StringLength(10)]
         public string Username { get; set; }
         [Required]
         [DataType(DataType.PhoneNumber)]

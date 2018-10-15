@@ -15,15 +15,17 @@ namespace PROJET_FINAL.Models
         public CommandeClient()
         {
             this.Objets = new HashSet<Objet>();
-           
+            
         }
 
         public int IdCommande { get; set; }
         public int IdClient { get; set; }
         public Nullable<int> idLivreur { get; set; }
         [Required]
+        [StringLength(25)]
         public string NomObjet { get; set; }
         [Required]
+        [Range(0, 999.99)]
         public float PrixApprox { get; set; }
         [Required]
         public string Categorie { get; set; }
@@ -44,7 +46,9 @@ namespace PROJET_FINAL.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Objet> Objets { get; set; }
         public List<String> ListCategories { get; set; }
- 
+        public List<String> ListVilles { get; set; }
+       
+
 
     }
 }
