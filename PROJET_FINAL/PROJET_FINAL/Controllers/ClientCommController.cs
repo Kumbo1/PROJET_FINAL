@@ -46,7 +46,7 @@ namespace PROJET_FINAL.Controllers
                     db.Database.ExecuteSqlCommand("execute AjoutCommande @pidclient, @pinfosup, @pnomobjet, @pprixapprox, @pnomcategorie, @pestmajeur" +
                     ", @padresse, @pville, @pcodepostal, @pdatecomm", idclient, infosup, nomobjet, prixapprox, categorie, estmajeur, adresse, ville, codepostal, date);
 
-                    return RedirectToAction("Index", "Welcome");                   
+                    return RedirectToAction("Index", "Home");                   
                 }
 
             //}

@@ -44,7 +44,7 @@ namespace PROJET_FINAL.Controllers
                             ", @pestadmin, @pmotdepasse, @pcourriel", prenom, nom, ville, username, adresse, codepostal, telephone,
                             estmajeur, estadmin, motdepasse, courriel);
                         
-                        return RedirectToAction("Index", "Welcome");
+                        return RedirectToAction("Index", "Home");
                     }
                     else
                     {
@@ -84,11 +84,11 @@ namespace PROJET_FINAL.Controllers
                             ", @pusername, @ptelephone, @pestmajeur" +
                             ", @pmotdepasse, @pcourriel", prenom, nom, username, telephone,
                             estmajeur, motdepasse, courriel);
-                        return RedirectToAction("Index", "Welcome");
+                        return RedirectToAction("Index", "Home");
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Welcome");
+                        return RedirectToAction("Index", "Home");
                     }
                 }
 
