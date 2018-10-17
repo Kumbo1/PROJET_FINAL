@@ -45,9 +45,11 @@
     .title {
         color: white;
     }
+
     .tbl-comm {
         margin: 0 auto;
     }
+
     .tbl-head {
     }
 
@@ -107,6 +109,7 @@
                 <th>Client</th>
                 <th>Information</th>
                 <th>Date</th>
+                <th>Complet</th>
 
             </tr>
             <tr><td><hr /></td></tr>
@@ -116,12 +119,27 @@
                     <td class="info-obj">@commande.Client.PrenomClient @commande.Client.NomClient</td>
                     <td class="info-obj">@commande.InfosSup</td>
                     <td class="info-obj">@commande.DateComm</td>
-                    
+                    <td class="info-obj"><input class="pointer-arrow" value="Fermer" type="button" onclick="EstFini(@commande.IdCommande)"></td>
+
 
                 </tr>
                 <tr><td><br /></td></tr>
             }
         </table>
-</div>
+    </div>
 </body>
 </html>
+<script type="text/javascript">
+    function EstFini(id) {
+        var r = confirm("Voulez vous vraiment declarer cette commande comme fini ? Si vous mentez Sean Whalen va vous crisser une voler, no joke");
+        if (r == true) {
+            window.location.assign("/LivreurCourant/EstFini/" + id);
+        }
+    }
+</script>
+
+<style type="text/css">
+    .pointer-arrow:hover {
+        cursor: pointer;
+    }
+</style>

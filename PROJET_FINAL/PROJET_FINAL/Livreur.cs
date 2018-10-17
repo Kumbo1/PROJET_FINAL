@@ -29,6 +29,7 @@ namespace PROJET_FINAL
         public string Courriel { get; set; }
         public string MotDePasse { get; set; }
         public string LoginError { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Commande> Commandes { get; set; }
     }

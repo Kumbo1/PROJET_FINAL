@@ -18,11 +18,6 @@ namespace PROJET_FINAL
         public Commande()
         {
             this.Objets = new HashSet<Objet>();
-<<<<<<< HEAD
-            
-=======
-           
->>>>>>> e1a4b638005278e3b5c8744d75a4adb3839dbe76
         }
     
         public int IdCommande { get; set; }
@@ -34,10 +29,8 @@ namespace PROJET_FINAL
         public Nullable<int> IdVille { get; set; }
         public string CodePostal { get; set; }
         public Nullable<System.DateTime> DateComm { get; set; }
-<<<<<<< HEAD
-=======
-        
->>>>>>> e1a4b638005278e3b5c8744d75a4adb3839dbe76
+        public Nullable<bool> EstFini { get; set; }
+    
         public virtual Client Client { get; set; }
         public virtual Livreur Livreur { get; set; }
         public virtual Ville Ville { get; set; }

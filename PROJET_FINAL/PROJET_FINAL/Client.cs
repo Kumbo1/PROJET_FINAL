@@ -33,6 +33,7 @@ namespace PROJET_FINAL
         public string MotDePasse { get; set; }
         public string Courriel { get; set; }
         public string LoginError { get; set; }
+    
         public virtual Ville Ville { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Commande> Commandes { get; set; }

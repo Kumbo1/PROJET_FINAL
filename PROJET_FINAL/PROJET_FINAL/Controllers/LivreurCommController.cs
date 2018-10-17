@@ -21,9 +21,9 @@ namespace PROJET_FINAL.Controllers
             {
                 ProjetDBEntities2 db = new ProjetDBEntities2();
                 if (!(bool)Session["EstMajeur"])
-                    return View(db.Commandes.ToList().Where(x => x.idLivreur == null && x.EstMajeur == (bool)Session["EstMajeur"]));
+                    return View(db.Commandes.ToList().Where(x => x.idLivreur == null && x.EstMajeur == (bool)Session["EstMajeur"] && x.EstFini == null));
                 else
-                    return View(db.Commandes.ToList().Where(x => x.idLivreur == null));
+                    return View(db.Commandes.ToList().Where(x => x.idLivreur == null && x.EstFini == null));
             }
 
 
