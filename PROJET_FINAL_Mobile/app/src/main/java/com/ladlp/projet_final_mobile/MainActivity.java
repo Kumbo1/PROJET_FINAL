@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         getConnection();
         afficherqqch();
     }
-
+//YO
     public void getConnection() {
         new Thread( new Runnable() {
             public void run() {
