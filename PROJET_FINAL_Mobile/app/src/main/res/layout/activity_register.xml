@@ -6,119 +6,152 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Nom d'utilisateur"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/pwd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Mot de passe"
-            android:inputType="textPassword" />
-
-        <EditText
-            android:id="@+id/pwdConfirm"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Confirmation du mot de passe"
-            android:inputType="textPassword" />
-
-        <EditText
-            android:id="@+id/firstName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Prénom"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/lastName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Nom de famille"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Email"
-            android:inputType="textEmailAddress" />
-
-        <EditText
-            android:id="@+id/address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Adresse de livraison"
-            android:inputType="textPostalAddress" />
-
-        <Spinner
-            android:id="@+id/citySpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-
-        <EditText
-            android:id="@+id/zipCode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Code postal"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Cellulaire"
-            android:inputType="phone" />
-
-        <CheckBox
-            android:id="@+id/isAdult"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="J'ai 18 ans +" />
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="fill_parent"
+            android:gravity="fill_vertical|center"
+            android:orientation="vertical"
+            android:paddingBottom="15sp"
+            android:paddingLeft="15sp"
+            android:paddingRight="15sp"
+            android:paddingTop="15sp">
 
-            <Button
-                android:id="@+id/clientButton"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="registerClient"
-                android:text="Devenir un client" />
+                android:layout_marginBottom="10sp"
+                android:text="S'INSCRIRE"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/livreurButton"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="registerLivreur"
-                android:text="Devenir un livreur"
-                tools:layout_editor_absoluteX="159dp"
-                tools:layout_editor_absoluteY="455dp" />
+                android:layout_marginBottom="10sp"
+                android:ems="10"
+                android:hint="Nom d'utilisateur"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/pwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:ems="10"
+                android:hint="Mot de passe"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/pwdConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:ems="10"
+                android:hint="Confirmation du mot de passe"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/firstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:ems="10"
+                android:hint="Prénom"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/lastName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:ems="10"
+                android:hint="Nom de famille"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:ems="10"
+                android:hint="Adresse de livraison"
+                android:inputType="textPostalAddress" />
+
+            <Spinner
+                android:id="@+id/citySpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp" />
+
+
+            <EditText
+                android:id="@+id/zipCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:ems="10"
+                android:hint="Code postal"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:ems="10"
+                android:hint="Cellulaire"
+                android:inputType="phone" />
+
+            <CheckBox
+                android:id="@+id/isAdult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20sp"
+                android:text="J'ai 18 ans +" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/clientButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:layout_weight="1"
+                    android:onClick="registerClient"
+                    android:text="Devenir un client" />
+
+                <Button
+                    android:id="@+id/livreurButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="registerLivreur"
+                    android:text="Devenir un livreur"
+                    tools:layout_editor_absoluteX="159dp"
+                    tools:layout_editor_absoluteY="455dp" />
+            </LinearLayout>
+
         </LinearLayout>
+    </ScrollView>
 
-    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
