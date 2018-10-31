@@ -18,19 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         <activity android:name=".AjouterCommandeActivity" />
         <activity android:name=".VoirCommandeActivity" />
         <activity android:name=".ContactActivity"></activity>
-=======
+
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity"></activity>
->>>>>>> 0b6ce014978f50962ae2b4fa5871b61f70dda321
-=======
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity"></activity>
->>>>>>> 0b6ce014978f50962ae2b4fa5871b61f70dda321
+
+
+
     </application>
 
 </manifest>
