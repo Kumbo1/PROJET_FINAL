@@ -13,6 +13,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
+            android:background="@drawable/wallpaper"
             android:gravity="fill_vertical|center"
             android:orientation="vertical"
             android:paddingBottom="15sp"
@@ -27,6 +28,7 @@
                 android:layout_marginBottom="10sp"
                 android:text="S'INSCRIRE"
                 android:textAlignment="center"
+                android:textColor="@android:color/background_light"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -123,7 +125,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20sp"
-                android:text="J'ai 18 ans +" />
+                android:text="J'ai 18 ans +"
+                android:textColor="@android:color/background_light" />
 
             <LinearLayout
                 android:layout_width="match_parent"

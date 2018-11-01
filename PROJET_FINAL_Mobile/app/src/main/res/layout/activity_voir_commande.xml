@@ -5,29 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".VoirCommandeActivity">
-// https://stackoverflow.com/questions/17525886/listview-with-add-and-delete-buttons-in-each-row-in-android
-    <RelativeLayout
+    //
+    https://stackoverflow.com/questions/17525886/listview-with-add-and-delete-buttons-in-each-row-in-android
+
+    <ListView
+        android:id="@+id/listeCommClient"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/list_item_string"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:paddingLeft="8dp"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/delete_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
-            android:text="Supprimer" />
-
-    </RelativeLayout>
+        android:layout_height="match_parent" />
 </android.support.constraint.ConstraintLayout>

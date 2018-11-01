@@ -1,5 +1,6 @@
 package com.ladlp.projet_final_mobile;
 
+import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,6 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
     String connectionUrl = "jdbc:jtds:sqlserver://dbprojetfinal.czcjxlu56660.ca-central-1.rds.amazonaws.com:8080;database=ProjetDB;user=Master;password=Master123;";
     ArrayList<String> ar = new ArrayList<String>();
     String[] array = null;
+    int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +54,13 @@ public class RegisterActivity extends AppCompatActivity {
             if(checkPassword())
             {
                 insertClient();
-                //START ACTIVITY
+                getIDClient();
+                Intent intent = new Intent(this, HomeActivity.class);
+                intent.putExtra("Name", firstName.getText().toString());
+                intent.putExtra("estMajeur", isAdult.isChecked());
+                intent.putExtra("ID", id);
+                intent.putExtra("estLivreur", false);
+                startActivity(intent);
             }
             else
                 Toast.makeText(this,"Les mots de passe ne correspondent pas", Toast.LENGTH_LONG).show();
@@ -67,7 +75,13 @@ public class RegisterActivity extends AppCompatActivity {
             if(checkPassword())
             {
                 insertLivreur();
-                //START ACTIVITY
+                getIDLivreur();
+                Intent intent = new Intent(this, HomeActivity.class);
+                intent.putExtra("Name", firstName.getText().toString());
+                intent.putExtra("estMajeur", isAdult.isChecked());
+                intent.putExtra("ID", id);
+                intent.putExtra("estLivreur", true);
+                startActivity(intent);
             }
             else
                 Toast.makeText(this,"Les mots de passe ne correspondent pas", Toast.LENGTH_LONG).show();
@@ -176,5 +190,37 @@ public class RegisterActivity extends AppCompatActivity {
         } catch (SQLException exc) {
             Toast.makeText(this, exc.toString(), Toast.LENGTH_LONG).show();
         }
+    }
+    void getIDClient()
+    {
+        String sql = "SELECT idClient from ProjetDB.dbo.Clients where Username = '" + username.getText().toString() + "' AND MotDePasse = '" + password.getText().toString() + "'";
+        try
+        {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next())
+               id = rs.getInt("idClient");
+        }
+        catch (SQLException e )
+        {
+            e.printStackTrace();
+        }
+
+    }
+    void getIDLivreur()
+    {
+        String sql = "SELECT idLivreur from ProjetDB.dbo.Livreurs where Username = '" + username.getText().toString() + "' AND MotDePasse = '" + password.getText().toString() + "'";
+        try
+        {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next())
+                id = rs.getInt("idLivreur");
+        }
+        catch (SQLException e )
+        {
+            e.printStackTrace();
+        }
+
     }
 }

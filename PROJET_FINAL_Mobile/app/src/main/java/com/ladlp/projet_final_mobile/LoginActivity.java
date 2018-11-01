@@ -1,5 +1,6 @@
 package com.ladlp.projet_final_mobile;
 
+import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,54 +30,66 @@ public class LoginActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
     }
-    void connecterClient(View view)
-    {
+    //Fonction du boutton connecter "JE SUIS UN CLIENT"
+    void connecterClient(View view){
         if(!password.getText().toString().isEmpty() && !username.getText().toString().isEmpty())
         {
             try{
-                String sql = "select * from ProjetDB.dbo.Clients WHERE MotDePasse = ? and Username = ?";
+                String sql = "select idClient, estMajeur, prenomClient from ProjetDB.dbo.Clients WHERE MotDePasse = ? and Username = ?";
                 PreparedStatement login = conn.prepareStatement(sql);
                 login.setString(1, password.getText().toString());
                 login.setString(2, username.getText().toString());
                 ResultSet rs = login.executeQuery();
-                if(rs.next())
-                    Toast.makeText(this,"Youpi", Toast.LENGTH_LONG).show();
-                //START Activity
-                else
-                    Toast.makeText(this,"Le nom d'utilisateur ou le mot de passe est invalide", Toast.LENGTH_LONG).show();
-            }catch(SQLException exc){
-            }
-        }
-        else
-            Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_LONG).show();
-    }
-    void connecterLivreur(View view)
-    {
-        if(!password.getText().toString().isEmpty() && !username.getText().toString().isEmpty())
-        {
-            try{
-                String sql = "select * from ProjetDB.dbo.Livreurs WHERE motdepasse = ? and username = ?";
-                PreparedStatement login = conn.prepareStatement(sql);
-                login.setString(1, password.getText().toString());
-                login.setString(2, username.getText().toString());
-                ResultSet rs = login.executeQuery();
-                if(rs.next())
-                    Toast.makeText(this,"Youpi", Toast.LENGTH_LONG).show();
-                    //START Activity
-                else
-                    Toast.makeText(this,"Le nom d'utilisateur ou le mot de passe est invalide", Toast.LENGTH_LONG).show();
-            }catch(SQLException exc){
+                if(rs.next()) {
+                    Intent intent = new Intent(this, HomeActivity.class);
+                    intent.putExtra("Name", rs.getString("prenomClient"));
+                    intent.putExtra("estMajeur", rs.getBoolean("estMajeur"));
+                    intent.putExtra("ID", rs.getInt("idClient"));
+                    intent.putExtra("estLivreur", false);
+                    startActivity(intent);
+                }
 
+                else
+                    Toast.makeText(this,"Le nom d'utilisateur ou le mot de passe est invalide", Toast.LENGTH_LONG).show();
+            }catch(SQLException exc){
             }
         }
         else
             Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_LONG).show();
     }
-    void getFields()
-    {
+    //Fonction du boutton connecter "JE SUIS UN LIVREUR"
+    void connecterLivreur(View view){
+        if(!password.getText().toString().isEmpty() && !username.getText().toString().isEmpty())
+        {
+            try{
+                String sql = "select idLivreur, estMajeur, prenomClient from ProjetDB.dbo.Livreurs WHERE motdepasse = ? and username = ?";
+                PreparedStatement login = conn.prepareStatement(sql);
+                login.setString(1, password.getText().toString());
+                login.setString(2, username.getText().toString());
+                ResultSet rs = login.executeQuery();
+                if(rs.next()) {
+                    Intent intent = new Intent(this, HomeActivity.class);
+                    intent.putExtra("Name", rs.getString("prenomClient"));
+                    intent.putExtra("estMajeur", rs.getBoolean("estMajeur"));
+                    intent.putExtra("ID", rs.getInt("idLivreur"));
+                    intent.putExtra("estLivreur", false);
+                    startActivity(intent);
+                }
+                else
+                    Toast.makeText(this,"Le nom d'utilisateur ou le mot de passe est invalide", Toast.LENGTH_LONG).show();
+            }catch(SQLException exc){
+                Toast.makeText(this,exc.toString(),Toast.LENGTH_LONG).show();
+            }
+        }
+        else
+            Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_LONG).show();
+    }
+    //Aller chercher les champs (EditText)
+    void getFields(){
         password = findViewById(R.id.pwdLogin);
         username = findViewById(R.id.usernameLogin);
     }
+    //Connecter a la BD dans un Thread
     void gestionConnection(){
         Thread thread = new Thread() {
             @Override
