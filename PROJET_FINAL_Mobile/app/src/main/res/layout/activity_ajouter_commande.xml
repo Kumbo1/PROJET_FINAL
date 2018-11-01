@@ -18,7 +18,7 @@
             android:text="TextView" />
 
         <EditText
-            android:id="@+id/nomObjetServ"
+            android:id="@+id/AC_nomObjet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -28,7 +28,7 @@
             tools:layout_editor_absoluteY="16dp" />
 
         <EditText
-            android:id="@+id/prixObjetServ"
+            android:id="@+id/AC_prixObjet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -38,7 +38,7 @@
             tools:layout_editor_absoluteY="76dp" />
 
         <EditText
-            android:id="@+id/categorieObjetServ"
+            android:id="@+id/AC_categorieObjet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -48,7 +48,7 @@
             tools:layout_editor_absoluteY="138dp" />
 
         <EditText
-            android:id="@+id/infoSupp"
+            android:id="@+id/AC_infoSupp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -58,7 +58,7 @@
             tools:layout_editor_absoluteY="204dp" />
 
         <EditText
-            android:id="@+id/adresseLivraison"
+            android:id="@+id/AC_adresseLivraison"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -68,23 +68,20 @@
             tools:layout_editor_absoluteY="267dp" />
 
         <EditText
-            android:id="@+id/codePostale"
+            android:id="@+id/AC_codePostale"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPostalAddress"
             android:text="Code Postale" />
 
-        <EditText
-            android:id="@+id/villeLivraison"
+        <Spinner
+            android:id="@+id/AC_spinnercity"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textCapSentences"
-            android:text="Ville" />
+            android:layout_height="wrap_content" />
 
         <CheckBox
-            android:id="@+id/estMajeur"
+            android:id="@+id/AC_estMajeur"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="18 +" />
@@ -99,6 +96,7 @@
             android:id="@+id/commanderBouton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="ajouterLaCommande"
             android:text="Commander" />
     </LinearLayout>
 
