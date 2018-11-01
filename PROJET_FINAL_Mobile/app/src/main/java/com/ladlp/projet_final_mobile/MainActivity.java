@@ -37,4 +37,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
+
+    void startAjouterCommande(View view)
+    {
+        Intent intent = new Intent(this, AjouterCommandeActivity.class);
+        startActivity(intent);
+    }
 }
