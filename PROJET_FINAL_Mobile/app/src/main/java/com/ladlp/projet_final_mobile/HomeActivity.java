@@ -16,12 +16,15 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
         Intent intent = getIntent();
         name = intent.getStringExtra("Name");
         ID = intent.getIntExtra("ID", 0);
         isAdult = intent.getBooleanExtra("estMajeur", false);
         estLivreur = intent.getBooleanExtra("estLivreur", false);
+        if(estLivreur)
+            setContentView(R.layout.activity_home_livreur);
+        else
+            setContentView(R.layout.activity_home);
         welcomeMess = findViewById(R.id.welcomeText);
         welcomeMess.setText(welcomeMess.getText().toString() + name);
     }

@@ -30,21 +30,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="startVoirCommClient"
-                android:text="Voir mes commandes" />
 
             <Button
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="startAjouterCommande"
-                android:text="Faire une commande" />
+                android:onClick="startVoirCommandeLivreur"
+                android:text="Voir mes commandes livreur" />
 
 
         </LinearLayout>
