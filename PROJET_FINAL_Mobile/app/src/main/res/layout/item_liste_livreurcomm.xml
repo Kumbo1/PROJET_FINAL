@@ -7,6 +7,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10sp"
+        android:layout_marginLeft="15sp"
+        android:layout_marginRight="15sp"
         android:orientation="horizontal">
 
         <TextView
@@ -15,6 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TextView"
+            android:textColor="@android:color/darker_gray"
             tools:text="Nom Objet" />
 
         <TextView
@@ -23,9 +27,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
+            android:layout_marginBottom="10sp"
+            android:layout_marginLeft="15sp"
+            android:layout_marginRight="15sp"
             android:layout_weight="1"
             android:paddingLeft="8dp"
-            android:text="InfosSup" />
+            android:text="InfosSup"
+            android:textColor="@android:color/darker_gray" />
 
         <TextView
             android:id="@+id/itemLivreurComm_Date"
@@ -33,13 +41,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TextView"
+            android:textColor="@android:color/darker_gray"
             tools:text="Date" />
+
         <TextView
             android:id="@+id/itemLivreurComm_Adresse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TextView"
+            android:textColor="@android:color/darker_gray"
             tools:text="Adresse" />
 
         <Button
@@ -50,7 +61,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:text="Prendre" />
+            android:text="PRENDRE" />
     </LinearLayout>
 
 </RelativeLayout>

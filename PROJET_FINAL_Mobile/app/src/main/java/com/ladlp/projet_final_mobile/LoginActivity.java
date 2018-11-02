@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                     intent.putExtra("Name", rs.getString("prenomClient"));
                     intent.putExtra("estMajeur", rs.getBoolean("estMajeur"));
                     intent.putExtra("ID", rs.getInt("idLivreur"));
-                    intent.putExtra("estLivreur", false);
+                    intent.putExtra("estLivreur", true);
                     startActivity(intent);
                 }
                 else
