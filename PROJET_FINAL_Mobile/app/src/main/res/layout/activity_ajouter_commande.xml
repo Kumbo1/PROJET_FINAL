@@ -18,7 +18,6 @@
             android:paddingLeft="15sp"
             android:paddingRight="15sp">
 
-<<<<<<< HEAD
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
@@ -89,76 +88,16 @@
                 android:textColor="@android:color/darker_gray"
                 tools:layout_editor_absoluteX="85dp"
                 tools:layout_editor_absoluteY="267dp" />
-=======
-        <EditText
-            android:id="@+id/AC_nomObjet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Nom objet/service"
-            android:inputType="textShortMessage"
-            tools:layout_editor_absoluteX="85dp"
-            tools:layout_editor_absoluteY="16dp" />
-
-        <EditText
-            android:id="@+id/AC_prixObjet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Prix"
-            android:inputType="numberDecimal"
-            tools:layout_editor_absoluteX="85dp"
-            tools:layout_editor_absoluteY="76dp" />
-
-        <EditText
-            android:id="@+id/AC_categorieObjet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Categorie"
-            android:inputType="textShortMessage"
-            tools:layout_editor_absoluteX="85dp"
-            tools:layout_editor_absoluteY="138dp" />
-
-        <EditText
-            android:id="@+id/AC_infoSupp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Information Supplémentaire"
-            android:inputType="textLongMessage"
-            tools:layout_editor_absoluteX="85dp"
-            tools:layout_editor_absoluteY="204dp" />
-
-        <EditText
-            android:id="@+id/AC_adresseLivraison"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Adresse livraison"
-            android:inputType="textShortMessage"
-            tools:layout_editor_absoluteX="85dp"
-            tools:layout_editor_absoluteY="267dp" />
-
-        <EditText
-            android:id="@+id/AC_codePostale"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Code Postale"
-            android:inputType="textPostalAddress" />
->>>>>>> 1cde4710510f95ca4909cd7a58b41b11f1ef88c4
 
             <EditText
                 android:id="@+id/AC_codePostale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10sp"
                 android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Code Postale"
-                android:inputType="textPostalAddress"
-                android:textColor="@android:color/darker_gray" />
+                android:inputType="textPostalAddress" />
+
 
             <Spinner
                 android:id="@+id/AC_spinnercity"

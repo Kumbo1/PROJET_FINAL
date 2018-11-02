@@ -3,6 +3,11 @@ package com.ladlp.projet_final_mobile;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.widget.ArrayAdapter;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
@@ -21,11 +26,15 @@ public class ArrayAdapterLivreurComm extends ArrayAdapter<CommandeLivreur> {
     Context context;
     int layoutResourceId;
     ArrayList<CommandeLivreur> commandesLivreur = new ArrayList<CommandeLivreur>();
-    public ArrayAdapterLivreurComm(Context context, int layoutResourceId, ArrayList<CommandeLivreur> comm) {
+    int IDLivreur;
+    Connection conn = null;
+    String connectionUrl = "jdbc:jtds:sqlserver://dbprojetfinal.czcjxlu56660.ca-central-1.rds.amazonaws.com:8080;database=ProjetDB;user=Master;password=Master123;";
+    public ArrayAdapterLivreurComm(Context context, int layoutResourceId, ArrayList<CommandeLivreur> comm, int idLivreur) {
         super(context, layoutResourceId, comm);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
         this.commandesLivreur = comm;
+        this.IDLivreur = idLivreur;
     }
 
     @Override
@@ -78,10 +87,9 @@ public class ArrayAdapterLivreurComm extends ArrayAdapter<CommandeLivreur> {
                 .setPositiveButton("Oui",  new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        //DELETE DANS LA BD
+                        gestionConnection(commandesLivreur.get(idlist).getIdCommande(), IDLivreur);
                         commandesLivreur.remove(idlist);
                         notifyDataSetChanged();
-                        Toast.makeText(context, "Commande annulée", Toast.LENGTH_LONG).show();
                     }
                 })
                 .setNegativeButton("Non", new DialogInterface.OnClickListener() {
@@ -91,5 +99,34 @@ public class ArrayAdapterLivreurComm extends ArrayAdapter<CommandeLivreur> {
                     }
                 })
                 .show();
+    }
+    void gestionConnection(int idcomm, int idlivreur){
+        final int idcommande = idcomm;
+        final int idlivreur1 = idlivreur;
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    Class.forName("net.sourceforge.jtds.jdbc.Driver");
+                } catch (ClassNotFoundException e){
+                }
+                try
+                {
+                    conn = DriverManager.getConnection(connectionUrl);
+                    String sql = "exec ProjetDB.dbo.associerlivreurcommande ?, ?";
+                    PreparedStatement stm = conn.prepareCall(sql);
+                    stm.setInt(1, idcommande);
+                    stm.setInt(2, idlivreur1);
+                    stm.executeUpdate();
+                    conn.close();
+                } catch (SQLException se) {
+                }
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ie) {System.out.print(ie.toString());}
+
+            }
+        };
+        thread.start();
     }
 }

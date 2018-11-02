@@ -26,6 +26,8 @@ public class VoirCommandeLivreur extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voir_commande_livreur);
+        Intent intent = getIntent();
+        ID = intent.getIntExtra("ID", 0);
         gestionConnection();
         listview = findViewById(R.id.listeCommLivreur);
     }
@@ -61,7 +63,7 @@ public class VoirCommandeLivreur extends AppCompatActivity {
             Statement stm = conn.createStatement();
             ResultSet rs = stm.executeQuery(sql);
             while(rs.next())
-                commandeLivreurArray.add(new CommandeLivreur(rs.getString("NomObjet"), rs.getString("InfosSup"), rs.getDate("DateComm").toString(), rs.getString("Adresse")));
+                commandeLivreurArray.add(new CommandeLivreur(rs.getString("NomObjet"), rs.getString("InfosSup"), rs.getDate("DateComm").toString(), rs.getString("Adresse"), rs.getInt("idcommande")));
             rafraichirIug();
         }catch(SQLException exc){}
 
@@ -71,7 +73,7 @@ public class VoirCommandeLivreur extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                commandeLivreurArrayAdapter = new ArrayAdapterLivreurComm(VoirCommandeLivreur.this, R.layout.item_liste_livreurcomm, commandeLivreurArray);
+                commandeLivreurArrayAdapter = new ArrayAdapterLivreurComm(VoirCommandeLivreur.this, R.layout.item_liste_livreurcomm, commandeLivreurArray, ID);
                 listview.setItemsCanFocus(false);
                 listview.setAdapter(commandeLivreurArrayAdapter);
             }
