@@ -1,5 +1,6 @@
 package com.ladlp.projet_final_mobile;
 
+import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,11 +32,17 @@ public class AjouterCommandeActivity extends AppCompatActivity {
     Spinner city;
     Connection conn = null;
     String connectionUrl = "jdbc:jtds:sqlserver://dbprojetfinal.czcjxlu56660.ca-central-1.rds.amazonaws.com:8080;database=ProjetDB;user=Master;password=Master123;";
+<<<<<<< HEAD
     ArrayList<String> arcity = new ArrayList<String>();
     String[] arraycity = null;
     ArrayList<String> arcateg = new ArrayList<>();
     String[] arraycateg = null;
 
+=======
+    ArrayList<String> ar = new ArrayList<String>();
+    String[] array = null;
+    int ID;
+>>>>>>> 1cde4710510f95ca4909cd7a58b41b11f1ef88c4
 
 
     @Override
@@ -46,6 +53,8 @@ public class AjouterCommandeActivity extends AppCompatActivity {
         gestionConnection();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+        Intent intent = getIntent();
+        ID = intent.getIntExtra("ID",0);
     }
 
     void ajouterLaCommande(View view)    {
@@ -130,7 +139,7 @@ public class AjouterCommandeActivity extends AppCompatActivity {
         Date date = new Date();
         try {
             PreparedStatement ajoutcommande = conn.prepareStatement(proc);
-            ajoutcommande.setInt(1, 6);
+            ajoutcommande.setInt(1, ID);
             ajoutcommande.setString(2, infosSup.getText().toString());
             ajoutcommande.setString(3, nomObjet.getText().toString());
             ajoutcommande.setString(4, prixApprox.getText().toString());

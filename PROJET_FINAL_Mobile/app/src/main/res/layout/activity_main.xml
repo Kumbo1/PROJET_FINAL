@@ -49,13 +49,7 @@
             tools:layout_editor_absoluteX="127dp"
             tools:layout_editor_absoluteY="435dp" />
 
-        <Button
-            android:id="@+id/ajouterCommandeBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="25sp"
-            android:onClick="startAjouterCommande"
-            android:text="Ajouter Commande"/>
+
 
 
     </LinearLayout>

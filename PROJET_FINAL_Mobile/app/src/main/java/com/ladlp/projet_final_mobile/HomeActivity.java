@@ -31,4 +31,18 @@ public class HomeActivity extends AppCompatActivity {
         intent.putExtra("ID", ID);
         startActivity(intent);
     }
+
+    void startAjouterCommande(View view)
+    {
+        Intent intent = new Intent(this, AjouterCommandeActivity.class);
+        intent.putExtra("ID", ID);
+        startActivity(intent);
+    }
+
+    void startVoirCommandeLivreur(View view)
+    {
+        Intent intent = new Intent(this,VoirCommandeLivreur.class);
+        intent.putExtra("ID",ID);
+        startActivity(intent);
+    }
 }
