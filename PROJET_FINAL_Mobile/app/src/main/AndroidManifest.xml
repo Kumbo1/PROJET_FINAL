@@ -18,15 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".AjouterCommandeActivity" />
         <activity android:name=".VoirCommandeActivity" />
         <activity android:name=".ContactActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".HomeActivity"></activity>
-        <activity android:name=".VoirCommandeLivreur"></activity>
-
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".VoirCommandeLivreur" />
+        <activity android:name=".CommandeCourantLivreur"></activity>
     </application>
 
 </manifest>

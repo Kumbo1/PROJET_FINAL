@@ -1,26 +1,27 @@
 package com.ladlp.projet_final_mobile;
 
-public class CommandeLivreur {
-    private String NomObjet;
+public class LivreurClassCourant {
+
+    private String Prenom;
+    private String Nom;
     private String InfosSup;
     private String Date;
-    private String Adresse;
     private int IdCommande;
 
-    public CommandeLivreur(String NomObjet, String InfosSup, String Date, String Adresse, int idCommande)
+    public LivreurClassCourant(String Prenom,String Nom, String InfosSup, String Date, int idCommande)
     {
         super();
-        this.NomObjet = NomObjet;
+        this.Prenom = Prenom;
+        this.Nom = Nom;
         this.InfosSup = InfosSup;
         this.Date = Date;
-        this.Adresse = Adresse;
         this.IdCommande = idCommande;
     }
 
 
-    public String getNomObjet(){return NomObjet;}
+    public String getPrenom(){return Prenom;}
+    public String getNom(){return Nom;}
     public String getInfosSup(){return InfosSup;}
     public String getDate(){return Date;}
-    public String getAdresse(){return Adresse;}
     public int getIdCommande(){return IdCommande;}
 }
