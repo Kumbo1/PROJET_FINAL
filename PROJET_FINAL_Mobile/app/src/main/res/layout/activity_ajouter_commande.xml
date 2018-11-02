@@ -22,8 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="Nom objet/service"
             android:inputType="textShortMessage"
-            android:text="Nom objet/service"
             tools:layout_editor_absoluteX="85dp"
             tools:layout_editor_absoluteY="16dp" />
 
@@ -32,8 +32,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="Prix"
             android:inputType="numberDecimal"
-            android:text="Prix"
             tools:layout_editor_absoluteX="85dp"
             tools:layout_editor_absoluteY="76dp" />
 
@@ -42,8 +42,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="Categorie"
             android:inputType="textShortMessage"
-            android:text="Categorie"
             tools:layout_editor_absoluteX="85dp"
             tools:layout_editor_absoluteY="138dp" />
 
@@ -52,8 +52,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="Information Supplémentaire"
             android:inputType="textLongMessage"
-            android:text="Information Supplémentaire"
             tools:layout_editor_absoluteX="85dp"
             tools:layout_editor_absoluteY="204dp" />
 
@@ -62,8 +62,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="Adresse livraison"
             android:inputType="textShortMessage"
-            android:text="Adresse livraison"
             tools:layout_editor_absoluteX="85dp"
             tools:layout_editor_absoluteY="267dp" />
 
@@ -72,8 +72,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPostalAddress"
-            android:text="Code Postale" />
+            android:hint="Code Postale"
+            android:inputType="textPostalAddress" />
 
         <Spinner
             android:id="@+id/AC_spinnercity"

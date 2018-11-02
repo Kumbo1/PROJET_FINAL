@@ -36,14 +36,25 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="startVoirCommClient"
-                android:text="Button" />
+                android:text="Voir mes commandes" />
 
             <Button
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:onClick="startAjouterCommande"
+                android:text="Faire une commande" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="startVoirCommandeLivreur"
+                android:text="Voir mes commandes livreur" />
+
+
         </LinearLayout>
 
     </LinearLayout>
