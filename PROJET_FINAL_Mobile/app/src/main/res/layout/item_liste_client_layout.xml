@@ -7,6 +7,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10sp"
+        android:layout_marginLeft="15sp"
+        android:layout_marginRight="15sp"
+        android:gravity="left"
         android:orientation="horizontal">
 
         <TextView
@@ -15,6 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TextView"
+            android:textColor="@android:color/darker_gray"
             tools:text="IDCommande" />
 
         <TextView
@@ -25,7 +30,8 @@
             android:layout_centerVertical="true"
             android:layout_weight="1"
             android:paddingLeft="8dp"
-            android:text="Objet" />
+            android:text="Objet"
+            android:textColor="@android:color/darker_gray" />
 
         <TextView
             android:id="@+id/item_Date"
@@ -33,17 +39,20 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TextView"
+            android:textColor="@android:color/darker_gray"
             tools:text="Date" />
 
         <Button
             android:id="@+id/delete_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:text="Annuler" />
+            android:maxWidth="40sp"
+            android:text="ANNULER"
+            android:textSize="10sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -42,6 +42,7 @@ public class VoirCommandeActivity extends AppCompatActivity {
                 {
                     conn = DriverManager.getConnection(connectionUrl);
                     getList();
+                    conn.close();
 
                 } catch (SQLException se) {
                 }
@@ -62,7 +63,7 @@ public class VoirCommandeActivity extends AppCompatActivity {
             stm.setInt(1,ID);
             ResultSet rs = stm.executeQuery();
             while(rs.next())
-                commandeArray.add(new Commande(rs.getString("NomObjet"), rs.getInt("IdCommande"), rs.getDate("DateComm").toString()));
+                commandeArray.add(new Commande(rs.getString("NomObjet"), rs.getInt("IdCommande"), rs.getDate("DateComm").toString(), rs.getInt("IdLivreur")));
            rafraichirIug();
         }catch(SQLException exc){}
 
@@ -73,11 +74,12 @@ public class VoirCommandeActivity extends AppCompatActivity {
             @Override
             public void run() {
                 commandeArrayAdapter = new MyArrayAdapter(VoirCommandeActivity.this, R.layout.item_liste_client_layout, commandeArray);
-                listview.setItemsCanFocus(false);
+                listview.setItemsCanFocus(true);
                 listview.setAdapter(commandeArrayAdapter);
             }
         });
     }
+
 
 
 }

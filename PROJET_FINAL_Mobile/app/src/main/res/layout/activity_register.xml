@@ -37,6 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10sp"
+                android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Nom d'utilisateur"
                 android:inputType="textPersonName" />
@@ -46,6 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10sp"
+                android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Mot de passe"
                 android:inputType="textPassword" />
@@ -55,6 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10sp"
+                android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Confirmation du mot de passe"
                 android:inputType="textPassword" />
@@ -64,6 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10sp"
+                android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Prénom"
                 android:inputType="textPersonName" />
@@ -73,6 +77,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10sp"
+                android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Nom de famille"
                 android:inputType="textPersonName" />
@@ -82,6 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10sp"
+                android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Email"
                 android:inputType="textEmailAddress" />
@@ -91,6 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10sp"
+                android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Adresse de livraison"
                 android:inputType="textPostalAddress" />
@@ -99,7 +106,8 @@
                 android:id="@+id/citySpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10sp" />
+                android:layout_marginBottom="10sp"
+                android:background="@android:drawable/edit_text" />
 
 
             <EditText
@@ -107,6 +115,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10sp"
+                android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Code postal"
                 android:inputType="textPersonName" />
@@ -116,6 +125,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10sp"
+                android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Cellulaire"
                 android:inputType="phone" />

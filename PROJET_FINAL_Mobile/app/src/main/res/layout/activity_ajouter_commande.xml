@@ -3,101 +3,127 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".AjouterCommandeActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textView2"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:background="@drawable/wallpaper"
+            android:orientation="vertical"
+            android:paddingLeft="15sp"
+            android:paddingRight="15sp">
 
-        <EditText
-            android:id="@+id/AC_nomObjet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textShortMessage"
-            android:text="Nom objet/service"
-            tools:layout_editor_absoluteX="85dp"
-            tools:layout_editor_absoluteY="16dp" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15sp"
+                android:layout_marginTop="15sp"
+                android:text="FAIRE UNE COMMANDE"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/AC_prixObjet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="numberDecimal"
-            android:text="Prix"
-            tools:layout_editor_absoluteX="85dp"
-            tools:layout_editor_absoluteY="76dp" />
+            <EditText
+                android:id="@+id/AC_nomObjet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:background="@android:drawable/edit_text"
+                android:ems="10"
+                android:hint="Nom objet/service"
+                android:inputType="textShortMessage"
+                android:textColor="@android:color/darker_gray"
+                tools:layout_editor_absoluteX="85dp"
+                tools:layout_editor_absoluteY="16dp" />
 
-        <EditText
-            android:id="@+id/AC_categorieObjet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textShortMessage"
-            android:text="Categorie"
-            tools:layout_editor_absoluteX="85dp"
-            tools:layout_editor_absoluteY="138dp" />
+            <EditText
+                android:id="@+id/AC_prixObjet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:background="@android:drawable/edit_text"
+                android:ems="10"
+                android:hint="Prix"
+                android:inputType="numberDecimal"
+                android:textColor="@android:color/darker_gray"
+                tools:layout_editor_absoluteX="85dp"
+                tools:layout_editor_absoluteY="76dp" />
 
-        <EditText
-            android:id="@+id/AC_infoSupp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textLongMessage"
-            android:text="Information Supplémentaire"
-            tools:layout_editor_absoluteX="85dp"
-            tools:layout_editor_absoluteY="204dp" />
+            <Spinner
+                android:id="@+id/AC_spinnercat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:background="@android:drawable/edit_text" />
 
-        <EditText
-            android:id="@+id/AC_adresseLivraison"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textShortMessage"
-            android:text="Adresse livraison"
-            tools:layout_editor_absoluteX="85dp"
-            tools:layout_editor_absoluteY="267dp" />
+            <EditText
+                android:id="@+id/AC_infoSupp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:background="@android:drawable/edit_text"
+                android:ems="10"
+                android:hint="Information Supplémentaire"
+                android:inputType="textLongMessage"
+                android:textColor="@android:color/darker_gray"
+                tools:layout_editor_absoluteX="85dp"
+                tools:layout_editor_absoluteY="204dp" />
 
-        <EditText
-            android:id="@+id/AC_codePostale"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPostalAddress"
-            android:text="Code Postale" />
+            <EditText
+                android:id="@+id/AC_adresseLivraison"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:background="@android:drawable/edit_text"
+                android:ems="10"
+                android:hint="Adresse livraison"
+                android:inputType="textShortMessage"
+                android:textColor="@android:color/darker_gray"
+                tools:layout_editor_absoluteX="85dp"
+                tools:layout_editor_absoluteY="267dp" />
 
-        <Spinner
-            android:id="@+id/AC_spinnercity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/AC_codePostale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:background="@android:drawable/edit_text"
+                android:ems="10"
+                android:hint="Code Postale"
+                android:inputType="textPostalAddress"
+                android:textColor="@android:color/darker_gray" />
 
-        <CheckBox
-            android:id="@+id/AC_estMajeur"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="18 +" />
+            <Spinner
+                android:id="@+id/AC_spinnercity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            <CheckBox
+                android:id="@+id/AC_estMajeur"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15sp"
+                android:text="18 +"
+                android:textColor="@android:color/darker_gray" />
 
-        <Button
-            android:id="@+id/commanderBouton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="ajouterLaCommande"
-            android:text="Commander" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/commanderBouton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15sp"
+                android:onClick="ajouterLaCommande"
+                android:text="Commander"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+
 
 </android.support.constraint.ConstraintLayout>
