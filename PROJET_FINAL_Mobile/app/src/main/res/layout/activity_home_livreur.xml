@@ -39,6 +39,14 @@
                 android:onClick="startVoirCommandeLivreur"
                 android:text="Voir mes commandes livreur" />
 
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="startVoirCommandeLivreurCourant"
+                android:text="Conclure une commande" />
+
 
         </LinearLayout>
 

@@ -44,9 +44,9 @@ public class ArrayAdapterLivreurCourant extends ArrayAdapter<LivreurClassCourant
 
             wrapper = new ArrayAdapterLivreurCourant.CommandeLivreurCourantWrapper();
             wrapper.Prenom = (TextView) item.findViewById(R.id.itemLivreurCourant_Prenom);
-            wrapper.Nom = (TextView) item.findViewById(R.id.itemLivreurComm_InfosSup);
-            wrapper.date = (TextView) item.findViewById(R.id.itemLivreurComm_Date);
-            wrapper.infossup = (TextView) item.findViewById(R.id.itemLivreurCourant_Nom);
+            wrapper.Nom = (TextView) item.findViewById(R.id.itemLivreurCourant_Nom);
+            wrapper.date = (TextView) item.findViewById(R.id.itemLivreurCourant_Date);
+            wrapper.infossup = (TextView) item.findViewById(R.id.itemLivreurCourant_InfosSup);
             wrapper.fermer = (Button) item.findViewById(R.id.Fermer_btn);
             item.setTag(wrapper);
         } else {

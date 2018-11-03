@@ -29,7 +29,7 @@ public class CommandeCourantLivreur extends AppCompatActivity {
         Intent intent = getIntent();
         ID = intent.getIntExtra("ID", 0);
         gestionConnection();
-        listview = findViewById(R.id.listeCommLivreur);
+        listview = findViewById(R.id.listeCourantLivreur);
     }
 
     void gestionConnection(){
@@ -74,7 +74,7 @@ public class CommandeCourantLivreur extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                commandeLivreurArrayAdapter = new ArrayAdapterLivreurCourant(CommandeCourantLivreur.this, R.layout.item_liste_livreurcomm, commandeLivreurArray, ID);
+                commandeLivreurArrayAdapter = new ArrayAdapterLivreurCourant(CommandeCourantLivreur.this, R.layout.item_liste_livreurcourant, commandeLivreurArray, ID);
                 listview.setItemsCanFocus(false);
                 listview.setAdapter(commandeLivreurArrayAdapter);
             }

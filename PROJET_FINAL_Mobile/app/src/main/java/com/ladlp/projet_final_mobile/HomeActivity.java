@@ -48,4 +48,11 @@ public class HomeActivity extends AppCompatActivity {
         intent.putExtra("ID",ID);
         startActivity(intent);
     }
+
+    void startVoirCommandeLivreurCourant(View view)
+    {
+        Intent intent = new Intent(this,CommandeCourantLivreur.class);
+        intent.putExtra("ID",ID);
+        startActivity(intent);
+    }
 }

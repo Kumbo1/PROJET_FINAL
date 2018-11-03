@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TextView"
-            tools:text="Prenom" />
+            tools:text="Nom" />
 
         <TextView
             android:id="@+id/itemLivreurCourant_InfosSup"
@@ -33,7 +33,7 @@
             android:layout_centerVertical="true"
             android:layout_weight="1"
             android:paddingLeft="8dp"
-            android:text="InfosSup" />
+            tools:text="InfosSup" />
 
         <TextView
             android:id="@+id/itemLivreurCourant_Date"
