@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".RegisterActivity">
 
     <ScrollView
@@ -12,7 +12,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/wallpaper"
             android:gravity="fill_vertical|center"
             android:orientation="vertical"
@@ -70,7 +70,7 @@
                 android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Prénom"
-                android:inputType="textPersonName" />
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/lastName"
@@ -80,7 +80,7 @@
                 android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Nom de famille"
-                android:inputType="textPersonName" />
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/email"
@@ -127,8 +127,10 @@
                 android:layout_marginBottom="10sp"
                 android:background="@android:drawable/edit_text"
                 android:ems="10"
+                android:maxLength="14"
                 android:hint="Cellulaire"
-                android:inputType="phone" />
+                android:inputType="phone"
+                />
 
             <CheckBox
                 android:id="@+id/isAdult"
