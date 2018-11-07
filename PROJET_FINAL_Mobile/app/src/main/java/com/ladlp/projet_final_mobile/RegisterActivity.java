@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.PhoneNumberFormattingTextWatcher;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
@@ -19,6 +21,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -43,6 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         getFields();
+        phoneNumber.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
         gestionConnection();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -51,43 +56,80 @@ public class RegisterActivity extends AppCompatActivity {
     void registerClient(View view){
         if(checkAllFilled(new EditText[] {passwordConfirm, password, username, firstName, lastName, email, address, phoneNumber, zipCode}))
         {
-            if(checkPassword())
-            {
-                insertClient();
-                getIDClient();
-                Intent intent = new Intent(this, HomeActivity.class);
-                intent.putExtra("Name", firstName.getText().toString());
-                intent.putExtra("estMajeur", isAdult.isChecked());
-                intent.putExtra("ID", id);
-                intent.putExtra("estLivreur", false);
-                startActivity(intent);
-            }
-            else
-                Toast.makeText(this,"Les mots de passe ne correspondent pas", Toast.LENGTH_LONG).show();
-        }
-        else
+            if(checkEmail()) {
+                if(checkZip()) {
+                    if (checkPassword()) {
+                        boolean existe = false;
+                        try {
+                            Statement stm = conn.createStatement();
+                            ResultSet rs = stm.executeQuery("Select * from ProjetDB.dbo.Clients where Username = '" + username.getText().toString() + "'");
+                            while (rs.next())
+                                existe = true;
+                        } catch (SQLException exc) { }
+                        if (!existe) {
+                            insertClient();
+                            getIDClient();
+                            Intent intent = new Intent(this, HomeActivity.class);
+                            intent.putExtra("Name", firstName.getText().toString());
+                            intent.putExtra("estMajeur", isAdult.isChecked());
+                            intent.putExtra("ID", id);
+                            intent.putExtra("estLivreur", false);
+                            startActivity(intent);
+                        } else
+                            Toast.makeText(this, "Le nom d'identifiant est déjà utilisé", Toast.LENGTH_LONG).show();
+                    } else
+                        Toast.makeText(this, "Le code postal est invalide", Toast.LENGTH_LONG).show();
+                } else
+                    Toast.makeText(this, "Les mots de passe ne correspondent pas", Toast.LENGTH_LONG).show();
+            } else
+                Toast.makeText(this,"Le format du email doit etre 'exemple@exemple.com'", Toast.LENGTH_LONG).show();
+        } else
             Toast.makeText(this,"Veuillez remplir tous les champs", Toast.LENGTH_LONG).show();
 
     }
     void registerLivreur(View view){
         if(checkAllFilled(new EditText[] {passwordConfirm, password, username, firstName, lastName, email, address, phoneNumber, zipCode}))
         {
-            if(checkPassword())
-            {
-                insertLivreur();
-                getIDLivreur();
-                Intent intent = new Intent(this, HomeActivity.class);
-                intent.putExtra("Name", firstName.getText().toString());
-                intent.putExtra("estMajeur", isAdult.isChecked());
-                intent.putExtra("ID", id);
-                intent.putExtra("estLivreur", true);
-                startActivity(intent);
-            }
-            else
-                Toast.makeText(this,"Les mots de passe ne correspondent pas", Toast.LENGTH_LONG).show();
-        }
-        else
+            if(checkEmail()) {
+                if(checkZip()) {
+                    if (checkPassword()) {
+                        boolean existe = false;
+                        try {
+                            Statement stm = conn.createStatement();
+                            ResultSet rs = stm.executeQuery("Select * from ProjetDB.dbo.Livreurs where Username = '" + username.getText().toString() + "'");
+                            while (rs.next())
+                                existe = true;
+                        } catch (SQLException exc) {
+                        }
+                        if (!existe) {
+                            insertLivreur();
+                            getIDLivreur();
+                            Intent intent = new Intent(this, HomeActivity.class);
+                            intent.putExtra("Name", firstName.getText().toString());
+                            intent.putExtra("estMajeur", isAdult.isChecked());
+                            intent.putExtra("ID", id);
+                            intent.putExtra("estLivreur", true);
+                            startActivity(intent);
+                        } else
+                            Toast.makeText(this, "Le nom d'identifiant est déjà utilisé", Toast.LENGTH_LONG).show();
+                    } else
+                        Toast.makeText(this, "Le code postal est invalide", Toast.LENGTH_LONG).show();
+                } else
+                    Toast.makeText(this, "Les mots de passe ne correspondent pas", Toast.LENGTH_LONG).show();
+            } else
+                Toast.makeText(this,"Le format du email doit etre 'exemple@exemple.com'", Toast.LENGTH_LONG).show();
+        } else
             Toast.makeText(this,"Veuillez remplir tous les champs", Toast.LENGTH_LONG).show();
+
+    }
+    boolean checkZip(){
+        String regex = "^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(zipCode.getText().toString());
+        return matcher.matches();
+    }
+    boolean checkEmail(){
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches();
     }
     boolean checkPassword(){
         return password.getText().toString().equals(passwordConfirm.getText().toString());
