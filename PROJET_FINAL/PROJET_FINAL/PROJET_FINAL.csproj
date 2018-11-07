@@ -252,6 +252,7 @@
     <Content Include="Content\Images\t1.png" />
     <Content Include="Content\Images\t2.png" />
     <Content Include="Content\Images\t3.png" />
+    <Content Include="Content\Images\test.png" />
     <Content Include="Content\Images\TsiChum.jpg" />
     <Content Include="Content\Images\user.png" />
     <Content Include="Content\Images\video-bg.jpg" />
