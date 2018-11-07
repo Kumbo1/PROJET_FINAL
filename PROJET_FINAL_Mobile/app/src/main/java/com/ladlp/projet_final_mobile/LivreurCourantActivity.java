@@ -11,14 +11,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.sql.*;
 
-public class CommandeCourantLivreur extends AppCompatActivity {
+public class LivreurCourantActivity extends AppCompatActivity {
 
     String connectionUrl = "jdbc:jtds:sqlserver://dbprojetfinal.czcjxlu56660.ca-central-1.rds.amazonaws.com:8080;database=ProjetDB;user=Master;password=Master123;";
     ListView listview;
     ArrayAdapterLivreurCourant commandeLivreurArrayAdapter;
-    ArrayList<LivreurClassCourant> commandeLivreurArray = new ArrayList<>();
+    ArrayList<classLivreurCourant> commandeLivreurArray = new ArrayList<>();
     Connection conn = null;
     int ID;
 
@@ -64,7 +63,7 @@ public class CommandeCourantLivreur extends AppCompatActivity {
             stm.setInt(1,ID);
             ResultSet rs = stm.executeQuery();
             while(rs.next())
-                commandeLivreurArray.add(new LivreurClassCourant(rs.getString("PrenomClient"), rs.getString("NomClient"),rs.getString("InfosSup"), rs.getDate("DateComm").toString(), rs.getInt("idcommande")));
+                commandeLivreurArray.add(new classLivreurCourant(rs.getString("PrenomClient"), rs.getString("NomClient"),rs.getString("InfosSup"), rs.getDate("DateComm").toString(), rs.getInt("idcommande")));
             rafraichirIug();
         }catch(SQLException exc){}
 
@@ -74,7 +73,7 @@ public class CommandeCourantLivreur extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                commandeLivreurArrayAdapter = new ArrayAdapterLivreurCourant(CommandeCourantLivreur.this, R.layout.item_liste_livreurcourant, commandeLivreurArray, ID);
+                commandeLivreurArrayAdapter = new ArrayAdapterLivreurCourant(LivreurCourantActivity.this, R.layout.item_liste_livreurcourant, commandeLivreurArray, ID);
                 listview.setItemsCanFocus(false);
                 listview.setAdapter(commandeLivreurArrayAdapter);
             }

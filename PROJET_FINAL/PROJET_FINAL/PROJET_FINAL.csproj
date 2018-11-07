@@ -229,6 +229,7 @@
     <Content Include="Content\Images\elements\primary-radio.png" />
     <Content Include="Content\Images\elements\success-check.png" />
     <Content Include="Content\Images\elements\success-radio.png" />
+    <Content Include="Content\Images\Filix.jpg" />
     <Content Include="Content\Images\i1.jpg" />
     <Content Include="Content\Images\i2.jpg" />
     <Content Include="Content\Images\i3.jpg" />
@@ -251,6 +252,7 @@
     <Content Include="Content\Images\t1.png" />
     <Content Include="Content\Images\t2.png" />
     <Content Include="Content\Images\t3.png" />
+    <Content Include="Content\Images\TsiChum.jpg" />
     <Content Include="Content\Images\user.png" />
     <Content Include="Content\Images\video-bg.jpg" />
     <Content Include="CSS\animate.min.css" />

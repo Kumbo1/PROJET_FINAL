@@ -17,14 +17,14 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ArrayAdapterLivreurCourant extends ArrayAdapter<LivreurClassCourant> {
+public class ArrayAdapterLivreurCourant extends ArrayAdapter<classLivreurCourant> {
     Context context;
     int layoutResourceId;
-    ArrayList<LivreurClassCourant> commandesLivreurCourant = new ArrayList<LivreurClassCourant>();
+    ArrayList<classLivreurCourant> commandesLivreurCourant = new ArrayList<classLivreurCourant>();
     int IDLivreur;
     Connection conn = null;
     String connectionUrl = "jdbc:jtds:sqlserver://dbprojetfinal.czcjxlu56660.ca-central-1.rds.amazonaws.com:8080;database=ProjetDB;user=Master;password=Master123;";
-    public ArrayAdapterLivreurCourant(Context context, int layoutResourceId, ArrayList<LivreurClassCourant> comm, int idLivreur) {
+    public ArrayAdapterLivreurCourant(Context context, int layoutResourceId, ArrayList<classLivreurCourant> comm, int idLivreur) {
         super(context, layoutResourceId, comm);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
@@ -53,7 +53,7 @@ public class ArrayAdapterLivreurCourant extends ArrayAdapter<LivreurClassCourant
             wrapper = (ArrayAdapterLivreurCourant.CommandeLivreurCourantWrapper) item.getTag();
         }
 
-        LivreurClassCourant commandelivreur = commandesLivreurCourant.get(position);
+        classLivreurCourant commandelivreur = commandesLivreurCourant.get(position);
         wrapper.Prenom.setText(commandelivreur.getPrenom());
         wrapper.Nom.setText(commandelivreur.getNom());
         wrapper.date.setText(commandelivreur.getDate());

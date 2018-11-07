@@ -51,7 +51,7 @@ public class HomeActivity extends AppCompatActivity {
 
     void startVoirCommandeLivreurCourant(View view)
     {
-        Intent intent = new Intent(this,CommandeCourantLivreur.class);
+        Intent intent = new Intent(this,LivreurCourantActivity.class);
         intent.putExtra("ID",ID);
         startActivity(intent);
     }

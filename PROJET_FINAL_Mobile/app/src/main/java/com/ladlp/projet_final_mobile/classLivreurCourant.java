@@ -1,6 +1,6 @@
 package com.ladlp.projet_final_mobile;
 
-public class LivreurClassCourant {
+public class classLivreurCourant {
 
     private String Prenom;
     private String Nom;
@@ -8,7 +8,7 @@ public class LivreurClassCourant {
     private String Date;
     private int IdCommande;
 
-    public LivreurClassCourant(String Prenom,String Nom, String InfosSup, String Date, int idCommande)
+    public classLivreurCourant(String Prenom, String Nom, String InfosSup, String Date, int idCommande)
     {
         super();
         this.Prenom = Prenom;
