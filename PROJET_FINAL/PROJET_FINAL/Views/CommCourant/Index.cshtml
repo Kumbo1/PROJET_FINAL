@@ -104,6 +104,7 @@
         <h4 class="title">Commande disponible</h4>
         <table cellpadding="0" cellspacing="0" class="tbl-comm">
             <tr class="tbl-head">
+                <th>Nom objet/Service</th>
                 <th>Information</th>
                 <th>Date</th>
             </tr>
@@ -111,6 +112,11 @@
             @foreach (Commande commande in Model)
             {
             <tr class="obj-wrap">
+                @foreach (Objet objet in commande.Objets)
+                {
+                    <td class="info-obj">@objet.NomObjet</td>
+                }
+
                 <td class="info-obj">@commande.InfosSup</td>
                 <td class="info-obj">@commande.DateComm</td>
                 @if (commande.idLivreur == null)
