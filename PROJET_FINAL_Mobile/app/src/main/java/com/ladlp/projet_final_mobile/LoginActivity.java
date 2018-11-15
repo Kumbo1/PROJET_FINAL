@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
     }
     //Fonction du boutton connecter "JE SUIS UN CLIENT"
-    void connecterClient(View view){
+    public void connecterClient(View view){
         if(!password.getText().toString().isEmpty() && !username.getText().toString().isEmpty())
         {
             try{

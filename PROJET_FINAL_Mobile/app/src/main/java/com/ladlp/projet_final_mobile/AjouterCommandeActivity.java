@@ -1,5 +1,6 @@
 package com.ladlp.projet_final_mobile;
-
+import android.location.Address;
+import android.location.Geocoder;
 import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.Date;
+import java.util.List;
 
 public class AjouterCommandeActivity extends AppCompatActivity {
 
@@ -54,10 +56,10 @@ public class AjouterCommandeActivity extends AppCompatActivity {
         ID = intent.getIntExtra("ID",0);
     }
 
-    void ajouterLaCommande(View view)    {
+    public void ajouterLaCommande(View view)    {
         if (checkAllFilled(new EditText[] {infosSup,adresse,codePostal,nomObjet,prixApprox})) {
             insertCommande();
-            Toast.makeText(this, "Commande inserer avec succes", Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "Commande inserer avec succes", Toast.LENGTH_LONG).show();
         }
         else {
             Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_LONG).show();
@@ -147,10 +149,36 @@ public class AjouterCommandeActivity extends AppCompatActivity {
             ajoutcommande.setString(9, codePostal.getText().toString());
             ajoutcommande.setTimestamp(10, new java.sql.Timestamp(date.getTime()));
             ajoutcommande.execute();
-            //PARTIR ACTIVITY
+            getLocationFromAddress(adresse.getText().toString() + ", " + city.getSelectedItem().toString() + ", " + codePostal.getText().toString());
         } catch (SQLException exc) {
             Toast.makeText(this, exc.toString(), Toast.LENGTH_LONG).show();
         }
+    }
+    public void getLocationFromAddress(String strAddress) {
+        int idcommande = 0;
+        double lat = 0;
+        double lng = 0;
+        Geocoder coder = new Geocoder(this);
+        List<Address> address;
+        try {
+            address = coder.getFromLocationName(strAddress, 1);
+            if (address == null) {
+
+            }
+            Address location = address.get(0);
+            lat = location.getLatitude();
+            lng = location.getLongitude();
+
+        } catch (Exception e) {
+        }
+        try
+        {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("select Max(idCommande) from ProjetDB.dbo.Commandes;");
+            while(rs.next())
+                idcommande = rs.getInt(1);
+            stm.execute("INSERT INTO PROJETDB.dbo.MAP(idCommande, longCommande, latCommande) VALUES (" + idcommande + "," + lng + "," + lat + ")");
+        } catch (SQLException exc){}
     }
 
 }

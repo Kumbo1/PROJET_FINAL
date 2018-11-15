@@ -3,6 +3,8 @@ package com.ladlp.projet_final_mobile;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.sql.Connection;
@@ -27,8 +29,16 @@ public class VoirCommandeActivity extends AppCompatActivity {
         ID = intent.getIntExtra("ID", 0);
         gestionConnection();
         listview = (ListView)findViewById(R.id.listeCommClient);
-
-
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Commande commande = (Commande)listview.getItemAtPosition(position);
+                // START L'ACTIVITÉ POUR MODIFIER
+                Intent intent = new Intent(VoirCommandeActivity.this, MapsActivity.class);
+                intent.putExtra("ID",Integer.parseInt(commande.getId()));
+                startActivity(intent);
+            }
+        });
     }
     void gestionConnection(){
         Thread thread = new Thread() {

@@ -28,31 +28,37 @@ public class HomeActivity extends AppCompatActivity {
         welcomeMess = findViewById(R.id.welcomeText);
         welcomeMess.setText(welcomeMess.getText().toString() + name);
     }
-    void startVoirCommClient(View view)
+    public void startVoirCommClient(View view)
     {
         Intent intent = new Intent(this, VoirCommandeActivity.class);
         intent.putExtra("ID", ID);
         startActivity(intent);
     }
 
-    void startAjouterCommande(View view)
+    public void startAjouterCommande(View view)
     {
         Intent intent = new Intent(this, AjouterCommandeActivity.class);
         intent.putExtra("ID", ID);
         startActivity(intent);
     }
 
-    void startVoirCommandeLivreur(View view)
+    public void startVoirCommandeLivreur(View view)
     {
         Intent intent = new Intent(this,VoirCommandeLivreur.class);
         intent.putExtra("ID",ID);
         startActivity(intent);
     }
 
-    void startVoirCommandeLivreurCourant(View view)
+    public void startVoirCommandeLivreurCourant(View view)
     {
         Intent intent = new Intent(this,LivreurCourantActivity.class);
         intent.putExtra("ID",ID);
+        startActivity(intent);
+    }
+    public void startMap(View view)
+    {
+        Intent intent = new Intent(this,MapsActivity.class);
+        intent.putExtra("ID",37);
         startActivity(intent);
     }
 }

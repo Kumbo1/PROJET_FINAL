@@ -78,9 +78,9 @@ public class RegisterActivity extends AppCompatActivity {
                         } else
                             Toast.makeText(this, "Le nom d'identifiant est déjà utilisé", Toast.LENGTH_LONG).show();
                     } else
-                        Toast.makeText(this, "Le code postal est invalide", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, "Les mots de passe ne correspondent pas", Toast.LENGTH_LONG).show();
                 } else
-                    Toast.makeText(this, "Les mots de passe ne correspondent pas", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Le code postal est invalide", Toast.LENGTH_LONG).show();
             } else
                 Toast.makeText(this,"Le format du email doit etre 'exemple@exemple.com'", Toast.LENGTH_LONG).show();
         } else
@@ -113,9 +113,9 @@ public class RegisterActivity extends AppCompatActivity {
                         } else
                             Toast.makeText(this, "Le nom d'identifiant est déjà utilisé", Toast.LENGTH_LONG).show();
                     } else
-                        Toast.makeText(this, "Le code postal est invalide", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, "Les mots de passe ne correspondent pas", Toast.LENGTH_LONG).show();
                 } else
-                    Toast.makeText(this, "Les mots de passe ne correspondent pas", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Le code postal est invalide", Toast.LENGTH_LONG).show();
             } else
                 Toast.makeText(this,"Le format du email doit etre 'exemple@exemple.com'", Toast.LENGTH_LONG).show();
         } else

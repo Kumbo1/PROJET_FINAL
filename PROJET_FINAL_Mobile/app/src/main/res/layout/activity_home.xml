@@ -46,7 +46,6 @@
                 android:onClick="startAjouterCommande"
                 android:text="Faire une commande" />
 
-
         </LinearLayout>
 
     </LinearLayout>
