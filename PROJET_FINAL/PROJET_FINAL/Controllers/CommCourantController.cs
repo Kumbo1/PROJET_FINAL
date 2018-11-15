@@ -22,7 +22,7 @@ namespace PROJET_FINAL.Controllers
             {
                 var user = (int)Session["clientID"];
                 ProjetDBEntities2 db = new ProjetDBEntities2();
-                return View(db.Commandes.ToList().Where(x => x.IdClient == user));
+                return View(db.Commandes.ToList().Where(x => x.IdClient == user && x.EstFini == null));
             }
 
         }

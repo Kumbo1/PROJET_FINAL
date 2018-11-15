@@ -94,10 +94,11 @@
 <body>
     <br />
     <div class="comm-wrap">
-        <h4 class="title">Des osti de commande</h4>
+        <h4 class="title">Les commandes</h4>
 
         <table cellpadding="0" cellspacing="0" class="tbl-comm">
             <tr class="tbl-head">
+                <th>Nom Client</th>
                 <th>Information</th>
                 <th>Date</th>
                 <th>Adresse</th>
@@ -108,6 +109,7 @@
             @foreach (Commande commande in Model)
             {
                 <tr class="obj-wrap" id="commande">
+                    <td class="info-obj">@commande.Client.PrenomClient</td>
                     <td class="info-obj">@commande.InfosSup</td>
                     <td class="info-obj">@commande.DateComm</td>
                     <td class="info-obj">@commande.Adresse</td>

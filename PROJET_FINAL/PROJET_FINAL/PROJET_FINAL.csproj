@@ -221,6 +221,8 @@
     <Content Include="Content\Images\b4.jpg" />
     <Content Include="Content\Images\banner-bg.jpg" />
     <Content Include="Content\Images\banner-img.png" />
+    <Content Include="Content\Images\commandeclient.png" />
+    <Content Include="Content\Images\commandedispo.png" />
     <Content Include="Content\Images\counter-bg.jpg" />
     <Content Include="Content\Images\discount-bg.jpg" />
     <Content Include="Content\Images\elements\disabled-check.png" />
@@ -243,12 +245,15 @@
     <Content Include="Content\Images\l3.png" />
     <Content Include="Content\Images\l4.png" />
     <Content Include="Content\Images\l5.png" />
+    <Content Include="Content\Images\login.png" />
     <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\meslivraison.png" />
     <Content Include="Content\Images\o1.jpg" />
     <Content Include="Content\Images\o2.jpg" />
     <Content Include="Content\Images\o3.jpg" />
     <Content Include="Content\Images\o4.jpg" />
     <Content Include="Content\Images\play-btn.png" />
+    <Content Include="Content\Images\registerclient.png" />
     <Content Include="Content\Images\t1.png" />
     <Content Include="Content\Images\t2.png" />
     <Content Include="Content\Images\t3.png" />
@@ -256,6 +261,7 @@
     <Content Include="Content\Images\TsiChum.jpg" />
     <Content Include="Content\Images\user.png" />
     <Content Include="Content\Images\video-bg.jpg" />
+    <Content Include="Content\Images\voircommandeclient.png" />
     <Content Include="CSS\animate.min.css" />
     <Content Include="CSS\bootstrap-grid.css" />
     <Content Include="CSS\bootstrap-reboot.css" />
