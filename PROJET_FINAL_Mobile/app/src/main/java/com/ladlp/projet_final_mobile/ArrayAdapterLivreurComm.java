@@ -1,13 +1,20 @@
 package com.ladlp.projet_final_mobile;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
+import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
@@ -17,9 +24,11 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.ladlp.projet_final_mobile.R;
 
 public class ArrayAdapterLivreurComm extends ArrayAdapter<CommandeLivreur> {
@@ -51,7 +60,7 @@ public class ArrayAdapterLivreurComm extends ArrayAdapter<CommandeLivreur> {
             CommandeLivreurWrapper.infossup = (TextView) item.findViewById(R.id.itemLivreurComm_InfosSup);
             CommandeLivreurWrapper.date = (TextView) item.findViewById(R.id.itemLivreurComm_Date);
             CommandeLivreurWrapper.adresse = (TextView) item.findViewById(R.id.itemLivreurComm_Adresse);
-            CommandeLivreurWrapper.associer = (Button) item.findViewById(R.id.Associer_btn);
+            CommandeLivreurWrapper.associer = (ImageButton) item.findViewById(R.id.Associer_btn);
             item.setTag(CommandeLivreurWrapper);
         } else {
             CommandeLivreurWrapper = (ArrayAdapterLivreurComm.CommandeLivreurWrapper) item.getTag();
@@ -76,7 +85,7 @@ public class ArrayAdapterLivreurComm extends ArrayAdapter<CommandeLivreur> {
         TextView infossup;
         TextView date;
         TextView adresse;
-        Button associer;
+        ImageButton associer;
 
     }
     public void confirmDialog(final int idlist) {
@@ -118,6 +127,10 @@ public class ArrayAdapterLivreurComm extends ArrayAdapter<CommandeLivreur> {
                     stm.setInt(1, idcommande);
                     stm.setInt(2, idlivreur1);
                     stm.executeUpdate();
+                    LatLng posLivreur = getPosition();
+                    String sql1 = "update ProjetDB.dbo.MAP set longLivreur = " + posLivreur.longitude + ", latLivreur = " + posLivreur.latitude + "where idCommande = " + idcommande + ";";
+                    Statement stm1 = conn.createStatement();
+                    stm1.execute(sql1);
                     conn.close();
                 } catch (SQLException se) {
                 }
@@ -128,5 +141,30 @@ public class ArrayAdapterLivreurComm extends ArrayAdapter<CommandeLivreur> {
             }
         };
         thread.start();
+    }
+    public LatLng getPosition()
+    {
+        Location location = null;
+        LocationManager lm = (LocationManager)context.getSystemService(Context.LOCATION_SERVICE);
+
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            return null;
+        }
+        //if condition to check if GPS is available
+        if (lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+
+                location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                Log.d("TEST", Double.toString(location.getLatitude()) + " " + Double.toString(location.getLongitude()));
+
+        }
+        else if (lm.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+
+                location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                Log.d("TEST", Double.toString(location.getLatitude()) + " " + Double.toString(location.getLongitude()));
+
+        }
+        LatLng temp = new LatLng(location.getLatitude(), location.getLongitude());
+        return temp;
     }
 }

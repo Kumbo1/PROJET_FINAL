@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+        <item
+            android:id="@+id/menu_livreur_home"
+            android:title="Accueil"
+            app:showAsAction="never">
+        </item>
+        <item
+            android:id="@+id/menu_livreur_commandesdispo"
+            android:title="Commandes disponibles"
+            app:showAsAction="never">
+        </item>
+        <item
+            android:id="@+id/menu_livreur_commandeencours"
+            android:title="Commandes en cours"
+            app:showAsAction="never">
+        </item>
+        <item
+            android:id="@+id/menu_livreur_deco"
+            android:title="Se déconnecter"
+            app:showAsAction="never">
+        </item>
+</menu>

@@ -10,11 +10,11 @@
         android:layout_marginBottom="10sp"
         android:layout_marginLeft="15sp"
         android:layout_marginRight="15sp"
+        android:descendantFocusability="blocksDescendants"
         android:focusableInTouchMode="false"
-        android:gravity="left"
+        android:gravity="left|center"
         android:orientation="horizontal"
-        android:touchscreenBlocksFocus="false"
-        android:descendantFocusability="blocksDescendants">
+        android:touchscreenBlocksFocus="false">
 
         <TextView
             android:id="@+id/item_IdCommande"
@@ -25,6 +25,7 @@
             android:focusableInTouchMode="false"
             android:selectAllOnFocus="false"
             android:text="TextView"
+            android:textAlignment="viewStart"
             android:textColor="@android:color/darker_gray"
             tools:text="IDCommande" />
 
@@ -40,6 +41,7 @@
             android:paddingLeft="8dp"
             android:selectAllOnFocus="false"
             android:text="Objet"
+            android:textAlignment="textStart"
             android:textColor="@android:color/darker_gray" />
 
         <TextView
@@ -51,16 +53,18 @@
             android:focusableInTouchMode="false"
             android:selectAllOnFocus="false"
             android:text="TextView"
+            android:textAlignment="textStart"
             android:textColor="@android:color/darker_gray"
             tools:text="Date" />
 
-        <Button
+        <ImageButton
             android:id="@+id/delete_btn"
-            android:layout_width="40dp"
+            android:layout_width="32dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_weight="1"
+            android:layout_weight="0.3"
+            android:background="@drawable/x_button"
             android:maxWidth="40sp"
             android:text="ANNULER"
             android:textSize="10sp"

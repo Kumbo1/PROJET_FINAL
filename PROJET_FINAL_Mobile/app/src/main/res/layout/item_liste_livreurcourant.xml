@@ -7,7 +7,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:touchscreenBlocksFocus="false"
+        android:descendantFocusability="blocksDescendants"
+        android:focusableInTouchMode="false">
 
         <TextView
         android:id="@+id/itemLivreurCourant_Prenom"
@@ -15,7 +18,10 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="TextView"
-        tools:text="Prenom" />
+        tools:text="Prenom"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:selectAllOnFocus="false"/>
 
         <TextView
             android:id="@+id/itemLivreurCourant_Nom"
@@ -23,7 +29,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TextView"
-            tools:text="Nom" />
+            tools:text="Nom"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:selectAllOnFocus="false"/>
 
         <TextView
             android:id="@+id/itemLivreurCourant_InfosSup"
@@ -33,7 +42,10 @@
             android:layout_centerVertical="true"
             android:layout_weight="1"
             android:paddingLeft="8dp"
-            tools:text="InfosSup" />
+            tools:text="InfosSup"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:selectAllOnFocus="false"/>
 
         <TextView
             android:id="@+id/itemLivreurCourant_Date"
@@ -41,7 +53,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TextView"
-            tools:text="Date" />
+            tools:text="Date"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:selectAllOnFocus="false"/>
 
 
         <Button

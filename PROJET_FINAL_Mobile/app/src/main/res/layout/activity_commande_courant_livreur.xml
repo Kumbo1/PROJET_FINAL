@@ -5,13 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LivreurCourantActivity">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/wallpaper"
         android:orientation="vertical">
-
         <TextView
             android:id="@+id/textView8"
             android:layout_width="match_parent"
@@ -23,11 +21,11 @@
             android:textColor="@android:color/background_light"
             android:textSize="24sp"
             android:textStyle="bold" />
-
         <ListView
             android:id="@+id/listeCourantLivreur"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" />
     </LinearLayout>
-
 </android.support.constraint.ConstraintLayout>

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
@@ -22,7 +24,7 @@ import java.sql.PreparedStatement;
 import java.util.Date;
 import java.util.List;
 
-public class AjouterCommandeActivity extends AppCompatActivity {
+public class Client_AjouterCommandeActivity extends AppCompatActivity {
 
     EditText infosSup;
     CheckBox estMajeur;
@@ -116,9 +118,9 @@ public class AjouterCommandeActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                ArrayAdapter NoCoreAdapter = new ArrayAdapter(AjouterCommandeActivity.this,android.R.layout.simple_list_item_1, arraycity);
+                ArrayAdapter NoCoreAdapter = new ArrayAdapter(Client_AjouterCommandeActivity.this,android.R.layout.simple_list_item_1, arraycity);
                 city.setAdapter(NoCoreAdapter);
-                ArrayAdapter NoCoreAdapter1 = new ArrayAdapter(AjouterCommandeActivity.this,android.R.layout.simple_list_item_1, arraycateg);
+                ArrayAdapter NoCoreAdapter1 = new ArrayAdapter(Client_AjouterCommandeActivity.this,android.R.layout.simple_list_item_1, arraycateg);
                 categorie.setAdapter(NoCoreAdapter1);
             }
         });
@@ -179,6 +181,34 @@ public class AjouterCommandeActivity extends AppCompatActivity {
                 idcommande = rs.getInt(1);
             stm.execute("INSERT INTO PROJETDB.dbo.MAP(idCommande, longCommande, latCommande) VALUES (" + idcommande + "," + lng + "," + lat + ")");
         } catch (SQLException exc){}
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_client, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_client_deco) {
+            Intent intent = new Intent(this, MainActivity.class);
+            //intent.putExtra("ID",ID);
+            startActivity(intent);
+        } else if (item.getItemId() == R.id.menu_client_fairecommande) {
+            Intent intent = new Intent(this, Client_AjouterCommandeActivity.class);
+            intent.putExtra("ID",ID);
+            startActivity(intent);
+        } else if (item.getItemId() == R.id.menu_client_mescommandes){
+            Intent intent = new Intent(this, VoirCommandeActivity.class);
+            intent.putExtra("ID",ID);
+            startActivity(intent);
+        } else if(item.getItemId() == R.id.menu_client_home || item.getItemId() == R.id.menu_livreur_home)
+        {
+            Intent intent = new Intent(this, HomeActivity.class);
+            intent.putExtra("ID",ID);
+            intent.putExtra("estLivreur", false);
+            startActivity(intent);
+        }
+        return true;
     }
 
 }

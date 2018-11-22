@@ -3,6 +3,8 @@ package com.ladlp.projet_final_mobile;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -64,8 +66,7 @@ public class VoirCommandeActivity extends AppCompatActivity {
         };
         thread.start();
     }
-    void getList()
-    {
+    void getList(){
         try
         {
             String sql = "exec ProjetDB.dbo.INFOCOMMANDE ?";
@@ -88,6 +89,35 @@ public class VoirCommandeActivity extends AppCompatActivity {
                 listview.setAdapter(commandeArrayAdapter);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_client, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_client_deco) {
+            Intent intent = new Intent(this, MainActivity.class);
+            //intent.putExtra("ID",ID);
+            startActivity(intent);
+        } else if (item.getItemId() == R.id.menu_client_fairecommande) {
+            Intent intent = new Intent(this, Client_AjouterCommandeActivity.class);
+            intent.putExtra("ID",ID);
+            startActivity(intent);
+        } else if (item.getItemId() == R.id.menu_client_mescommandes){
+            Intent intent = new Intent(this, VoirCommandeActivity.class);
+            intent.putExtra("ID",ID);
+            startActivity(intent);
+        }else if(item.getItemId() == R.id.menu_client_home || item.getItemId() == R.id.menu_livreur_home)
+        {
+            Intent intent = new Intent(this, HomeActivity.class);
+            intent.putExtra("ID",ID);
+            intent.putExtra("estLivreur", false);
+            startActivity(intent);
+        }
+        return true;
     }
 
 

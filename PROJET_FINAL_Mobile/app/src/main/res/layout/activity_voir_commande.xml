@@ -26,50 +26,68 @@
             android:textStyle="bold" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15sp"
+            android:layout_marginBottom="10sp"
             android:layout_marginLeft="15sp"
-            android:orientation="horizontal">
+            android:layout_marginRight="15sp"
+            android:focusableInTouchMode="false"
+            android:gravity="left"
+            android:orientation="horizontal"
+            android:touchscreenBlocksFocus="false"
+            android:descendantFocusability="blocksDescendants">
 
             <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
+                android:id="@+id/item_IdCommande"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:paddingRight="25sp"
-                android:text="ID "
-                android:textColor="@android:color/background_light"
-                android:textStyle="bold" />
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:selectAllOnFocus="false"
+                android:text="ID"
+                android:textColor="@android:color/darker_gray"
+                tools:text="IDCommande" />
 
             <TextView
-                android:id="@+id/textView7"
-                android:layout_width="match_parent"
+                android:id="@+id/item_Objet"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
                 android:layout_weight="1"
-                android:paddingRight="25sp"
-                android:singleLine="true"
-                android:text="Objet/Service"
-                android:textColor="@android:color/background_light"
-                android:textStyle="bold" />
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:paddingLeft="8dp"
+                android:selectAllOnFocus="false"
+                android:text="Objet"
+                android:textColor="@android:color/darker_gray" />
 
             <TextView
-                android:id="@+id/textView6"
-                android:layout_width="match_parent"
+                android:id="@+id/item_Date"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
                 android:layout_weight="1"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:selectAllOnFocus="false"
                 android:text="Date"
-                android:textColor="@android:color/background_light"
-                android:textStyle="bold" />
+                android:textColor="@android:color/darker_gray"
+                tools:text="Date" />
 
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="match_parent"
+            <Button
+
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:layout_weight="1"
-                android:text="comm"
-                android:textColor="@android:color/transparent" />
+                android:enabled="false"
+                android:maxWidth="40sp"
+                android:text="ANNULER"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:visibility="invisible" />
         </LinearLayout>
 
         <ListView

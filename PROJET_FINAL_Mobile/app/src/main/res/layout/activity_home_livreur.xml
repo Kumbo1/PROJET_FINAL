@@ -10,45 +10,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/wallpaper"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:paddingLeft="15sp"
-        android:paddingRight="15sp">
-
-        <TextView
-            android:id="@+id/welcomeText"
+        android:orientation="vertical">
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="80sp"
-            android:text="Bonjour, "
-            android:textColor="@android:color/background_light"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
+            android:layout_marginBottom="50sp"
+            android:background="@drawable/banner" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-
+            android:orientation="horizontal"
+            android:paddingLeft="15sp"
+            android:paddingRight="15sp">
             <Button
-                android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="startVoirCommandeLivreur"
-                android:text="Voir mes commandes livreur" />
-
+                android:text="Commandes disponibles"
+                android:textSize="36sp"
+                android:textStyle="bold" />
             <Button
-                android:id="@+id/button"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="startVoirCommandeLivreurCourant"
-                android:text="Conclure une commande" />
-
-
+                android:text="Mes commandes en cours"
+                android:textSize="36sp"
+                android:textStyle="bold" />
         </LinearLayout>
-
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

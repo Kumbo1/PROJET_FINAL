@@ -53,7 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
     }
 
-    void registerClient(View view){
+    public void registerClient(View view){
         if(checkAllFilled(new EditText[] {passwordConfirm, password, username, firstName, lastName, email, address, phoneNumber, zipCode}))
         {
             if(checkEmail()) {
@@ -87,7 +87,7 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(this,"Veuillez remplir tous les champs", Toast.LENGTH_LONG).show();
 
     }
-    void registerLivreur(View view){
+    public void registerLivreur(View view){
         if(checkAllFilled(new EditText[] {passwordConfirm, password, username, firstName, lastName, email, address, phoneNumber, zipCode}))
         {
             if(checkEmail()) {
@@ -194,7 +194,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
-    void insertLivreur(){
+    public void insertLivreur(){
         String proc =  "exec ProjetDB.dbo.INSERTLIVREURS ?, ?, ?, ?, ?, ?, ?";
         //prenom,nom,ville,username,adresse,zip,phone,adult,admin,mdp,email
         try {
@@ -211,7 +211,7 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(this, exc.toString(), Toast.LENGTH_LONG).show();
         }
     }
-    void insertClient(){
+    public void insertClient(){
         String proc =  "exec ProjetDB.dbo.INSERTCLIENTS ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?";
         //prenom,nom,ville,username,adresse,zip,phone,adult,admin,mdp,email
         try {

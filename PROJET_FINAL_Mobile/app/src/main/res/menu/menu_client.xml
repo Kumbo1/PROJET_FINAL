@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_client_home"
+        android:title="Accueil"
+        app:showAsAction="never">
+    </item>
+    <item
+        android:id="@+id/menu_client_mescommandes"
+        android:icon="@drawable/box"
+        android:title="Mes commandes"
+        app:showAsAction="never"></item>
+    <item
+        android:id="@+id/menu_client_fairecommande"
+        android:icon="@drawable/create"
+        android:title="Faire une commande"
+        app:showAsAction="never"></item>
+    <item
+        android:id="@+id/menu_client_deco"
+        android:icon="@drawable/locked"
+        android:title="Se déconnecter"
+        app:showAsAction="never"></item>
+</menu>

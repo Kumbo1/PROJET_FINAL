@@ -17,6 +17,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,7 +49,7 @@ public class MyArrayAdapter extends ArrayAdapter<Commande> {
                 CommandeWrapper.id = (TextView) item.findViewById(R.id.item_IdCommande);
                 CommandeWrapper.objet = (TextView) item.findViewById(R.id.item_Objet);
                 CommandeWrapper.date = (TextView) item.findViewById(R.id.item_Date);
-                CommandeWrapper.delete = (Button) item.findViewById(R.id.delete_btn);
+                CommandeWrapper.delete = (ImageButton) item.findViewById(R.id.delete_btn);
                 item.setTag(CommandeWrapper);
             } else {
                 CommandeWrapper = (CommandeWrapper) item.getTag();
@@ -60,7 +61,8 @@ public class MyArrayAdapter extends ArrayAdapter<Commande> {
             CommandeWrapper.objet.setText(commande.getObjet());
             if(commande.getIdLivreur() != 0)
             {
-                CommandeWrapper.delete.setText("EN COURS");
+
+                CommandeWrapper.delete.setBackgroundResource(R.drawable.delivery_truck);
                 CommandeWrapper.delete.setEnabled(false);
             }
             CommandeWrapper.delete.setOnClickListener(new OnClickListener() {
@@ -76,7 +78,7 @@ public class MyArrayAdapter extends ArrayAdapter<Commande> {
             TextView id;
             TextView objet;
             TextView date;
-            Button delete;
+            ImageButton delete;
         }
     public void confirmDialog(final int idlist) {
 

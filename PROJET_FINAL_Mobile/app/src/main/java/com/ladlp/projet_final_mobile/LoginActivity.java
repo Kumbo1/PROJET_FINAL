@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_LONG).show();
     }
     //Fonction du boutton connecter "JE SUIS UN LIVREUR"
-    void connecterLivreur(View view){
+    public void connecterLivreur(View view){
         if(!password.getText().toString().isEmpty() && !username.getText().toString().isEmpty())
         {
             try{

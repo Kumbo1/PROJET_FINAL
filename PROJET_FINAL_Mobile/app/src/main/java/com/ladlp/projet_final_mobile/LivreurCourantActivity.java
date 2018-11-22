@@ -3,6 +3,10 @@ package com.ladlp.projet_final_mobile;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.sql.Connection;
@@ -29,6 +33,15 @@ public class LivreurCourantActivity extends AppCompatActivity {
         ID = intent.getIntExtra("ID", 0);
         gestionConnection();
         listview = findViewById(R.id.listeCourantLivreur);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                classLivreurCourant commande = (classLivreurCourant)listview.getItemAtPosition(position);
+                Intent intent = new Intent(LivreurCourantActivity.this, MapsActivity.class);
+                intent.putExtra("ID", commande.getIdCommande());
+                startActivity(intent);
+            }
+        });
     }
 
     void gestionConnection(){
@@ -78,5 +91,33 @@ public class LivreurCourantActivity extends AppCompatActivity {
                 listview.setAdapter(commandeLivreurArrayAdapter);
             }
         });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_livreur, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_livreur_deco) {
+            Intent intent = new Intent(this, MainActivity.class);
+            //intent.putExtra("ID",ID);
+            startActivity(intent);
+        } else if (item.getItemId() == R.id.menu_livreur_commandeencours) {
+            Intent intent = new Intent(this, LivreurCourantActivity.class);
+            intent.putExtra("ID",ID);
+            startActivity(intent);
+        } else if (item.getItemId() == R.id.menu_livreur_commandesdispo){
+            Intent intent = new Intent(this, VoirCommandeLivreur.class);
+            intent.putExtra("ID",ID);
+            startActivity(intent);
+        }else if(item.getItemId() == R.id.menu_client_home || item.getItemId() == R.id.menu_livreur_home)
+        {
+            Intent intent = new Intent(this, HomeActivity.class);
+            intent.putExtra("ID",ID);
+            intent.putExtra("estLivreur", true);
+            startActivity(intent);
+        }
+        return true;
     }
 }
