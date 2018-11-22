@@ -106,7 +106,9 @@
             <tr class="tbl-head">
                 <th>Nom objet/Service</th>
                 <th>Information</th>
+                <th>Prix</th>
                 <th>Date</th>
+                <th>Supprimer</th>
             </tr>
             <tr><td><hr /></td></tr>
             @foreach (Commande commande in Model)
@@ -118,6 +120,10 @@
                 }
 
                 <td class="info-obj">@commande.InfosSup</td>
+                @foreach (Objet objet in commande.Objets)
+                {
+                    <td class="info-obj">@objet.PrixApprox.ToString().Substring(0, objet.PrixApprox.ToString().Length - 2)</td>
+                }
                 <td class="info-obj">@commande.DateComm</td>
                 @if (commande.idLivreur == null)
                 {

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using PROJET_FINAL.Models;
+using GoogleMaps.LocationServices;
 
 namespace PROJET_FINAL.Controllers
 {
@@ -25,10 +26,13 @@ namespace PROJET_FINAL.Controllers
         [HttpPost]
         public ActionResult AjouterCommande(CommandeClient comm)
         {
-
-            //if (ModelState.IsValid)
-            //{
-               
+            //Google api
+            
+            var location = new GoogleLocationService("AIzaSyCS7pQ5bFOQhHENri9wbnCMN-lczbApfNU");
+            var point = location.GetLatLongFromAddress(comm.Adresse + comm.CodePostal);
+            var longitude = point.Longitude;
+            var latitude = point.Latitude;            
+            //
                 var queryidclient = Session["clientID"];
                 var querydate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
                 using (ProjetDBEntities2 db = new ProjetDBEntities2())
@@ -45,16 +49,19 @@ namespace PROJET_FINAL.Controllers
                     var date = new SqlParameter("pdatecomm", querydate);
                     db.Database.ExecuteSqlCommand("execute AjoutCommande @pidclient, @pinfosup, @pnomobjet, @pprixapprox, @pnomcategorie, @pestmajeur" +
                     ", @padresse, @pville, @pcodepostal, @pdatecomm", idclient, infosup, nomobjet, prixapprox, categorie, estmajeur, adresse, ville, codepostal, date);
+                //Google insert
+                var lng = new SqlParameter("plng", longitude);
+                var lat = new SqlParameter("plat", latitude);
+                db.Database.ExecuteSqlCommand("execute InsertCommMap @plng, @plat", lng, lat);
+                //
+
 
                     return RedirectToAction("Index", "Home");                   
                 }
 
-            //}
-            //else
-            //{
-            //    ModelState.AddModelError("", "Remplissez tous les espaces correctement");
-            //    return RedirectToAction("Index", "Register");
-            //}
+
+
+         
         }
     }
 }

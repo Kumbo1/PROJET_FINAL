@@ -33,7 +33,7 @@
     .comm-wrap {
         width: 100%;
         margin: 0 auto;
-        max-width: 610px;
+        max-width: 710px;
         position: relative;
         box-shadow: 0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
         padding: 5px;
@@ -107,22 +107,34 @@
         <table cellpadding="0" cellspacing="0" class="tbl-comm">
             <tr class="tbl-head">
                 <th>Client</th>
+                <th>Objet/Service </th>
                 <th>Information</th>
+                <th>Prix</th>
                 <th>Date</th>
+                <th>Adresse</th>
                 <th>Complet</th>
 
             </tr>
             <tr><td><hr /></td></tr>
             @foreach (Commande commande in Model)
             {
-                <tr class="obj-wrap">
-                    <td class="info-obj">@commande.Client.PrenomClient @commande.Client.NomClient</td>
-                    <td class="info-obj">@commande.InfosSup</td>
-                    <td class="info-obj">@commande.DateComm</td>
-                    <td class="info-obj"><input class="pointer-arrow" value="Fermer" type="button" onclick="EstFini(@commande.IdCommande)"></td>
+            <tr class="obj-wrap">
+                <td class="info-obj">@commande.Client.PrenomClient @commande.Client.NomClient</td>
+                @foreach (Objet objet in commande.Objets)
+                {
+                    <td class="info-obj">@objet.NomObjet</td>
+                }
+                <td class="info-obj">@commande.InfosSup</td>
+                @foreach (Objet objet in commande.Objets)
+                {
+                    <td class="info-obj">@objet.PrixApprox.ToString().Substring(0, objet.PrixApprox.ToString().Length - 2)</td>
+                }
+                <td class="info-obj">@commande.DateComm</td>
+                <td class="info-obj">@commande.Adresse</td>
+                <td class="info-obj"><input class="pointer-arrow" value="Fermer" type="button" onclick="EstFini(@commande.IdCommande)"></td>
 
 
-                </tr>
+            </tr>
                 <tr><td><br /></td></tr>
             }
         </table>
