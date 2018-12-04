@@ -225,6 +225,7 @@
     <Content Include="Content\Images\b4.jpg" />
     <Content Include="Content\Images\banner-bg.jpg" />
     <Content Include="Content\Images\banner-img.png" />
+    <Content Include="Content\Images\black-chrome-gradient-ui-gradient-background.jpg" />
     <Content Include="Content\Images\commandeclient.png" />
     <Content Include="Content\Images\commandedispo.png" />
     <Content Include="Content\Images\counter-bg.jpg" />
@@ -236,6 +237,7 @@
     <Content Include="Content\Images\elements\success-check.png" />
     <Content Include="Content\Images\elements\success-radio.png" />
     <Content Include="Content\Images\Filix.jpg" />
+    <Content Include="Content\Images\graffigner.jpg" />
     <Content Include="Content\Images\i1.jpg" />
     <Content Include="Content\Images\i2.jpg" />
     <Content Include="Content\Images\i3.jpg" />
@@ -249,6 +251,7 @@
     <Content Include="Content\Images\l3.png" />
     <Content Include="Content\Images\l4.png" />
     <Content Include="Content\Images\l5.png" />
+    <Content Include="Content\Images\LMAO.png" />
     <Content Include="Content\Images\login.png" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\meslivraison.png" />
