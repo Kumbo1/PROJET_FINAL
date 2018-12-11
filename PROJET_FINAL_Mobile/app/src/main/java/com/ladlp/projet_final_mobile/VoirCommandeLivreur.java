@@ -41,6 +41,7 @@ public class VoirCommandeLivreur extends AppCompatActivity {
                 // START L'ACTIVITÉ POUR MODIFIER
                 Intent intent = new Intent(VoirCommandeLivreur.this, MapsActivity.class);
                 intent.putExtra("ID",commande.getIdCommande());
+                intent.putExtra("postemp", true);
                 startActivity(intent);
             }
         });

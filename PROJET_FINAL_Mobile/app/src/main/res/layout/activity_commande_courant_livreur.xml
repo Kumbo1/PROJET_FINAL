@@ -10,6 +10,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/wallpaper"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/textView8"
             android:layout_width="match_parent"
@@ -19,8 +20,99 @@
             android:text="MES COMMANDES"
             android:textAlignment="center"
             android:textColor="@android:color/background_light"
-            android:textSize="24sp"
+            android:textSize="36sp"
             android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:descendantFocusability="blocksDescendants"
+            android:focusableInTouchMode="false"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="10sp"
+            android:paddingLeft="15sp"
+            android:paddingRight="15sp"
+            android:touchscreenBlocksFocus="false">
+
+            <TextView
+                android:id="@+id/itemLivreurCourant_Prenom"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:selectAllOnFocus="false"
+                android:text="Client"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold|italic"
+                tools:text="Prenom" />
+
+            <TextView
+                android:id="@+id/itemLivreurCourant_Nom"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:selectAllOnFocus="false"
+                android:text="Objet"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold|italic"
+                tools:text="Nom" />
+
+            <TextView
+                android:id="@+id/itemLivreurCourant_InfosSup"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_weight="1"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:paddingLeft="8dp"
+                android:selectAllOnFocus="false"
+                android:text="Infos Supp."
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold|italic"
+                tools:text="InfosSup" />
+
+            <TextView
+                android:id="@+id/itemLivreurCourant_Date"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_weight="1"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:selectAllOnFocus="false"
+                android:text="Date"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold|italic"
+                tools:text="Date" />
+
+
+            <ImageButton
+                android:id="@+id/Fermer_btn"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_weight="0.25"
+                android:background="@drawable/racingflag"
+                android:text="Fermer"
+                android:visibility="invisible" />
+        </LinearLayout>
         <ListView
             android:id="@+id/listeCourantLivreur"
             android:layout_width="match_parent"

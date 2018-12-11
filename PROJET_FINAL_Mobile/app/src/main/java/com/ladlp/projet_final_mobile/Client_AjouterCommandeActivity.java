@@ -61,6 +61,10 @@ public class Client_AjouterCommandeActivity extends AppCompatActivity {
     public void ajouterLaCommande(View view)    {
         if (checkAllFilled(new EditText[] {infosSup,adresse,codePostal,nomObjet,prixApprox})) {
             insertCommande();
+            Intent intent = new Intent(this, HomeActivity.class);
+            intent.putExtra("ID",ID);
+            intent.putExtra("estLivreur", false);
+            startActivity(intent);
             //Toast.makeText(this, "Commande inserer avec succes", Toast.LENGTH_LONG).show();
         }
         else {

@@ -57,7 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
         if(checkAllFilled(new EditText[] {passwordConfirm, password, username, firstName, lastName, email, address, phoneNumber, zipCode}))
         {
             if(checkEmail()) {
-                if(checkZip()) {
+                if(true) {
                     if (checkPassword()) {
                         boolean existe = false;
                         try {
@@ -91,7 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
         if(checkAllFilled(new EditText[] {passwordConfirm, password, username, firstName, lastName, email, address, phoneNumber, zipCode}))
         {
             if(checkEmail()) {
-                if(checkZip()) {
+                if(true) {
                     if (checkPassword()) {
                         boolean existe = false;
                         try {

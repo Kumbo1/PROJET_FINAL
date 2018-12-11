@@ -1,9 +1,15 @@
 package com.ladlp.projet_final_mobile;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.StrictMode;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,11 +44,13 @@ import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    LatLng posLivreur = null;
     LatLng origin = null;
     LatLng dest = null;
     private GoogleMap mMap;
     int idCommande;
     Connection conn = null;
+    boolean temp = false;
     String connectionUrl = "jdbc:jtds:sqlserver://dbprojetfinal.czcjxlu56660.ca-central-1.rds.amazonaws.com:8080;database=ProjetDB;user=Master;password=Master123;";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +65,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
         Intent intent = getIntent();
         idCommande = intent.getIntExtra("ID", 0);
+        temp = intent.getBooleanExtra("postemp", false);
+
     }
 
 
@@ -101,6 +111,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             DownloadTask downloadTask = new DownloadTask();
             downloadTask.execute(url);
         }
+        else if(false)
+        {
+            posLivreur = getPosition();
+            mMap.addMarker(new MarkerOptions().position(posLivreur).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)).title("Vous"));
+            String url = getDirectionsUrl(origin, posLivreur);
+            DownloadTask downloadTask = new DownloadTask();
+            downloadTask.execute(url);
+        }
+
     }
 
     private class DownloadTask extends AsyncTask<String, Void, String>{
@@ -173,9 +192,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.addPolyline(lineOptions);
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
             builder.include(origin);
-            builder.include(dest);
+            if(false)
+                builder.include(posLivreur);
+            else
+                builder.include(dest);
             LatLngBounds bounds = builder.build();
-            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 150));
         }
     }
 
@@ -242,5 +264,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         };
         thread.start();
 
+    }
+    public LatLng getPosition()
+    {
+        Location location = null;
+        LocationManager lm = (LocationManager)getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
+
+        if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            return null;
+        }
+        //if condition to check if GPS is available
+        if (lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+
+            location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            Log.d("TEST", Double.toString(location.getLatitude()) + " " + Double.toString(location.getLongitude()));
+
+        }
+        else if (lm.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+
+            location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            Log.d("TEST", Double.toString(location.getLatitude()) + " " + Double.toString(location.getLongitude()));
+
+        }
+        LatLng temp = new LatLng(location.getLatitude(), location.getLongitude());
+        return temp;
     }
 }

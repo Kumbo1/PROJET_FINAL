@@ -10,73 +10,73 @@
         android:layout_marginBottom="10sp"
         android:layout_marginLeft="15sp"
         android:layout_marginRight="15sp"
-        android:orientation="horizontal"
-        android:touchscreenBlocksFocus="false"
         android:descendantFocusability="blocksDescendants"
-        android:focusableInTouchMode="false">
+        android:focusableInTouchMode="false"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:touchscreenBlocksFocus="false">
 
         <TextView
             android:id="@+id/itemLivreurComm_NomObjet"
-            android:layout_width="wrap_content"
+            android:layout_width="55dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TextView"
-            android:textColor="@android:color/darker_gray"
-            tools:text="Nom Objet"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:selectAllOnFocus="false"/>
+            android:selectAllOnFocus="false"
+            android:text="TextView"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="18sp"
+            tools:text="Nom Objet" />
 
         <TextView
             android:id="@+id/itemLivreurComm_InfosSup"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginBottom="10sp"
-            android:layout_marginLeft="15sp"
-            android:layout_marginRight="15sp"
+
             android:layout_weight="1"
-            android:paddingLeft="8dp"
-            android:text="InfosSup"
-            android:textColor="@android:color/darker_gray"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:selectAllOnFocus="false"/>
+            android:paddingLeft="5sp"
+            android:selectAllOnFocus="false"
+            android:text="InfosSup"
+            android:textAlignment="viewStart"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/itemLivreurComm_Date"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TextView"
-            android:textColor="@android:color/darker_gray"
-            tools:text="Date"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:selectAllOnFocus="false"/>
+            android:selectAllOnFocus="false"
+            android:text="TextView"
+            android:textAlignment="viewStart"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="18sp"
+            tools:text="Date" />
 
         <TextView
             android:id="@+id/itemLivreurComm_Adresse"
-            android:layout_width="wrap_content"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TextView"
-            android:textColor="@android:color/darker_gray"
-            tools:text="Adresse"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:selectAllOnFocus="false"/>
+            android:selectAllOnFocus="false"
+            android:text="TextView"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="18sp"
+            tools:text="Adresse" />
 
         <ImageButton
             android:id="@+id/Associer_btn"
-            android:layout_width="36dp"
-            android:layout_height="42dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
             android:layout_weight="0.1"
             android:background="@drawable/hand" />
     </LinearLayout>
-
 </RelativeLayout>

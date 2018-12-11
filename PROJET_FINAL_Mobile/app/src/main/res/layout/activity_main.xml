@@ -13,8 +13,8 @@
         android:gravity="center"
         android:orientation="vertical"
         android:paddingBottom="60sp"
-        android:paddingLeft="15sp"
-        android:paddingRight="15sp">
+        android:paddingLeft="50sp"
+        android:paddingRight="50sp">
 
         <TextView
             android:id="@+id/title"
@@ -24,7 +24,7 @@
             android:text="Les Amis de la Poste"
             android:textAlignment="center"
             android:textColor="@android:color/background_light"
-            android:textSize="30sp"
+            android:textSize="36sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -37,7 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="15sp"
             android:onClick="startLogin"
-            android:text="Se connecter" />
+            android:text="Se connecter"
+            android:textSize="30sp" />
 
         <Button
             android:id="@+id/registerBtn"
@@ -46,10 +47,9 @@
             android:layout_marginBottom="20sp"
             android:onClick="startRegister"
             android:text="S'inscrire"
+            android:textSize="30sp"
             tools:layout_editor_absoluteX="127dp"
             tools:layout_editor_absoluteY="435dp" />
-
-
 
 
     </LinearLayout>

@@ -7,8 +7,9 @@ public class classLivreurCourant {
     private String InfosSup;
     private String Date;
     private int IdCommande;
+    private String Objet;
 
-    public classLivreurCourant(String Prenom, String Nom, String InfosSup, String Date, int idCommande)
+    public classLivreurCourant(String Prenom, String Nom, String InfosSup, String Date, int idCommande, String objet)
     {
         super();
         this.Prenom = Prenom;
@@ -16,6 +17,7 @@ public class classLivreurCourant {
         this.InfosSup = InfosSup;
         this.Date = Date;
         this.IdCommande = idCommande;
+        this.Objet = objet;
     }
 
 
@@ -24,4 +26,5 @@ public class classLivreurCourant {
     public String getInfosSup(){return InfosSup;}
     public String getDate(){return Date;}
     public int getIdCommande(){return IdCommande;}
+    public String getObjet() {return Objet;}
 }

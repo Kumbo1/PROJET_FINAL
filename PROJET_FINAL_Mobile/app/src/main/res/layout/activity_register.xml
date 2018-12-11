@@ -17,8 +17,8 @@
             android:gravity="fill_vertical|center"
             android:orientation="vertical"
             android:paddingBottom="15sp"
-            android:paddingLeft="15sp"
-            android:paddingRight="15sp"
+            android:paddingLeft="50sp"
+            android:paddingRight="50sp"
             android:paddingTop="15sp">
 
             <TextView
@@ -29,7 +29,7 @@
                 android:text="S'INSCRIRE"
                 android:textAlignment="center"
                 android:textColor="@android:color/background_light"
-                android:textSize="24sp"
+                android:textSize="36sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -40,7 +40,8 @@
                 android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Nom d'utilisateur"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/pwd"
@@ -50,7 +51,8 @@
                 android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Mot de passe"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/pwdConfirm"
@@ -60,7 +62,8 @@
                 android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Confirmation du mot de passe"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/firstName"
@@ -70,7 +73,8 @@
                 android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Prénom"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/lastName"
@@ -80,7 +84,8 @@
                 android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Nom de famille"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/email"
@@ -90,7 +95,8 @@
                 android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Email"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/address"
@@ -100,7 +106,8 @@
                 android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Adresse de livraison"
-                android:inputType="textPostalAddress" />
+                android:inputType="textPostalAddress"
+                android:textSize="24sp" />
 
             <Spinner
                 android:id="@+id/citySpinner"
@@ -118,7 +125,8 @@
                 android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Code postal"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/phone"
@@ -127,10 +135,10 @@
                 android:layout_marginBottom="10sp"
                 android:background="@android:drawable/edit_text"
                 android:ems="10"
-                android:maxLength="14"
                 android:hint="Cellulaire"
                 android:inputType="phone"
-                />
+                android:maxLength="14"
+                android:textSize="24sp" />
 
             <CheckBox
                 android:id="@+id/isAdult"
@@ -138,7 +146,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20sp"
                 android:text="J'ai 18 ans +"
-                android:textColor="@android:color/background_light" />
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -152,7 +161,8 @@
                     android:layout_marginRight="10sp"
                     android:layout_weight="1"
                     android:onClick="registerClient"
-                    android:text="Devenir un client" />
+                    android:text="Devenir un client"
+                    android:textSize="30sp" />
 
                 <Button
                     android:id="@+id/livreurButton"
@@ -161,6 +171,7 @@
                     android:layout_weight="1"
                     android:onClick="registerLivreur"
                     android:text="Devenir un livreur"
+                    android:textSize="30sp"
                     tools:layout_editor_absoluteX="159dp"
                     tools:layout_editor_absoluteY="455dp" />
             </LinearLayout>

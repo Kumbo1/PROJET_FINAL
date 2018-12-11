@@ -8,13 +8,15 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/wallpaper"
             android:orientation="vertical"
-            android:paddingLeft="15sp"
-            android:paddingRight="15sp">
+            android:paddingLeft="50sp"
+            android:paddingRight="50sp">
+
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
@@ -24,82 +26,99 @@
                 android:text="FAIRE UNE COMMANDE"
                 android:textAlignment="center"
                 android:textColor="@android:color/background_light"
-                android:textSize="24sp"
+                android:textSize="36sp"
                 android:textStyle="bold" />
+
             <EditText
                 android:id="@+id/AC_nomObjet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10sp"
+                android:layout_marginBottom="15sp"
                 android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Nom objet/service"
                 android:inputType="textShortMessage"
                 android:textColor="@android:color/darker_gray"
+                android:textSize="24sp"
                 tools:layout_editor_absoluteX="85dp"
                 tools:layout_editor_absoluteY="16dp" />
+
             <EditText
                 android:id="@+id/AC_prixObjet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10sp"
+                android:layout_marginBottom="15sp"
                 android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Prix"
                 android:inputType="numberDecimal"
                 android:textColor="@android:color/darker_gray"
+                android:textSize="24sp"
                 tools:layout_editor_absoluteX="85dp"
                 tools:layout_editor_absoluteY="76dp" />
+
             <Spinner
                 android:id="@+id/AC_spinnercat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10sp"
+                android:layout_marginBottom="15sp"
                 android:background="@android:drawable/edit_text" />
+
             <EditText
                 android:id="@+id/AC_infoSupp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10sp"
+                android:layout_marginBottom="15sp"
                 android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Information Supplémentaire"
                 android:inputType="textLongMessage"
                 android:textColor="@android:color/darker_gray"
+                android:textSize="24sp"
                 tools:layout_editor_absoluteX="85dp"
                 tools:layout_editor_absoluteY="204dp" />
+
             <EditText
                 android:id="@+id/AC_adresseLivraison"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10sp"
+                android:layout_marginBottom="15sp"
                 android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Adresse livraison"
                 android:inputType="textShortMessage"
                 android:textColor="@android:color/darker_gray"
+                android:textSize="24sp"
                 tools:layout_editor_absoluteX="85dp"
                 tools:layout_editor_absoluteY="267dp" />
+
             <EditText
                 android:id="@+id/AC_codePostale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="15sp"
                 android:background="@android:drawable/edit_text"
                 android:ems="10"
                 android:hint="Code Postale"
-                android:inputType="textPostalAddress" />
+                android:inputType="textPostalAddress"
+                android:textSize="24sp" />
+
             <Spinner
                 android:id="@+id/AC_spinnercity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="15sp"
                 android:background="@android:drawable/edit_text" />
+
             <CheckBox
                 android:id="@+id/AC_estMajeur"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15sp"
                 android:text="18 +"
-                android:textColor="@android:color/darker_gray" />
+                android:textColor="@android:color/darker_gray"
+                android:textSize="24sp" />
+
             <Button
                 android:id="@+id/commanderBouton"
                 android:layout_width="match_parent"
@@ -107,6 +126,7 @@
                 android:layout_marginBottom="15sp"
                 android:onClick="ajouterLaCommande"
                 android:text="Commander"
+                android:textSize="30sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>

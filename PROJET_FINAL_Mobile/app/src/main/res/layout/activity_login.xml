@@ -12,8 +12,8 @@
         android:background="@drawable/wallpaper"
         android:gravity="center"
         android:orientation="vertical"
-        android:paddingLeft="15sp"
-        android:paddingRight="15sp">
+        android:paddingLeft="50sp"
+        android:paddingRight="50sp">
 
         <TextView
             android:id="@+id/textView2"
@@ -23,7 +23,7 @@
             android:text="SE CONNECTER"
             android:textAlignment="center"
             android:textColor="@android:color/background_light"
-            android:textSize="24sp"
+            android:textSize="36sp"
             android:textStyle="bold" />
 
         <EditText
@@ -34,7 +34,8 @@
             android:background="@android:drawable/edit_text"
             android:ems="10"
             android:hint="Nom d'utilisateur"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/pwdLogin"
@@ -44,7 +45,8 @@
             android:background="@android:drawable/edit_text"
             android:ems="10"
             android:hint="Mot de passe"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textSize="24sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,7 +60,8 @@
                 android:layout_marginRight="10sp"
                 android:layout_weight="1"
                 android:onClick="connecterClient"
-                android:text="Je suis un client" />
+                android:text="Je suis un client"
+                android:textSize="30sp" />
 
             <Button
                 android:id="@+id/livreurButton"
@@ -66,7 +69,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="connecterLivreur"
-                android:text="Je suis un livreur" />
+                android:text="Je suis un livreur"
+                android:textSize="30sp" />
         </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

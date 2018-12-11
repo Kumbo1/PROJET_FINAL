@@ -76,7 +76,7 @@ public class LivreurCourantActivity extends AppCompatActivity {
             stm.setInt(1,ID);
             ResultSet rs = stm.executeQuery();
             while(rs.next())
-                commandeLivreurArray.add(new classLivreurCourant(rs.getString("PrenomClient"), rs.getString("NomClient"),rs.getString("InfosSup"), rs.getDate("DateComm").toString(), rs.getInt("idcommande")));
+                commandeLivreurArray.add(new classLivreurCourant(rs.getString("PrenomClient"), rs.getString("NomClient"),rs.getString("InfosSup"), rs.getDate("DateComm").toString(), rs.getInt("idcommande"), rs.getString("NomObjet")));
             rafraichirIug();
         }catch(SQLException exc){}
 

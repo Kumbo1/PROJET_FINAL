@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.sql.Connection;
@@ -44,18 +45,18 @@ public class ArrayAdapterLivreurCourant extends ArrayAdapter<classLivreurCourant
 
             wrapper = new ArrayAdapterLivreurCourant.CommandeLivreurCourantWrapper();
             wrapper.Prenom = (TextView) item.findViewById(R.id.itemLivreurCourant_Prenom);
-            wrapper.Nom = (TextView) item.findViewById(R.id.itemLivreurCourant_Nom);
+            wrapper.Objet = (TextView) item.findViewById(R.id.itemLivreurCourant_Nom);
             wrapper.date = (TextView) item.findViewById(R.id.itemLivreurCourant_Date);
             wrapper.infossup = (TextView) item.findViewById(R.id.itemLivreurCourant_InfosSup);
-            wrapper.fermer = (Button) item.findViewById(R.id.Fermer_btn);
+            wrapper.fermer = (ImageButton) item.findViewById(R.id.Fermer_btn);
             item.setTag(wrapper);
         } else {
             wrapper = (ArrayAdapterLivreurCourant.CommandeLivreurCourantWrapper) item.getTag();
         }
 
         classLivreurCourant commandelivreur = commandesLivreurCourant.get(position);
-        wrapper.Prenom.setText(commandelivreur.getPrenom());
-        wrapper.Nom.setText(commandelivreur.getNom());
+        wrapper.Prenom.setText(commandelivreur.getPrenom() + " " + commandelivreur.getNom());
+        wrapper.Objet.setText(commandelivreur.getObjet());
         wrapper.date.setText(commandelivreur.getDate());
         wrapper.infossup.setText(commandelivreur.getInfosSup());
         wrapper.fermer.setOnClickListener(new View.OnClickListener() {
@@ -69,10 +70,10 @@ public class ArrayAdapterLivreurCourant extends ArrayAdapter<classLivreurCourant
 
     static class CommandeLivreurCourantWrapper {
         TextView Prenom;
-        TextView Nom;
+        TextView Objet;
         TextView infossup;
         TextView date;
-        Button fermer;
+        ImageButton fermer;
 
     }
     public void confirmDialog(final int idlist) {
@@ -113,7 +114,6 @@ public class ArrayAdapterLivreurCourant extends ArrayAdapter<classLivreurCourant
                     String sql = "exec ProjetDB.dbo.terminercommande ?";
                     PreparedStatement stm = conn.prepareCall(sql);
                     stm.setInt(1, idcommande);
-
                     stm.executeUpdate();
                     conn.close();
                 } catch (SQLException se) {

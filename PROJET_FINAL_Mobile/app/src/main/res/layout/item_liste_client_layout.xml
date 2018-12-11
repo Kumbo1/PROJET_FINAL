@@ -12,13 +12,13 @@
         android:layout_marginRight="15sp"
         android:descendantFocusability="blocksDescendants"
         android:focusableInTouchMode="false"
-        android:gravity="left|center"
+        android:gravity="center"
         android:orientation="horizontal"
         android:touchscreenBlocksFocus="false">
 
         <TextView
             android:id="@+id/item_IdCommande"
-            android:layout_width="wrap_content"
+            android:layout_width="5dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:focusable="false"
@@ -27,11 +27,12 @@
             android:text="TextView"
             android:textAlignment="viewStart"
             android:textColor="@android:color/darker_gray"
+            android:textSize="24sp"
             tools:text="IDCommande" />
 
         <TextView
             android:id="@+id/item_Objet"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
@@ -42,11 +43,12 @@
             android:selectAllOnFocus="false"
             android:text="Objet"
             android:textAlignment="textStart"
-            android:textColor="@android:color/darker_gray" />
+            android:textColor="@android:color/darker_gray"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/item_Date"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:focusable="false"
@@ -55,11 +57,12 @@
             android:text="TextView"
             android:textAlignment="textStart"
             android:textColor="@android:color/darker_gray"
+            android:textSize="24sp"
             tools:text="Date" />
 
         <ImageButton
             android:id="@+id/delete_btn"
-            android:layout_width="32dp"
+            android:layout_width="35dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
