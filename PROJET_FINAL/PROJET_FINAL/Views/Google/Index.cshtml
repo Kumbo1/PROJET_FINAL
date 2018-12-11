@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Geolocation</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+        * element that contains the map. */
+        #map {
+            height: 400px;
+            width: 100%
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 400px;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        // Note: This example requires that you consent to location sharing when
+        // prompted by your browser. If you see the error "The Geolocation service
+        // failed.", it means you probably did not give permission for the browser to
+        // locate you.
+        var map, infoWindow;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 6
+            });
+            infoWindow = new google.maps.InfoWindow;
+
+            // Try HTML5 geolocation.
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+
+
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent('Location found.');
+                    infoWindow.open(map);
+                    map.setCenter(pos);
+                }, function () {
+                    handleLocationError(true, infoWindow, map.getCenter());
+                });
+            } else {
+                // Browser doesn't support Geolocation
+                handleLocationError(false, infoWindow, map.getCenter());
+            }
+        }
+
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+            infoWindow.setPosition(pos);
+            infoWindow.setContent(browserHasGeolocation ?
+                'Error: The Geolocation service failed.' :
+                'Error: Your browser doesn\'t support geolocation.');
+            infoWindow.open(map);
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCS7pQ5bFOQhHENri9wbnCMN-lczbApfNU&callback=initMap">
+    </script>
+</body>
+</html>
+
+
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCS7pQ5bFOQhHENri9wbnCMN-lczbApfNU"></script>
+<script type="text/javascript">
+
+        var markers = @Html.Raw(ViewBag.Markers); //all string value of column properties to viewbag.
+        window.onload = function () {
+            var mapOptions = {
+                center: new google.maps.LatLng(markers[0].lat, markers[0].lng), //which item will be shown.
+                zoom: 9, //google map page zoom
+                mapTypeId: google.maps.MapTypeId.ROADMAP //type of view.
+            };
+            var infoWindow = new google.maps.InfoWindow();
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);//pass div id and google map load values.
+            for (i = 0; i < markers.length; i++) { //here load all city map name
+                var data = markers[i]
+                var myLatlng = new google.maps.LatLng(data.lat, data.lng); //assign lat and long.
+                var marker = new google.maps.Marker({
+                    position: myLatlng, //lat and long value
+                    map: map, //div id
+                    title: data.title //item name
+                });
+                (function (marker, data) {
+                    google.maps.event.addListener(marker, "click", function (e) {
+                        infoWindow.setContent(marker.title);
+                        infoWindow.open(map, marker);
+                    });
+                })(marker, data); 
+            }
+        }
+</script>
